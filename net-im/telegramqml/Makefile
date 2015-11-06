@@ -22,7 +22,7 @@ GH_RELEASE=	${PORTVERSION}-stable
 WRKSRC=		${WRKDIR}/${GH_PROJECT}-${GH_RELEASE}
 
 USES=		qmake:outsource
-USE_QT5=	qmake_build qml quick sql xml multimedia
+USE_QT5=	qmake_build buildtools_build core qml quick sql xml multimedia
 USE_LDCONFIG=	yes
 QMAKE_ARGS=	BUILD_MODE+=lib
 
