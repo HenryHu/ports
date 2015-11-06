@@ -9,7 +9,7 @@ MASTER_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/archive/ \
 DISTNAME=	v${GH_RELEASE}
 
 MAINTAINER=	henry.hu.sh@gmail.com
-COMMENT=	Fork of libqtelegram by Aseman Team
+COMMENT=	Telegram API tools for QtQML and Qml
 
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE
