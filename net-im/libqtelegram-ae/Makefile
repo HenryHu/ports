@@ -21,7 +21,5 @@ WRKSRC=		${WRKDIR}/${GH_PROJECT}-${PORTVERSION}
 USES=		qmake:outsource
 USE_QT5=	qmake_build gui network multimedia
 USE_LDCONFIG=	yes
-CPPFLAGS+=	-I${LOCALBASE}/include
-LIBS+=		-L${LOCALBASE}/lib
 
 .include <bsd.port.mk>
