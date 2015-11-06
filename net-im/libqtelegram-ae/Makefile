@@ -19,7 +19,7 @@ GH_PROJECT=	libqtelegram-aseman-edition
 WRKSRC=		${WRKDIR}/${GH_PROJECT}-${PORTVERSION}
 
 USES=		qmake:outsource
-USE_QT5=	qmake_build buildtools_build gui network multimedia
+USE_QT5=	qmake_build buildtools_build core gui network multimedia
 USE_LDCONFIG=	yes
 
 .include <bsd.port.mk>
