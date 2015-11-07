@@ -23,7 +23,7 @@ GH_RELEASE=	${PORTVERSION}-stable
 WRKSRC=		${WRKDIR}/${GH_PROJECT}-${GH_RELEASE}
 
 USES=		qmake:outsource desktop-file-utils
-USE_QT5=	qmake_build buildtools_build core qml quick sql xml multimedia widgets dbus webkit quickcontrols graphicaleffects
+USE_QT5=	qmake_build buildtools_build core qml quick sql xml multimedia widgets dbus webkit quickcontrols graphicaleffects sql-sqlite3
 USE_LDCONFIG=	yes
 
 .include <bsd.port.mk>
