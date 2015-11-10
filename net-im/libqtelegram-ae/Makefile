@@ -4,8 +4,6 @@
 PORTNAME=	libqtelegram-ae
 PORTVERSION=	6.0
 CATEGORIES=	net-im
-MASTER_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/archive/ \
-		http://github.com/${GH_ACCOUNT}/${GH_PROJECT}/archive/
 DISTNAME=	v${PORTVERSION}
 
 MAINTAINER=	henry.hu.sh@gmail.com
@@ -14,8 +12,10 @@ COMMENT=	Fork of libqtelegram by Aseman Team
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
+USE_GITHUB=	yes
 GH_ACCOUNT=	Aseman-Land
 GH_PROJECT=	libqtelegram-aseman-edition
+GH_TAGNAME=	v${PORTVERSION}
 WRKSRC=		${WRKDIR}/${GH_PROJECT}-${PORTVERSION}
 
 USES=		qmake:outsource
