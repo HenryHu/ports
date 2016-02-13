@@ -1,9 +1,9 @@
 # Created by: Tobias Roth <ports@fsck.ch>
-# $FreeBSD: head/x11/slim/Makefile 397943 2015-09-26 08:54:27Z bapt $
+# $FreeBSD: head/x11/slim/Makefile 408067 2016-02-04 18:08:21Z vsevolod $
 
 PORTNAME=	slim
 PORTVERSION=	1.3.6
-PORTREVISION=	10
+PORTREVISION=	11
 CATEGORIES=	x11
 MASTER_SITES=	ftp://ftp.berlios.de/pub/slim/ \
 		SF/slim.berlios
@@ -13,8 +13,7 @@ COMMENT=	Graphical login manager for X11, derived from Login.app
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	libdbus-1.so:${PORTSDIR}/devel/dbus \
-		libpthread-stubs.so:${PORTSDIR}/devel/libpthread-stubs \
+LIB_DEPENDS=	libpthread-stubs.so:${PORTSDIR}/devel/libpthread-stubs \
 		libpng.so:${PORTSDIR}/graphics/png \
 		libfreetype.so:${PORTSDIR}/print/freetype2 \
 		libfontconfig.so:${PORTSDIR}/x11-fonts/fontconfig
