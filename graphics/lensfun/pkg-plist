@@ -1,4 +1,5 @@
 include/lensfun/lensfun.h
+bin/lenstool
 lib/liblensfun.so
 lib/liblensfun.so.0
 lib/liblensfun.so.0.3.1
