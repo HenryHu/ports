@@ -10,7 +10,6 @@ CONFIGURE_ARGS=	--enable QtQuick
 PYQT_DIST=	yes
 
 USES=		python pyqt:5
-USE_GL=		gl
 USE_PYQT=	sip_build core_run gui_run
 USE_QT5=	core quick qmake_build
 
