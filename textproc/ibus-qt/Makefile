@@ -1,5 +1,5 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD: head/textproc/ibus-qt/Makefile 384614 2015-04-23 21:26:09Z bapt $
+# $FreeBSD: head/textproc/ibus-qt/Makefile 412349 2016-04-01 14:25:16Z mat $
 
 PORTNAME=	ibus-qt
 PORTVERSION=	1.3.3
@@ -15,10 +15,10 @@ COMMENT=	IBus input method module for Qt4
 LICENSE=	GPLv2
 LICENSE_FILE=	${WRKSRC}/COPYING
 
-BUILD_DEPENDS=	ibus>=1.3.7:${PORTSDIR}/textproc/ibus
-RUN_DEPENDS=	ibus>=1.3.7:${PORTSDIR}/textproc/ibus
-LIB_DEPENDS=	libdbus-1.so:${PORTSDIR}/devel/dbus \
-	libicuuc.so:${PORTSDIR}/devel/icu
+BUILD_DEPENDS=	ibus>=1.3.7:textproc/ibus
+RUN_DEPENDS=	ibus>=1.3.7:textproc/ibus
+LIB_DEPENDS=	libdbus-1.so:devel/dbus \
+	libicuuc.so:devel/icu
 
 GH_ACCOUNT=	ibus
 
