@@ -1,5 +1,5 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD: head/chinese/ibus-libpinyin/Makefile 412344 2016-04-01 13:29:15Z mat $
+# $FreeBSD: head/chinese/ibus-libpinyin/Makefile 415742 2016-05-23 20:35:01Z amdmi3 $
 
 PORTNAME=	ibus-libpinyin
 PORTVERSION=	1.7.2
@@ -25,7 +25,7 @@ CONFIGURE_ARGS=	--disable-dependency-tracking --disable-boost \
 				--disable-lua-extension
 
 OPTIONS_DEFINE=		ENGLISH STROKE OPENCC NLS
-OPTIONS_DEFAULT=	ENGLISH STROKE NLS
+OPTIONS_DEFAULT=	ENGLISH STROKE
 OPTIONS_SUB=		yes
 ENGLISH_DESC=		Enable English input mode
 STROKE_DESC=		Enable stroke input mode

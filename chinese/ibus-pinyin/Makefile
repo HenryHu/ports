@@ -1,5 +1,5 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD: head/chinese/ibus-pinyin/Makefile 412344 2016-04-01 13:29:15Z mat $
+# $FreeBSD: head/chinese/ibus-pinyin/Makefile 415742 2016-05-23 20:35:01Z amdmi3 $
 
 PORTNAME=	ibus-pinyin
 PORTVERSION=	1.5.0
@@ -25,7 +25,6 @@ CONFIGURE_ARGS=	--disable-dependency-tracking --disable-lua-extension
 PROJECTHOST=	ibus
 
 OPTIONS_DEFINE=	NLS
-OPTIONS_DEFAULT=	NLS
 OPTIONS_SUB=	yes
 
 NLS_USES=	gettext
