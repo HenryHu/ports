@@ -1,10 +1,11 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD$
+# $FreeBSD: head/net-im/libqtelegram-ae/Makefile 407910 2016-02-02 23:33:56Z madpilot $
 
 PORTNAME=	libqtelegram-ae
-PORTVERSION=	6.0
+PORTVERSION=	6.1
+DISTVERSIONPREFIX=	v
+DISTVERSIONSUFFIX=	-stable
 CATEGORIES=	net-im
-DISTNAME=	v${PORTVERSION}
 
 MAINTAINER=	henry.hu.sh@gmail.com
 COMMENT=	Fork of libqtelegram by Aseman Team
@@ -15,8 +16,6 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 USE_GITHUB=	yes
 GH_ACCOUNT=	Aseman-Land
 GH_PROJECT=	libqtelegram-aseman-edition
-GH_TAGNAME=	v${PORTVERSION}
-WRKSRC=		${WRKDIR}/${GH_PROJECT}-${PORTVERSION}
 
 USES=		qmake:outsource
 USE_QT5=	qmake_build buildtools_build core gui network multimedia

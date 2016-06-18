@@ -1,12 +1,10 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD$
+# $FreeBSD: head/net-im/telegramqml/Makefile 412348 2016-04-01 14:16:16Z mat $
 
 PORTNAME=	telegramqml
-PORTVERSION=	0.9.1
+PORTVERSION=	0.9.2
+DISTVERSIONPREFIX=	v
 CATEGORIES=	net-im
-MASTER_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/archive/ \
-		http://github.com/${GH_ACCOUNT}/${GH_PROJECT}/archive/
-DISTNAME=	v${GH_RELEASE}
 
 MAINTAINER=	henry.hu.sh@gmail.com
 COMMENT=	Telegram API tools for QtQML and Qml
@@ -14,12 +12,11 @@ COMMENT=	Telegram API tools for QtQML and Qml
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-LIB_DEPENDS=	libqtelegram-ae.so:${PORTSDIR}/net-im/libqtelegram-ae
+LIB_DEPENDS=	libqtelegram-ae.so:net-im/libqtelegram-ae
 
+USE_GITHUB=	yes
 GH_ACCOUNT=	Aseman-Land
 GH_PROJECT=	TelegramQML
-GH_RELEASE=	${PORTVERSION}-stable
-WRKSRC=		${WRKDIR}/${GH_PROJECT}-${GH_RELEASE}
 
 USES=		qmake:outsource
 USE_QT5=	qmake_build buildtools_build core qml quick sql xml multimedia

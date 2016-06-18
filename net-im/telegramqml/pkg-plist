@@ -25,6 +25,8 @@ include/telegramqml/telegramqml_macros.h
 include/telegramqml/telegramqml_plugin.h
 include/telegramqml/telegramqmlinitializer.h
 include/telegramqml/telegramsearchmodel.h
+include/telegramqml/telegramthumbnailer.h
+include/telegramqml/telegramthumbnailercore.h
 include/telegramqml/telegramuploadsmodel.h
 include/telegramqml/telegramwallpapersmodel.h
 include/telegramqml/tgabstractlistmodel.h
