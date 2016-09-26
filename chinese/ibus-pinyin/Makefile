@@ -1,11 +1,11 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD: head/chinese/ibus-pinyin/Makefile 415742 2016-05-23 20:35:01Z amdmi3 $
+# $FreeBSD: head/chinese/ibus-pinyin/Makefile 422140 2016-09-14 15:59:34Z mat $
 
 PORTNAME=	ibus-pinyin
 PORTVERSION=	1.5.0
-PORTREVISION=	1
+PORTREVISION=	2
 CATEGORIES=	chinese
-MASTER_SITES=	GOOGLE_CODE
+MASTER_SITES=	GH
 
 MAINTAINER=	henry.hu.sh@gmail.com
 COMMENT=	PinYin engine for IBus
@@ -18,11 +18,12 @@ LIB_DEPENDS=	libpyzy-1.0.so:chinese/pyzy \
 		libibus-1.0.so:textproc/ibus \
 		libsqlite3.so:databases/sqlite3
 
-USES=		compiler:c++11-lib gmake pkgconfig python
+USES=		compiler:c++11-lib gmake pkgconfig python autoreconf
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-dependency-tracking --disable-lua-extension
 
-PROJECTHOST=	ibus
+USE_GITHUB=	yes
+GH_ACCOUNT=	ibus
 
 OPTIONS_DEFINE=	NLS
 OPTIONS_SUB=	yes
@@ -30,8 +31,5 @@ OPTIONS_SUB=	yes
 NLS_USES=	gettext
 NLS_USE=	GNOME=intltool
 NLS_CONFIGURE_ENABLE=	nls
-
-post-patch:
-	@${REINPLACE_CMD} -e 's|DATADIRNAME=lib|DATADIRNAME=share|' ${WRKSRC}/configure
 
 .include <bsd.port.mk>
