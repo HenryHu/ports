@@ -18,7 +18,7 @@ LIB_DEPENDS=	libpyzy-1.0.so:chinese/pyzy \
 		libibus-1.0.so:textproc/ibus \
 		libsqlite3.so:databases/sqlite3
 
-USES=		compiler:c++11-lib gmake pkgconfig python autoreconf
+USES=		compiler:c++11-lib gmake pkgconfig python autoreconf libtool
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-dependency-tracking --disable-lua-extension
 
