@@ -6,11 +6,9 @@ PORTVERSION=	0.1.0
 PORTREVISION=	3
 CATEGORIES=	chinese
 MASTER_SITES=	GH
-DISTFILES=	${DISTNAME}${EXTRACT_SUFX}
-EXTRACT_ONLY=	${DISTNAME}${EXTRACT_SUFX}
 
 MAINTAINER=	henry.hu.sh@gmail.com
-COMMENT=	The Chinese PinYin and Bopomofo conversion library
+COMMENT=	Chinese PinYin and Bopomofo conversion library
 
 LICENSE=	LGPL21
 
@@ -27,10 +25,9 @@ USE_LDCONFIG=	yes
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-dependency-tracking --disable-boost
 
-OPTIONS_DEFINE=	ANDROID_DB OPENCC
-OPTIONS_DEFAULT=	ANDROID_DB
+OPTIONS_DEFINE=	OPENCC
+OPTIONS_DEFAULT=
 OPTIONS_SUB=	yes
-ANDROID_DB_DESC=	Build Android DB
 OPENCC_DESC=		Use opencc for simplified and traditional Chinese conversion
 
 OPENCC_CONFIGURE_ENABLE=	opencc
