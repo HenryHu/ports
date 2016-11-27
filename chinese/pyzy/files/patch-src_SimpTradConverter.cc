@@ -1,6 +1,6 @@
---- src/SimpTradConverter.cc.orig	2016-11-27 16:59:28.257471000 -0500
-+++ src/SimpTradConverter.cc	2016-11-27 17:00:22.065280000 -0500
-@@ -40,7 +40,6 @@
+--- src/SimpTradConverter.cc.orig	2012-12-17 04:00:47 UTC
++++ src/SimpTradConverter.cc
+@@ -40,7 +40,6 @@ namespace PyZy {
  #ifdef HAVE_OPENCC
  
  class opencc {
@@ -8,7 +8,7 @@
  public:
      opencc (void)
      {
-@@ -55,29 +54,12 @@
+@@ -55,29 +54,12 @@ public:
  
      void convert (const char *in, String &out)
      {
