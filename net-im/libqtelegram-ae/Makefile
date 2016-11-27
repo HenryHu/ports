@@ -1,5 +1,5 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD: head/net-im/libqtelegram-ae/Makefile 407910 2016-02-02 23:33:56Z madpilot $
+# $FreeBSD: head/net-im/libqtelegram-ae/Makefile 421293 2016-09-03 11:45:42Z rakuco $
 
 PORTNAME=	libqtelegram-ae
 PORTVERSION=	6.1
@@ -21,6 +21,12 @@ USES=		qmake:outsource
 USE_QT5=	qmake_build buildtools_build core gui network multimedia
 USE_OPENSSL=	yes
 USE_LDCONFIG=	yes
+
+# Explicitly disable C++11, as Qt 5.6 defaults to -std=gnu++11 when the
+# compiler supports it and the build currently fails.
+# ../libqtelegram-aseman-edition-6.1-stable/telegram/types/accountdaysttl.cpp:51:10: error: case value evaluates to 3100684255, which cannot be narrowed to type 'int' [-Wc++11-narrowing]
+#     case typeAccountDaysTTL: {
+QMAKE_ARGS=	CONFIG-="c++11"
 
 post-patch:
 	@${REINPLACE_CMD} -e "/OPENSSL_INCLUDE_PATH/d" \
