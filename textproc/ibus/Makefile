@@ -1,12 +1,11 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD: head/textproc/ibus/Makefile 426566 2016-11-20 09:38:08Z gerald $
+# $FreeBSD: head/textproc/ibus/Makefile 427548 2016-12-02 09:21:58Z mat $
 
 PORTNAME=	ibus
 PORTVERSION=	1.5.11
 PORTREVISION=	1
 CATEGORIES=	textproc
-MASTER_SITES=	https://github.com/${PORTNAME}/${PORTNAME}/releases/download/${PORTVERSION}/ \
-		http://github.com/${PORTNAME}/${PORTNAME}/releases/download/${PORTVERSION}/
+MASTER_SITES=	https://github.com/${PORTNAME}/${PORTNAME}/releases/download/${PORTVERSION}/
 
 MAINTAINER=	henry.hu.sh@gmail.com
 COMMENT=	Intelligent Input Bus for Linux / Unix OS
