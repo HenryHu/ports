@@ -3,9 +3,8 @@
 
 PORTNAME=	ibus-pinyin
 PORTVERSION=	1.5.0
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	chinese
-MASTER_SITES=	GH
 
 MAINTAINER=	henry.hu.sh@gmail.com
 COMMENT=	PinYin engine for IBus
@@ -19,6 +18,7 @@ LIB_DEPENDS=	libpyzy-1.0.so:chinese/pyzy \
 		libsqlite3.so:databases/sqlite3
 
 USES=		compiler:c++11-lib gmake pkgconfig python autoreconf libtool
+USE_GNOME=	glib20
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-dependency-tracking --disable-lua-extension
 
