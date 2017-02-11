@@ -1,9 +1,9 @@
 # Created by: Tobias Roth <ports@fsck.ch>
-# $FreeBSD: head/x11/slim/Makefile 412351 2016-04-01 14:33:55Z mat $
+# $FreeBSD: head/x11/slim/Makefile 432893 2017-01-31 02:44:48Z jbeich $
 
 PORTNAME=	slim
 PORTVERSION=	1.3.6
-PORTREVISION=	12
+PORTREVISION=	13
 CATEGORIES=	x11
 MASTER_SITES=	ftp://ftp.berlios.de/pub/slim/ \
 		SF/slim.berlios
