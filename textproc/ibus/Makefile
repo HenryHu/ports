@@ -115,10 +115,10 @@ PLIST_SUB+=	COMPDIR="@comment "
 EMOJIONE_TAG=	ba845a7e24aac26cf3cf22abc19bea215d94fbf3 # 2.2.7
 MASTER_SITES+=	https://raw.githubusercontent.com/Ranks/emojione/${EMOJIONE_TAG}/:emojione
 DISTFILES+=	emoji.json:emojione
-CONFIGURE_ARGS+=	 --enable-emoji-dict --with-emoji-json-file=${WRKSRC}/emoji.json
+CONFIGURE_ARGS+=	--enable-emoji-dict --with-emoji-json-file=${WRKSRC}/emoji.json
 BUILD_DEPENDS+=	json-glib>=0:devel/json-glib
 .else
-CONFIGURE_ARGS+=	 --disable-emoji-dict
+CONFIGURE_ARGS+=	--disable-emoji-dict
 .endif
 
 post-extract:
