@@ -1,5 +1,5 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD: head/chinese/pyzy/Makefile 422140 2016-09-14 15:59:34Z mat $
+# $FreeBSD: head/chinese/pyzy/Makefile 432897 2017-01-31 03:40:46Z linimon $
 
 PORTNAME=	pyzy
 PORTVERSION=	0.1.0
@@ -20,6 +20,9 @@ USES=		compiler:c++11-lib gmake libtool pkgconfig python:build shebangfix autore
 SHEBANG_FILES=	data/db/android/create_db.py
 USE_GNOME=	glib20
 USE_LDCONFIG=	yes
+
+BROKEN_aarch64=		Fails to compile: error: constant expression evaluates to -1
+BROKEN_armv6=		Fails to compile: error: constant expression evaluates to -1
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-dependency-tracking --disable-boost
