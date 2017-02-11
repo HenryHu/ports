@@ -2,10 +2,11 @@
 # $FreeBSD: head/textproc/ibus/Makefile 427548 2016-12-02 09:21:58Z mat $
 
 PORTNAME=	ibus
-PORTVERSION=	1.5.11
-PORTREVISION=	1
+PORTVERSION=	1.5.14
 CATEGORIES=	textproc
 MASTER_SITES=	https://github.com/${PORTNAME}/${PORTNAME}/releases/download/${PORTVERSION}/
+DISTFILES=	${PORTNAME}-${PORTVERSION}${EXTRACT_SUFX}
+EXTRACT_ONLY=	${PORTNAME}-${PORTVERSION}${EXTRACT_SUFX}
 
 MAINTAINER=	henry.hu.sh@gmail.com
 COMMENT=	Intelligent Input Bus for Linux / Unix OS
@@ -33,10 +34,10 @@ CONFIGURE_ARGS=	--disable-tests --with-html-dir=${PREFIX}/share/doc
 CPPFLAGS+=	-I${LOCALBASE}/include
 LIBS+=		-L${LOCALBASE}/lib
 
-OPTIONS_DEFINE=	NLS GTK2 GTK3 VALA GINTRO PYTHON_LIB DOCS XIM ENGINE
+OPTIONS_DEFINE=	NLS GTK2 GTK3 VALA GINTRO PYTHON_LIB DOCS XIM ENGINE EMOJI
 OPTIONS_RADIO=	CONFIG
 OPTIONS_RADIO_CONFIG=	GCONF DCONF
-OPTIONS_DEFAULT=	GTK2 GTK3 VALA GINTRO PYTHON_LIB DCONF XIM ENGINE
+OPTIONS_DEFAULT=	GTK2 GTK3 VALA GINTRO PYTHON_LIB DCONF XIM ENGINE EMOJI
 
 GTK2_DESC=	Install GTK2 client
 GTK3_DESC=	Install GTK3 client and panel
@@ -47,6 +48,7 @@ GCONF_DESC=	Use GConf for configuration
 DCONF_DESC=	Use dconf for configuration
 XIM_DESC=	Install XIM server
 ENGINE_DESC=	Install ibus simple engine
+EMOJI_DESC=	Install emoji dictionary
 CPE_VENDOR=	ibus_project
 
 NLS_USES=		gettext
@@ -108,6 +110,21 @@ GLIB_SCHEMAS=	org.freedesktop.ibus.gschema.xml
 PLIST_SUB+=	COMPDIR=""
 .else
 PLIST_SUB+=	COMPDIR="@comment "
+.endif
+
+.if ${PORT_OPTIONS:MEMOJI}
+EMOJIONE_TAG=	ba845a7e24aac26cf3cf22abc19bea215d94fbf3 # 2.2.7
+MASTER_SITES+=	https://raw.githubusercontent.com/Ranks/emojione/${EMOJIONE_TAG}/:emojione
+DISTFILES+=	emoji.json:emojione
+CONFIGURE_ARGS+=	 --enable-emoji-dict --with-emoji-json-file=${WRKSRC}/emoji.json
+BUILD_DEPENDS+=	json-glib>=0:devel/json-glib
+.else
+CONFIGURE_ARGS+=	 --disable-emoji-dict
+.endif
+
+post-extract:
+.if ${PORT_OPTIONS:MEMOJI}
+	${CP} ${DISTDIR}/emoji.json ${WRKSRC}/
 .endif
 
 post-patch:
