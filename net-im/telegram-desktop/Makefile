@@ -12,7 +12,7 @@ COMMENT=	Telegram Desktop client
 
 NO_BUILD=	yes
 
-USES=		cpe linux tar:xz
+USES=		cpe linux:c7 tar:xz
 USE_LINUX=	alsalib alsa-plugins-oss dbuslibs dri expat gtk2 xorglibs
 RESTRICTED=	Redistribution prohibited.
 
