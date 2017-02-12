@@ -10,9 +10,11 @@ DISTNAME=	tsetup32.${PORTVERSION}
 MAINTAINER=	henry.hu.sh@gmail.com
 COMMENT=	Telegram Desktop client
 
+LICENSE=	GPLv3
+
 NO_BUILD=	yes
 
-USES=		cpe linux:c7 tar:xz
+USES=		linux:c7 tar:xz
 USE_LINUX=	alsalib alsa-plugins-oss dbuslibs dri expat gtk2 xorglibs
 RESTRICTED=	Redistribution prohibited.
 
