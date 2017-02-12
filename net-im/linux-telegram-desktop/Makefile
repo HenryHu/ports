@@ -1,7 +1,7 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
 # $FreeBSD$
 
-PORTNAME=	telegram-desktop
+PORTNAME=	linux-telegram-desktop
 PORTVERSION=	1.0.5
 CATEGORIES=	net-im
 MASTER_SITES=	https://updates.tdesktop.com/tlinux32/
