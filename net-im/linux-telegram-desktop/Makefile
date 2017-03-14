@@ -2,7 +2,7 @@
 # $FreeBSD$
 
 PORTNAME=	linux-telegram-desktop
-PORTVERSION=	1.0.5
+PORTVERSION=	1.0.14
 CATEGORIES=	net-im
 MASTER_SITES=	https://updates.tdesktop.com/tlinux32/
 DISTNAME=	tsetup32.${PORTVERSION}
