@@ -1,35 +1,41 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD$
+# $FreeBSD: head/net-im/linux-telegram-desktop/Makefile 443529 2017-06-13 19:15:43Z danfe $
 
-PORTNAME=	linux-telegram-desktop
-PORTVERSION=	1.0.26
-CATEGORIES=	net-im
-MASTER_SITES=	https://updates.tdesktop.com/tlinux32/
+PORTNAME=	telegram-desktop
+PORTVERSION=	1.1.7
+CATEGORIES=	net-im linux
+MASTER_SITES=	https://updates.tdesktop.com/tlinux32/ \
+		http://freebsd.nsu.ru/distfiles/
+PKGNAMEPREFIX=	linux-
 DISTNAME=	tsetup32.${PORTVERSION}
 
 MAINTAINER=	henry.hu.sh@gmail.com
-COMMENT=	Telegram Desktop client
+COMMENT=	Official desktop client for Telegram messenger (Linux version)
 
 LICENSE=	GPLv3
 
-NO_BUILD=	yes
-
 USES=		linux:c7 tar:xz
 USE_LINUX=	alsalib alsa-plugins-oss dbuslibs dri expat gtk2 xorglibs
-RESTRICTED=	Redistribution prohibited.
+NO_BUILD=	yes
 
 WRKSRC=		${WRKDIR}/Telegram
-TDESKTOPDIR=	lib/tdesktop
-PLIST_SUB+=	TDESKTOPDIR=${TDESKTOPDIR}
-SUB_FILES=	tdesktop.sh
-SUB_LIST+=	TDESKTOPDIR=${TDESKTOPDIR}
+TDESKTOPDIR=	lib/telegram-desktop
+SUB_FILES=	telegram-desktop.sh
+SUB_LIST=	TDESKTOPDIR=${TDESKTOPDIR}
+
+DESKTOP_ENTRIES=	"Telegram Desktop" "${COMMENT}" "" \
+			"${PREFIX}/bin/telegram-desktop -- %u" \
+			"Network;InstantMessaging;" false
+
+PLIST_FILES=	bin/telegram-desktop ${TDESKTOPDIR}/Telegram
 
 do-install:
-	${MKDIR} ${STAGEDIR}${PREFIX}/${TDESKTOPDIR}
-# The binary main program
-	@${INSTALL_PROGRAM} ${WRKSRC}/Telegram ${STAGEDIR}${PREFIX}/${TDESKTOPDIR}/
-
-# The wrapper for main program
-	@${INSTALL_SCRIPT} ${WRKDIR}/tdesktop.sh ${STAGEDIR}${PREFIX}/bin/tdesktop
+	@${MKDIR} ${STAGEDIR}${PREFIX}/${TDESKTOPDIR}
+# The main program binary
+	${INSTALL_PROGRAM} ${WRKSRC}/Telegram \
+		${STAGEDIR}${PREFIX}/${TDESKTOPDIR}
+# Wrapper for the main program
+	${INSTALL_SCRIPT} ${WRKDIR}/telegram-desktop.sh \
+		${STAGEDIR}${PREFIX}/bin/telegram-desktop
 
 .include <bsd.port.mk>
