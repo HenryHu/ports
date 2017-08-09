@@ -2,7 +2,7 @@
 # $FreeBSD: head/net-im/linux-telegram-desktop/Makefile 443529 2017-06-13 19:15:43Z danfe $
 
 PORTNAME=	telegram-desktop
-PORTVERSION=	1.1.7
+PORTVERSION=	1.1.19
 CATEGORIES=	net-im linux
 MASTER_SITES=	https://updates.tdesktop.com/tlinux32/ \
 		http://freebsd.nsu.ru/distfiles/
