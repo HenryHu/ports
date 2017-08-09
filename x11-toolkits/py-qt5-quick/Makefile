@@ -1,4 +1,4 @@
-# $FreeBSD$
+# $FreeBSD: head/x11-toolkits/py-qt5-quick/Makefile 426990 2016-11-24 06:14:01Z pi $
 
 PORTNAME=	quick
 CATEGORIES=	x11-toolkits devel python
