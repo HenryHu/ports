@@ -1,5 +1,5 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD: head/textproc/ibus-qt/Makefile 427548 2016-12-02 09:21:58Z mat $
+# $FreeBSD: head/textproc/ibus-qt/Makefile 442405 2017-06-02 15:49:34Z linimon $
 
 PORTNAME=	ibus-qt
 PORTVERSION=	1.3.3
@@ -19,6 +19,8 @@ RUN_DEPENDS=	ibus>=1.3.7:textproc/ibus
 LIB_DEPENDS=	libdbus-1.so:devel/dbus \
 	libicuuc.so:devel/icu
 
+BROKEN_powerpc64=	fails to link: libicui18n.so: undefined reference to '__cxa_throw_bad_array_new_length@CXXABI_1.3.8'
+
 GH_ACCOUNT=	ibus
 
 USE_QT4=	gui dbus moc_build qmake_build moc_build uic_build rcc_build
@@ -28,7 +30,6 @@ USE_LDCONFIG=	yes
 CFLAGS+=	-I${LOCALBASE}/include
 LDFLAGS+=	-L${LOCALBASE}/lib
 
-PROJECTHOST=	ibus
 WRKSRC=			${WRKDIR}/${DISTNAME}
 
 .include <bsd.port.mk>
