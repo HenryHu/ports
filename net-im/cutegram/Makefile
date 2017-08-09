@@ -1,5 +1,5 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD: head/net-im/cutegram/Makefile 428569 2016-12-14 16:06:19Z mat $
+# $FreeBSD: head/net-im/cutegram/Makefile 436247 2017-03-15 14:45:30Z mat $
 
 PORTNAME=	cutegram
 PORTVERSION=	2.7.1
@@ -22,10 +22,9 @@ GH_PROJECT=	Cutegram aseman-qt-tools:tools
 GH_TAGNAME=	91bf14b:tools
 GH_SUBDIR=	Cutegram/asemantools:tools
 
-USES=		qmake:outsource desktop-file-utils
+USES=		qmake:outsource desktop-file-utils ssl
 USE_QT5=	qmake_build buildtools_build core qml quick sql xml multimedia \
 		widgets dbus webkit quickcontrols graphicaleffects sql-sqlite3
-USE_OPENSSL=	yes
 QMAKE_ARGS=	LIBQTELEGRAM_INCLUDE_PATH="${LOCALBASE}/include/libqtelegram-ae" \
 		TELEGRAMQML_INCLUDE_PATH="${LOCALBASE}/include/telegramqml"
 INSTALLS_ICONS=	yes
