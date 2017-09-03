@@ -1,9 +1,9 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD: head/chinese/pyzy/Makefile 432897 2017-01-31 03:40:46Z linimon $
+# $FreeBSD: head/chinese/pyzy/Makefile 441429 2017-05-21 21:55:08Z linimon $
 
 PORTNAME=	pyzy
 PORTVERSION=	0.1.0
-PORTREVISION=	3
+PORTREVISION=	4
 CATEGORIES=	chinese
 
 MAINTAINER=	henry.hu.sh@gmail.com
@@ -21,8 +21,9 @@ SHEBANG_FILES=	data/db/android/create_db.py
 USE_GNOME=	glib20
 USE_LDCONFIG=	yes
 
-BROKEN_aarch64=		Fails to compile: error: constant expression evaluates to -1
-BROKEN_armv6=		Fails to compile: error: constant expression evaluates to -1
+BROKEN_aarch64=		fails to compile: constant expression evaluates to -1
+BROKEN_armv6=		fails to compile: constant expression evaluates to -1
+BROKEN_powerpc64=	fails to compile: narrowing conversion of '-1' from 'int' to 'char'
 
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--disable-dependency-tracking --disable-boost
