@@ -1,9 +1,9 @@
 # Created by: Tobias Roth <ports@fsck.ch>
-# $FreeBSD: head/x11/slim/Makefile 432893 2017-01-31 02:44:48Z jbeich $
+# $FreeBSD: head/x11/slim/Makefile 447399 2017-08-05 10:58:48Z kwm $
 
 PORTNAME=	slim
 PORTVERSION=	1.3.6
-PORTREVISION=	13
+PORTREVISION=	15
 CATEGORIES=	x11
 MASTER_SITES=	ftp://ftp.berlios.de/pub/slim/ \
 		SF/slim.berlios
@@ -13,8 +13,8 @@ COMMENT=	Graphical login manager for X11, derived from Login.app
 
 LICENSE=	GPLv2
 
-LIB_DEPENDS=	libpthread-stubs.so:devel/libpthread-stubs \
-		libpng.so:graphics/png \
+BUILD_DEPENDS=	${LOCALBASE}/libdata/pkgconfig/pthread-stubs.pc:devel/libpthread-stubs
+LIB_DEPENDS=	libpng.so:graphics/png \
 		libfreetype.so:print/freetype2 \
 		libfontconfig.so:x11-fonts/fontconfig
 
@@ -26,8 +26,8 @@ USE_LDCONFIG=	yes
 SUB_FILES=	pkg-message
 
 CMAKE_ARGS=	-DUSE_CONSOLEKIT=yes \
-	-DBUILD_SLIMLOCK=no \
-	-DBUILD_SHARED_LIBS=yes
+		-DBUILD_SLIMLOCK=no \
+		-DBUILD_SHARED_LIBS=yes
 
 OPTIONS_DEFINE=		PAM UTF8 CONSOLEKIT
 OPTIONS_DEFAULT=	PAM CONSOLEKIT
@@ -45,7 +45,7 @@ PAM_CMAKE_OFF=	-DUSE_PAM=no
 UTF8_EXTRA_PATCHES+=	${PATCHDIR}/extra-patch-utf8
 
 CONSOLEKIT_CMAKE_ON=	-DUSE_CONSOLEKIT=yes
-CONSOLEKIT_LIB_DEPENDS=	libck-connector.so:sysutils/consolekit
+CONSOLEKIT_LIB_DEPENDS=	libck-connector.so:sysutils/consolekit2
 CONSOLEKIT_CMAKE_OFF=	-DUSE_CONSOLEKIT=no
 
 post-patch:
