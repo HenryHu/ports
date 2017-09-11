@@ -22,8 +22,8 @@ share/applications/ibus-setup-pinyin.desktop
 %%DATADIR%%/setup/version.pyc
 %%DATADIR%%/setup/version.pyo
 share/ibus/component/pinyin.xml
-%%NLS%%share/locale/fr/LC_MESSAGES/ibus-pinyin.mo
-%%NLS%%share/locale/ru/LC_MESSAGES/ibus-pinyin.mo
-%%NLS%%share/locale/zh_CN/LC_MESSAGES/ibus-pinyin.mo
-%%NLS%%share/locale/zh_HK/LC_MESSAGES/ibus-pinyin.mo
-%%NLS%%share/locale/zh_TW/LC_MESSAGES/ibus-pinyin.mo
+share/locale/fr/LC_MESSAGES/ibus-pinyin.mo
+share/locale/ru/LC_MESSAGES/ibus-pinyin.mo
+share/locale/zh_CN/LC_MESSAGES/ibus-pinyin.mo
+share/locale/zh_HK/LC_MESSAGES/ibus-pinyin.mo
+share/locale/zh_TW/LC_MESSAGES/ibus-pinyin.mo
