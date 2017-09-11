@@ -17,6 +17,7 @@ LICENSE=	GPLv3
 USES=		linux:c7 tar:xz
 USE_LINUX=	alsalib alsa-plugins-oss dbuslibs dri expat gtk2 xorglibs
 NO_BUILD=	yes
+RUN_DEPENDS+=	dbus-launch:devel/dbus
 
 WRKSRC=		${WRKDIR}/Telegram
 TDESKTOPDIR=	lib/telegram-desktop
