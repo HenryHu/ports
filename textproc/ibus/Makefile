@@ -20,10 +20,6 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dbus>=0.83.0:devel/py-dbus@${PY_FLAVOR} \
 		${PYTHON_SITELIBDIR}/gtk-2.0/pynotify/__init__.py:devel/py-notify@${PY_FLAVOR} \
 		${LOCALBASE}/share/xml/iso-codes/iso_639.xml:misc/iso-codes \
 		setxkbmap:x11/setxkbmap
-LIB_DEPENDS=	libdbus-glib-1.so:devel/dbus-glib \
-		libfreetype.so:print/freetype2 \
-		libfontconfig.so:x11-fonts/fontconfig \
-		libdbus-1.so:devel/dbus
 
 USES=		compiler cpe gmake libtool localbase pathfix pkgconfig python:2
 USE_GNOME=	glib20 intltool librsvg2 pygobject3
@@ -57,10 +53,14 @@ NLS_CONFIGURE_ENABLE=	nls
 
 GTK2_USE=		GNOME=cairo,gtk20
 GTK2_CONFIGURE_ENABLE=	gtk2
+GTK2_LIB_DEPENDS=	libfreetype.so:print/freetype2 \
+		libfontconfig.so:x11-fonts/fontconfig \
+libdbus-1.so:devel/dbus
 
 GTK3_USE=		GNOME=cairo,gtk30 XORG=x11,xi
 GTK3_CONFIGURE_ENABLE=	gtk3 libnotify
-GTK3_LIB_DEPENDS=	libnotify.so:devel/libnotify
+GTK3_LIB_DEPENDS=	libnotify.so:devel/libnotify \
+			libdbus-1.so:devel/dbus
 GTK3_LIBS=		-lX11
 
 VALA_BUILD_DEPENDS=	vala>=0.20:lang/vala
