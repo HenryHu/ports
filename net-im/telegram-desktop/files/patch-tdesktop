@@ -882,10 +882,10 @@ index fde88dcd..ca149b85 100644
        ],
        'cflags_c': [
 diff --git a/Telegram/gyp/telegram_linux.gypi b/Telegram/gyp/telegram_linux.gypi
-index 2c464928..b01aea6e 100644
+index 2c464928..bf353a32 100644
 --- a/Telegram/gyp/telegram_linux.gypi
 +++ b/Telegram/gyp/telegram_linux.gypi
-@@ -33,9 +33,10 @@
+@@ -33,7 +33,7 @@
        'linux_path_va%': '/usr/local',
        'linux_path_vdpau%': '/usr/local',
        'linux_path_breakpad%': '<(libs_loc)/breakpad',
@@ -893,19 +893,8 @@ index 2c464928..b01aea6e 100644
 +      'linux_path_opus_include%': '/usr/local/include/opus',
      },
      'include_dirs': [
-+      '/usr/include/openssl-1.0',
        '/usr/local/include',
-       '<(linux_path_ffmpeg)/include',
-       '<(linux_path_openal)/include',
-@@ -43,6 +44,7 @@
-       '<(linux_path_opus_include)',
-     ],
-     'library_dirs': [
-+      '/usr/lib/openssl-1.0',
-       '/usr/local/lib',
-       '<(linux_path_ffmpeg)/lib',
-       '<(linux_path_openal)/lib',
-@@ -52,48 +54,34 @@
+@@ -52,48 +52,34 @@
        '<(linux_path_breakpad)/lib',
      ],
      'libraries': [
