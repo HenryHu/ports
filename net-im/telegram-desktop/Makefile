@@ -33,7 +33,7 @@ GH_SUBDIR=	Telegram/ThirdParty/libtgvoip:libtgvoip \
 USES=		ssl cmake:noninja,outsource gmake
 USE_QT5=	buildtools_build core gui widgets network
 USE_XORG=	xcb x11
-USE_GNOME=	glib20
+USE_GNOME=	glib20 gtk30
 
 PLIST_FILES=	bin/Telegram
 
