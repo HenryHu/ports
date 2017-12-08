@@ -14,7 +14,7 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 
 BUILD_DEPENDS=	gyp:devel/py-gyp \
 		python:lang/python \
-		dee-1.0>=0:devel/dee \
+		dee>=0:devel/dee \
 		${LOCALBASE}/include/pulse/pulseaudio.h:audio/pulseaudio \
 		${LOCALBASE}/include/alsa/asoundlib.h:audio/alsa-lib
 
