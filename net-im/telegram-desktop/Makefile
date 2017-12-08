@@ -34,7 +34,7 @@ GH_SUBDIR=	Telegram/ThirdParty/libtgvoip:libtgvoip \
 		Telegram/ThirdParty/Catch:catch
 
 USES=		ssl cmake:noninja,outsource gmake pkgconfig
-USE_QT5=	buildtools_build core gui widgets network imageformats
+USE_QT5=	buildtools_build core gui widgets network imageformats qmake_build
 USE_XORG=	xcb x11
 USE_GNOME=	glib20 gtk30
 
