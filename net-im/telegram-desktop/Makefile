@@ -12,7 +12,9 @@ COMMENT=	Telegram Desktop messaging app
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	gyp:devel/py-gyp
+BUILD_DEPENDS=	gyp:devel/py-gyp \
+		python:lang/python
+
 LIB_DEPENDS=	libopenal.so:audio/openal-soft \
 		libminizip.so:archivers/minizip \
 		libavformat.so:multimedia/ffmpeg \
@@ -28,7 +30,7 @@ GH_SUBDIR=	Telegram/ThirdParty/libtgvoip:libtgvoip \
 		Telegram/ThirdParty/variant:variant \
 		Telegram/ThirdParty/Catch:catch
 
-USES=		ssl cmake:noninja,outsource gmake python
+USES=		ssl cmake:noninja,outsource gmake
 USE_QT5=	buildtools_build core gui widgets network
 USE_XORG=	xcb x11
 USE_GNOME=	glib20
