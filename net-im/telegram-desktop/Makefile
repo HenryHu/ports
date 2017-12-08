@@ -21,7 +21,8 @@ LIB_DEPENDS=	libopenal.so:audio/openal-soft \
 		libopus.so:audio/opus \
 		libdbus-1.so:devel/dbus \
 		libdee-1.0.so:devel/dee \
-		libasound.so:audio/alsa-lib
+		libasound.so:audio/alsa-lib \
+		libpulse.so:audio/pulseaudio
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	telegramdesktop Microsoft:gsl mapbox:variant catchorg:catch
@@ -33,7 +34,7 @@ GH_SUBDIR=	Telegram/ThirdParty/libtgvoip:libtgvoip \
 		Telegram/ThirdParty/Catch:catch
 
 USES=		ssl cmake:noninja,outsource gmake pkgconfig
-USE_QT5=	buildtools_build core gui widgets network
+USE_QT5=	buildtools_build core gui widgets network imageformats
 USE_XORG=	xcb x11
 USE_GNOME=	glib20 gtk30
 
