@@ -14,9 +14,9 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 
 BUILD_DEPENDS=	gyp:devel/py-gyp \
 		python:lang/python \
-		libdee-1.0.so:devel/dee \
-		libpulse.so:audio/pulseaudio \
-		libasound.so:audio/alsa-lib
+		dee-1.0>=0:devel/dee \
+		${LOCALBASE}/include/pulse/pulseaudio.h:audio/pulseaudio \
+		${LOCALBASE}/include/alsa/asoundlib.h:audio/alsa-lib
 
 LIB_DEPENDS=	libopenal.so:audio/openal-soft \
 		libminizip.so:archivers/minizip \
