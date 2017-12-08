@@ -1,0 +1,97 @@
+diff --git a/audio/AudioInput.cpp b/audio/AudioInput.cpp
+index 674b955..9c02546 100644
+--- a/audio/AudioInput.cpp
++++ b/audio/AudioInput.cpp
+@@ -20,7 +20,7 @@
+ #include "../os/windows/AudioInputWave.h"
+ #endif
+ #include "../os/windows/AudioInputWASAPI.h"
+-#elif defined(__linux__)
++#elif defined(__linux__) || defined(__FreeBSD__)
+ #include "../os/linux/AudioInputALSA.h"
+ #include "../os/linux/AudioInputPulse.h"
+ #else
+diff --git a/audio/AudioOutput.cpp b/audio/AudioOutput.cpp
+index 4f5fdfa..594168d 100644
+--- a/audio/AudioOutput.cpp
++++ b/audio/AudioOutput.cpp
+@@ -21,7 +21,7 @@
+ #include "../os/windows/AudioOutputWave.h"
+ #endif
+ #include "../os/windows/AudioOutputWASAPI.h"
+-#elif defined(__linux__)
++#elif defined(__linux__) || defined(__FreeBSD__)
+ #include "../os/linux/AudioOutputALSA.h"
+ #include "../os/linux/AudioOutputPulse.h"
+ #else
+diff --git a/libtgvoip.gyp b/libtgvoip.gyp
+index 52fbea1..6ec864a 100644
+--- a/libtgvoip.gyp
++++ b/libtgvoip.gyp
+@@ -13,11 +13,12 @@
+         'variables': {
+           'tgvoip_src_loc': '.',
+           'official_build_target%': '',
+-          'linux_path_opus_include%': '<(DEPTH)/../../../Libraries/opus/include',
++          'linux_path_opus_include%': '/usr/local/include/opus',
+         },
+         'include_dirs': [
+           '<(tgvoip_src_loc)/webrtc_dsp',
+           '<(linux_path_opus_include)',
++          '/usr/local/include/',
+         ],
+         'direct_dependent_settings': {
+           'include_dirs': [
+@@ -371,12 +372,13 @@
+             },
+           ],
+           [
+-            '"<(OS)" == "linux"', {
++            '"<(OS)" == "freebsd"', {
+               'defines': [
+                 'WEBRTC_POSIX',
+               ],
+               'cflags_cc': [
+                 '-msse2',
++                '-std=c++11',
+               ],
+               'direct_dependent_settings': {
+                 'libraries': [
+diff --git a/os/posix/NetworkSocketPosix.cpp b/os/posix/NetworkSocketPosix.cpp
+index 7fa7063..aa14368 100644
+--- a/os/posix/NetworkSocketPosix.cpp
++++ b/os/posix/NetworkSocketPosix.cpp
+@@ -45,6 +45,7 @@ void NetworkSocketPosix::SetMaxPriority(){
+ 	if(res<0){
+ 		LOGE("error setting darwin-specific net priority: %d / %s", errno, strerror(errno));
+ 	}
++#elif defined(__FreeBSD__)
+ #else
+ 	int prio=5;
+ 	int res=setsockopt(fd, SOL_SOCKET, SO_PRIORITY, &prio, sizeof(prio));
+diff --git a/threading.h b/threading.h
+index 8a6f438..cc6eac6 100644
+--- a/threading.h
++++ b/threading.h
+@@ -20,7 +20,7 @@ typedef pthread_cond_t tgvoip_lock_t;
+ #define start_thread(ref, entry, arg) pthread_create(&ref, NULL, entry, arg)
+ #define join_thread(thread) pthread_join(thread, NULL)
+ #ifndef __APPLE__
+-#define set_thread_name(thread, name) pthread_setname_np(thread, name)
++#define set_thread_name(thread, name)
+ #else
+ #define set_thread_name(thread, name)
+ #endif
+diff --git a/webrtc_dsp/webrtc/base/stringutils.h b/webrtc_dsp/webrtc/base/stringutils.h
+index 51fd488..cb5fc18 100644
+--- a/webrtc_dsp/webrtc/base/stringutils.h
++++ b/webrtc_dsp/webrtc/base/stringutils.h
+@@ -23,7 +23,7 @@
+ #endif  // WEBRTC_WIN 
+ 
+ #if defined(WEBRTC_POSIX)
+-#ifdef BSD
++#if defined BSD || defined __FreeBSD__
+ #include <stdlib.h>
+ #else  // BSD
+ #include <alloca.h>
