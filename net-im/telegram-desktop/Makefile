@@ -20,7 +20,8 @@ LIB_DEPENDS=	libopenal.so:audio/openal-soft \
 		libavformat.so:multimedia/ffmpeg \
 		libopus.so:audio/opus \
 		libdbus-1.so:devel/dbus \
-		libdee-1.0.so:devel/dee
+		libdee-1.0.so:devel/dee \
+		libasound.so:audio/alsa-lib
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	telegramdesktop Microsoft:gsl mapbox:variant catchorg:catch
