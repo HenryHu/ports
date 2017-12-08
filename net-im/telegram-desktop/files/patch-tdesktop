@@ -1,3 +1,16 @@
+diff --git a/Telegram/SourceFiles/_other/packer.cpp b/Telegram/SourceFiles/_other/packer.cpp
+index 4fe9530d..6983ff86 100644
+--- a/Telegram/SourceFiles/_other/packer.cpp
++++ b/Telegram/SourceFiles/_other/packer.cpp
+@@ -246,7 +246,7 @@ int main(int argc, char *argv[])
+ 			}
+ 			QByteArray inner = f.readAll();
+ 			stream << name << quint32(inner.size()) << inner;
+-#if defined Q_OS_MAC || defined Q_OS_LINUX
++#if defined Q_OS_MAC || defined Q_OS_LINUX || defined Q_OS_FREEBSD
+ 			stream << (QFileInfo(fullName).isExecutable() ? true : false);
+ #endif
+ 		}
 diff --git a/Telegram/SourceFiles/base/build_config.h b/Telegram/SourceFiles/base/build_config.h
 index 17316303..ea0eb0db 100644
 --- a/Telegram/SourceFiles/base/build_config.h
@@ -108,6 +121,67 @@ index 633c4e4a..47ebb941 100644
  	return "Linux";
  #endif
  }
+diff --git a/Telegram/SourceFiles/layout.cpp b/Telegram/SourceFiles/layout.cpp
+index 89e67b03..1f11ce3b 100644
+--- a/Telegram/SourceFiles/layout.cpp
++++ b/Telegram/SourceFiles/layout.cpp
+@@ -264,16 +264,16 @@ bool documentIsExecutableName(const QString &filename) {
+ 		*result = qsl("\
+ action app bin command csh osx workflow\
+ ").split(' ');
+-#elif defined Q_OS_LINUX // Q_OS_MAC
++#elif defined Q_OS_LINUX || defined Q_OS_FREEBSD // Q_OS_MAC
+ 		*result = qsl("\
+ bin csh ksh out run\
+ ").split(' ');
+-#else // Q_OS_MAC || Q_OS_LINUX
++#else // Q_OS_MAC || Q_OS_LINUX || Q_OS_FREEBSD
+ 		*result = qsl("\
+ bat bin cmd com cpl exe gadget inf ins inx isu job jse lnk msc msi \
+ msp mst paf pif ps1 reg rgs sct shb shs u3p vb vbe vbs vbscript ws wsf\
+ ").split(' ');
+-#endif // !Q_OS_MAC && !Q_OS_LINUX
++#endif // !Q_OS_MAC && !Q_OS_LINUX && ! Q_OS_FREEBSD
+ 		return result.release();
+ 	})());
+ 
+diff --git a/Telegram/SourceFiles/logs.cpp b/Telegram/SourceFiles/logs.cpp
+index d916756c..4d8a5f5f 100644
+--- a/Telegram/SourceFiles/logs.cpp
++++ b/Telegram/SourceFiles/logs.cpp
+@@ -311,7 +311,7 @@ namespace Logs {
+ 		QString initialWorkingDir = QDir(cWorkingDir()).absolutePath() + '/', moveOldDataFrom;
+ 		if (cBetaVersion()) {
+ 			cSetDebug(true);
+-#if defined Q_OS_MAC || defined Q_OS_LINUX
++#if defined Q_OS_MAC || defined Q_OS_LINUX || defined Q_OS_FREEBSD
+ 		} else {
+ #ifdef _DEBUG
+ 			cForceWorkingDir(cExeDir());
+@@ -322,11 +322,11 @@ namespace Logs {
+ #endif // else for _DEBUG
+ 			workingDirChosen = true;
+ 
+-#if defined Q_OS_LINUX && !defined _DEBUG // fix first version
++#if (defined Q_OS_LINUX || defined Q_OS_FREEBSD) && !defined _DEBUG // fix first version
+ 			moveOldDataFrom = initialWorkingDir;
+-#endif // Q_OS_LINUX && !_DEBUG
++#endif // (Q_OS_LINUX || Q_OS_FREEBSD) && !_DEBUG
+ 
+-#elif defined Q_OS_WINRT // Q_OS_MAC || Q_OS_LINUX
++#elif defined Q_OS_WINRT // Q_OS_MAC || Q_OS_LINUX || Q_OS_FREEBSD
+ 		} else {
+ 			cForceWorkingDir(psAppDataPath());
+ 			workingDirChosen = true;
+@@ -502,7 +502,7 @@ namespace Logs {
+ 		//OutputDebugString(reinterpret_cast<const wchar_t *>(msg.utf16()));
+ #elif defined Q_OS_MAC
+ 		//objc_outputDebugString(msg);
+-#elif defined Q_OS_LINUX && defined _DEBUG
++#elif (defined Q_OS_LINUX || defined Q_OS_FREEBSD) && defined _DEBUG
+ 		//std::cout << msg.toUtf8().constData();
+ #endif
+ 	}
 diff --git a/Telegram/SourceFiles/main.cpp b/Telegram/SourceFiles/main.cpp
 index 6e85f27d..e3e20610 100644
 --- a/Telegram/SourceFiles/main.cpp
@@ -335,7 +409,7 @@ index d3e3816f..5c29070e 100644
  	if (_psUnityLauncherEntry) {
  		Libs::g_object_unref(_psUnityLauncherEntry);
 diff --git a/Telegram/SourceFiles/platform/platform_audio.h b/Telegram/SourceFiles/platform/platform_audio.h
-index 516398a1..1e47f17f 100644
+index 516398a1..688099e8 100644
 --- a/Telegram/SourceFiles/platform/platform_audio.h
 +++ b/Telegram/SourceFiles/platform/platform_audio.h
 @@ -32,7 +32,7 @@ void DeInit();
@@ -354,9 +428,10 @@ index 516398a1..1e47f17f 100644
 -#elif defined Q_OS_WINRT || defined Q_OS_WIN // Q_OS_MAC || Q_OS_LINUX
 +#elif defined Q_OS_WINRT || defined Q_OS_WIN // Q_OS_MAC || Q_OS_LINUX || Q_OS_FREEBSD
  #include "platform/win/audio_win.h"
- #endif // Q_OS_MAC || Q_OS_LINUX || Q_OS_WINRT || Q_OS_WIN
+-#endif // Q_OS_MAC || Q_OS_LINUX || Q_OS_WINRT || Q_OS_WIN
++#endif // Q_OS_MAC || Q_OS_LINUX || Q_OS_WINRT || Q_OS_WIN || Q_OS_FREEBSD
 diff --git a/Telegram/SourceFiles/platform/platform_file_utilities.h b/Telegram/SourceFiles/platform/platform_file_utilities.h
-index 593ab286..c8207143 100644
+index 593ab286..60ee591c 100644
 --- a/Telegram/SourceFiles/platform/platform_file_utilities.h
 +++ b/Telegram/SourceFiles/platform/platform_file_utilities.h
 @@ -51,8 +51,8 @@ bool Get(QStringList &files, QByteArray &remoteContent, const QString &caption,
@@ -369,9 +444,10 @@ index 593ab286..c8207143 100644
 -#elif defined Q_OS_WINRT || defined Q_OS_WIN // Q_OS_MAC || Q_OS_LINUX
 +#elif defined Q_OS_WINRT || defined Q_OS_WIN // Q_OS_MAC || Q_OS_LINUX || Q_OS_FREEBSD
  #include "platform/win/file_utilities_win.h"
- #endif // Q_OS_MAC || Q_OS_LINUX || Q_OS_WINRT || Q_OS_WIN
+-#endif // Q_OS_MAC || Q_OS_LINUX || Q_OS_WINRT || Q_OS_WIN
++#endif // Q_OS_MAC || Q_OS_LINUX || Q_OS_WINRT || Q_OS_WIN || Q_OS_FREEBSD
 diff --git a/Telegram/SourceFiles/platform/platform_main_window.h b/Telegram/SourceFiles/platform/platform_main_window.h
-index b7b5334f..51e3b029 100644
+index b7b5334f..dad75373 100644
 --- a/Telegram/SourceFiles/platform/platform_main_window.h
 +++ b/Telegram/SourceFiles/platform/platform_main_window.h
 @@ -32,8 +32,8 @@ class MainWindow;
@@ -384,9 +460,10 @@ index b7b5334f..51e3b029 100644
 -#elif defined Q_OS_WIN // Q_OS_MAC || Q_OS_LINUX
 +#elif defined Q_OS_WIN // Q_OS_MAC || Q_OS_LINUX || Q_OS_FREEBSD
  #include "platform/win/main_window_win.h"
- #endif // Q_OS_MAC || Q_OS_LINUX || Q_OS_WIN
+-#endif // Q_OS_MAC || Q_OS_LINUX || Q_OS_WIN
++#endif // Q_OS_MAC || Q_OS_LINUX || Q_OS_WIN || Q_OS_FREEBSD
 diff --git a/Telegram/SourceFiles/platform/platform_notifications_manager.h b/Telegram/SourceFiles/platform/platform_notifications_manager.h
-index e303272e..d7eb2769 100644
+index e303272e..c53179fa 100644
 --- a/Telegram/SourceFiles/platform/platform_notifications_manager.h
 +++ b/Telegram/SourceFiles/platform/platform_notifications_manager.h
 @@ -39,8 +39,8 @@ void FlashBounce();
@@ -399,9 +476,10 @@ index e303272e..d7eb2769 100644
 -#elif defined Q_OS_WIN // Q_OS_MAC || Q_OS_LINUX
 +#elif defined Q_OS_WIN // Q_OS_MAC || Q_OS_LINUX || Q_OS_FREEBSD
  #include "platform/win/notifications_manager_win.h"
- #endif // Q_OS_MAC || Q_OS_LINUX || Q_OS_WIN
+-#endif // Q_OS_MAC || Q_OS_LINUX || Q_OS_WIN
++#endif // Q_OS_MAC || Q_OS_LINUX || Q_OS_WIN || Q_OS_FREEBSD
 diff --git a/Telegram/SourceFiles/platform/platform_specific.h b/Telegram/SourceFiles/platform/platform_specific.h
-index 359b0476..9f6ec7ab 100644
+index 359b0476..87e0fba7 100644
 --- a/Telegram/SourceFiles/platform/platform_specific.h
 +++ b/Telegram/SourceFiles/platform/platform_specific.h
 @@ -45,8 +45,8 @@ void finish();
@@ -414,7 +492,8 @@ index 359b0476..9f6ec7ab 100644
 -#elif defined Q_OS_WIN // Q_OS_MAC || Q_OS_LINUX
 +#elif defined Q_OS_WIN // Q_OS_MAC || Q_OS_LINUX || Q_OS_FREEBSD
  #include "platform/win/specific_win.h"
- #endif // Q_OS_MAC || Q_OS_LINUX || Q_OS_WIN
+-#endif // Q_OS_MAC || Q_OS_LINUX || Q_OS_WIN
++#endif // Q_OS_MAC || Q_OS_LINUX || Q_OS_WIN || Q_OS_FREEBSD
 diff --git a/Telegram/SourceFiles/platform/platform_window_title.h b/Telegram/SourceFiles/platform/platform_window_title.h
 index 1d0d892a..d802f35f 100644
 --- a/Telegram/SourceFiles/platform/platform_window_title.h
@@ -535,13 +614,14 @@ index 00000000..4a722b8d
 +        flags |= QTextItem::StrikeOut;
 +}
 diff --git a/Telegram/SourceFiles/qt_static_plugins.cpp b/Telegram/SourceFiles/qt_static_plugins.cpp
-index b975c7a8..f2f876b3 100644
+index b975c7a8..0e0b9830 100644
 --- a/Telegram/SourceFiles/qt_static_plugins.cpp
 +++ b/Telegram/SourceFiles/qt_static_plugins.cpp
-@@ -28,13 +28,4 @@ Q_IMPORT_PLUGIN(QWebpPlugin)
+@@ -27,14 +27,5 @@ Q_IMPORT_PLUGIN(QWindowsIntegrationPlugin)
+ Q_IMPORT_PLUGIN(QWebpPlugin)
  Q_IMPORT_PLUGIN(QCocoaIntegrationPlugin)
  Q_IMPORT_PLUGIN(QGenericEnginePlugin)
- #elif defined Q_OS_LINUX // Q_OS_WIN | Q_OS_MAC
+-#elif defined Q_OS_LINUX // Q_OS_WIN | Q_OS_MAC
 -Q_IMPORT_PLUGIN(QWebpPlugin)
 -Q_IMPORT_PLUGIN(QXcbIntegrationPlugin)
 -Q_IMPORT_PLUGIN(QConnmanEnginePlugin)
@@ -551,7 +631,9 @@ index b975c7a8..f2f876b3 100644
 -Q_IMPORT_PLUGIN(QIbusPlatformInputContextPlugin)
 -Q_IMPORT_PLUGIN(QFcitxPlatformInputContextPlugin)
 -Q_IMPORT_PLUGIN(QHimePlatformInputContextPlugin)
- #endif // Q_OS_WIN | Q_OS_MAC | Q_OS_LINUX
+-#endif // Q_OS_WIN | Q_OS_MAC | Q_OS_LINUX
++#elif defined Q_OS_LINUX || defined Q_OS_FREEBSD // Q_OS_WIN | Q_OS_MAC
++#endif // Q_OS_WIN | Q_OS_MAC | Q_OS_LINUX | Q_OS_FREEBSD
 diff --git a/Telegram/SourceFiles/structs.cpp b/Telegram/SourceFiles/structs.cpp
 index f025a536..bfa1875e 100644
 --- a/Telegram/SourceFiles/structs.cpp
