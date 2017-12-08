@@ -13,16 +13,16 @@ LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 BUILD_DEPENDS=	gyp:devel/py-gyp \
-		python:lang/python
+		python:lang/python \
+		libdee-1.0.so:devel/dee \
+		libpulse.so:audio/pulseaudio \
+		libasound.so:audio/alsa-lib
 
 LIB_DEPENDS=	libopenal.so:audio/openal-soft \
 		libminizip.so:archivers/minizip \
 		libavformat.so:multimedia/ffmpeg \
 		libopus.so:audio/opus \
-		libdbus-1.so:devel/dbus \
-		libdee-1.0.so:devel/dee \
-		libasound.so:audio/alsa-lib \
-		libpulse.so:audio/pulseaudio
+		libdbus-1.so:devel/dbus
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	telegramdesktop Microsoft:gsl mapbox:variant catchorg:catch
