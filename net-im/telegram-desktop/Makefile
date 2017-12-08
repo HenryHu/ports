@@ -12,6 +12,7 @@ COMMENT=	Telegram Desktop messaging app
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
+BUILD_DEPENDS=	gyp:devel/py-gyp@${PY_FLAVOR}
 LIB_DEPENDS=	libopenal.so:audio/openal-soft \
 		libminizip.so:archivers/minizip \
 		libavformat.so:multimedia/ffmpeg \
