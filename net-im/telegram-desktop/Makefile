@@ -17,7 +17,6 @@ BUILD_DEPENDS=	gyp:devel/py-gyp \
 		dee>=0:devel/dee \
 		${LOCALBASE}/include/pulse/pulseaudio.h:audio/pulseaudio \
 		${LOCALBASE}/include/alsa/asoundlib.h:audio/alsa-lib
-
 LIB_DEPENDS=	libopenal.so:audio/openal-soft \
 		libminizip.so:archivers/minizip \
 		libavformat.so:multimedia/ffmpeg \
