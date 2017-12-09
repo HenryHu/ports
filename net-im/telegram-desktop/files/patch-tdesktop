@@ -100,7 +100,7 @@ index 48742ce7..7e5ffcce 100644
  		return *this;
  	}
 diff --git a/Telegram/SourceFiles/config.h b/Telegram/SourceFiles/config.h
-index 633c4e4a..47ebb941 100644
+index 633c4e4a..4be9bd63 100644
 --- a/Telegram/SourceFiles/config.h
 +++ b/Telegram/SourceFiles/config.h
 @@ -270,7 +270,7 @@ inline const char *cApiDeviceModel() {
@@ -112,15 +112,15 @@ index 633c4e4a..47ebb941 100644
  	return "PC";
  #endif
  }
-@@ -279,7 +279,7 @@ inline const char *cApiSystemVersion() {
- 	return "Windows";
- #elif defined Q_OS_MAC
+@@ -281,6 +281,8 @@ inline const char *cApiSystemVersion() {
  	return "OS X";
--#elif defined Q_OS_LINUX
-+#elif defined Q_OS_LINUX || defined Q_OS_FREEBSD
+ #elif defined Q_OS_LINUX
  	return "Linux";
++#elif defined Q_OS_FREEBSD
++	return "FreeBSD";
  #endif
  }
+ 
 diff --git a/Telegram/SourceFiles/layout.cpp b/Telegram/SourceFiles/layout.cpp
 index 89e67b03..1f11ce3b 100644
 --- a/Telegram/SourceFiles/layout.cpp
