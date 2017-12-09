@@ -204,7 +204,7 @@ index 6e85f27d..e3e20610 100644
  	Platform::start(); // must be started before QApplication is created
  
 +	// I don't know why path is not in QT_PLUGIN_PATH by default
-+	QCoreApplication::addLibraryPath("/usr/lib/qt/plugins");
++	QCoreApplication::addLibraryPath("%%LOCALBASE%%/lib/qt5/plugins");
 +	// without this Telegram doesn't start on Ubuntu 17.04 due GTK errors
 +	setenv("QT_STYLE_OVERRIDE", "qwerty", false);
 +
