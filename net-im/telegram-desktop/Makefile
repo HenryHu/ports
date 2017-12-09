@@ -32,12 +32,11 @@ GH_SUBDIR=	Telegram/ThirdParty/libtgvoip:libtgvoip \
 		Telegram/ThirdParty/variant:variant \
 		Telegram/ThirdParty/Catch:catch
 
-USES=		ssl cmake:noninja,outsource gmake pkgconfig
+USES=		ssl cmake:noninja,outsource gmake pkgconfig desktop-file-utils
 USE_QT5=	buildtools_build core gui widgets network imageformats qmake_build
 USE_XORG=	xcb x11
 USE_GNOME=	glib20 gtk30
-
-PLIST_FILES=	bin/Telegram
+INSTALLS_ICONS=	yes
 
 CMAKE_SOURCE_PATH=	${WRKSRC}/out/Release
 
@@ -61,6 +60,14 @@ do-patch:
 	    ${PATCH} -s -p1
 
 do-install:
-	${INSTALL_PROGRAM} ${BUILD_WRKSRC}/Telegram ${STAGEDIR}${PREFIX}/bin
+	@${INSTALL_PROGRAM} ${BUILD_WRKSRC}/Telegram ${STAGEDIR}${PREFIX}/bin
+	@${INSTALL_DATA} ${FILESDIR}/telegram-desktop.desktop ${STAGEDIR}${PREFIX}/share/applications
+	@${INSTALL} -d ${STAGEDIR}${PREFIX}/share/kservices5
+	@${INSTALL_DATA} ${FILESDIR}/tg.protocol ${STAGEDIR}${PREFIX}/share/kservices5/tg.protocol
+.for icon_size in 16 32 48 64 128 256 512
+	@${INSTALL} -d ${STAGEDIR}${PREFIX}/share/icons/hicolor/${icon_size}x${icon_size}/apps
+	@${INSTALL_DATA} ${WRKSRC}/Telegram/Resources/art/icon${icon_size}.png \
+	    ${STAGEDIR}${PREFIX}/share/icons/hicolor/${icon_size}x${icon_size}/apps/telegram-desktop.png
+.endfor
 
 .include <bsd.port.mk>
