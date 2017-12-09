@@ -762,7 +762,7 @@ index 0d1f38aa..40821f66 100644
 -      '<(libs_loc)/openal-soft/include',
 -      '<(libs_loc)/opus/include',
 -      '<(minizip_loc)',
-+      '/usr/local/include/minizip',
++      '%%LOCALBASE%%/include/minizip',
        '<(sp_media_key_tap_loc)',
        '<(emoji_suggestions_loc)',
        '<(submodules_loc)/GSL/include',
@@ -879,17 +879,17 @@ index 6032d066..796a564e 100644
 -    '<(qt_loc)/include/QtGui/<(qt_version)',
 -    '<(qt_loc)/include/QtCore/<(qt_version)/QtCore',
 -    '<(qt_loc)/include/QtGui/<(qt_version)/QtGui',
-+    '/usr/local/include/qt5',
-+    '/usr/local/include/qt5/QtCore',
-+    '/usr/local/include/qt5/QtGui',
-+    '/usr/local/include/qt5/QtCore/<(qt_version)',
-+    '/usr/local/include/qt5/QtGui/<(qt_version)',
-+    '/usr/local/include/qt5/QtCore/<(qt_version)/QtCore',
-+    '/usr/local/include/qt5/QtGui/<(qt_version)/QtGui',
++    '%%LOCALBASE%%/include/qt5',
++    '%%LOCALBASE%%/include/qt5/QtCore',
++    '%%LOCALBASE%%/include/qt5/QtGui',
++    '%%LOCALBASE%%/include/qt5/QtCore/<(qt_version)',
++    '%%LOCALBASE%%/include/qt5/QtGui/<(qt_version)',
++    '%%LOCALBASE%%/include/qt5/QtCore/<(qt_version)/QtCore',
++    '%%LOCALBASE%%/include/qt5/QtGui/<(qt_version)/QtGui',
    ],
    'library_dirs': [
-+    '/usr/local/lib',
-+    '/usr/local/lib/qt5/',
++    '%%LOCALBASE%%/lib',
++    '%%LOCALBASE%%/lib/qt5/',
      '<(qt_loc)/lib',
      '<(qt_loc)/plugins',
      '<(qt_loc)/plugins/bearer',
@@ -914,7 +914,7 @@ index 6032d066..796a564e 100644
        ],
        'include_dirs': [
 -        '<(qt_loc)/mkspecs/linux-g++',
-+        '/usr/local/lib/qt5/mkspecs/freebsd-clang',
++        '%%LOCALBASE%%/lib/qt5/mkspecs/freebsd-clang',
        ],
        'ldflags': [
 -        '-static-libstdc++',
@@ -926,7 +926,7 @@ index 6032d066..796a564e 100644
      ],
      'action': [
 -      '<(qt_loc)/bin/moc<(exe_ext)',
-+      '/usr/local/bin/moc',
++      '%%LOCALBASE%%/bin/moc',
  
        # Silence "Note: No relevant classes found. No output generated."
        '--no-notes',
@@ -939,7 +939,7 @@ index eebc6967..a088065a 100644
      ],
      'action': [
 -      '<(qt_loc)/bin/rcc<(exe_ext)',
-+      '/usr/local/bin/rcc',
++      '%%LOCALBASE%%/bin/rcc',
        '-name', '<(RULE_INPUT_ROOT)',
        '-no-compress',
        '<(RULE_INPUT_PATH)',
@@ -972,7 +972,7 @@ index 2c464928..bf353a32 100644
        'linux_path_vdpau%': '/usr/local',
        'linux_path_breakpad%': '<(libs_loc)/breakpad',
 -      'linux_path_opus_include%': '<(libs_loc)/opus/include',
-+      'linux_path_opus_include%': '/usr/local/include/opus',
++      'linux_path_opus_include%': '%%LOCALBASE%%/include/opus',
      },
      'include_dirs': [
        '/usr/local/include',

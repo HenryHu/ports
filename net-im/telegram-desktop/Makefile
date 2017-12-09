@@ -52,8 +52,13 @@ pre-configure:
 	    ${SED} -i -e "$$NUM r ${FILESDIR}/CMakeLists.inj" ${WRKSRC}/out/Release/CMakeLists.txt
 
 do-patch:
-	cd ${WRKSRC} && ${SED} -e "s/%%QT_VERSION%%/${QT5_VERSION}/" ${FILESDIR}/patch-tdesktop | ${PATCH} -s -p1
-	cd ${WRKSRC}/Telegram/ThirdParty/libtgvoip && ${PATCH} -s -p1 < ${FILESDIR}/patch-libtgvoip
+	cd ${WRKSRC} && \
+	    ${SED} -e "s/%%QT_VERSION%%/${QT5_VERSION}/" ${FILESDIR}/patch-tdesktop | \
+	    ${SED} -e "s#%%LOCALBASE%%#${LOCALBASE}#" | \
+	    ${PATCH} -s -p1
+	cd ${WRKSRC}/Telegram/ThirdParty/libtgvoip && \
+	    ${SED} -e "s#%%LOCALBASE%%#${LOCALBASE}#" ${FILESDIR}/patch-libtgvoip | \
+	    ${PATCH} -s -p1
 
 do-install:
 	${INSTALL_PROGRAM} ${BUILD_WRKSRC}/Telegram ${STAGEDIR}${PREFIX}/bin
