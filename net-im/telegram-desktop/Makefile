@@ -60,10 +60,12 @@ do-patch:
 	    ${PATCH} -s -p1
 
 do-install:
-	@${INSTALL_PROGRAM} ${BUILD_WRKSRC}/Telegram ${STAGEDIR}${PREFIX}/bin
-	@${INSTALL_DATA} ${FILESDIR}/telegram-desktop.desktop ${STAGEDIR}${PREFIX}/share/applications
+	@${INSTALL_PROGRAM} ${BUILD_WRKSRC}/Telegram ${STAGEDIR}${PREFIX}/bin/telegram-desktop
+	@${INSTALL_DATA} ${WRKSRC}/lib/xdg/telegramdesktop.desktop ${STAGEDIR}${PREFIX}/share/applications
 	@${INSTALL} -d ${STAGEDIR}${PREFIX}/share/kservices5
-	@${INSTALL_DATA} ${FILESDIR}/tg.protocol ${STAGEDIR}${PREFIX}/share/kservices5/tg.protocol
+	@${INSTALL_DATA} ${WRKSRC}/lib/xdg/tg.protocol ${STAGEDIR}${PREFIX}/share/kservices5
+	@${INSTALL} -d ${STAGEDIR}${PREFIX}/share/appdata
+	@${INSTALL_DATA} ${WRKSRC}/lib/xdg/telegramdesktop.appdata.xml ${STAGEDIR}${PREFIX}/share/appdata
 .for icon_size in 16 32 48 64 128 256 512
 	@${INSTALL} -d ${STAGEDIR}${PREFIX}/share/icons/hicolor/${icon_size}x${icon_size}/apps
 	@${INSTALL_DATA} ${WRKSRC}/Telegram/Resources/art/icon${icon_size}.png \

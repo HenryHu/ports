@@ -1,0 +1,9 @@
+--- lib/xdg/tg.protocol.orig	2017-12-09 20:42:47 UTC
++++ lib/xdg/tg.protocol
+@@ -1,5 +1,5 @@
+ [Protocol]
+-exec=/usr/bin/telegram-desktop -- %u
++exec=telegram-desktop -- %u
+ protocol=tg
+ input=none
+ output=none
