@@ -17,7 +17,7 @@ LIB_DEPENDS=	libpyzy-1.0.so:chinese/pyzy \
 		libibus-1.0.so:textproc/ibus \
 		libsqlite3.so:databases/sqlite3
 
-USES=		compiler:c++11-lib gmake pkgconfig python autoreconf libtool
+USES=		compiler:c++11-lib gmake pkgconfig python autoreconf libtool gettext
 USE_GNOME=	glib20 intltool
 USE_PYTHON=	py3kplist
 GNU_CONFIGURE=	yes
@@ -29,7 +29,6 @@ GH_ACCOUNT=	ibus
 OPTIONS_DEFINE=	NLS
 OPTIONS_SUB=	yes
 
-NLS_USES=	gettext
 NLS_CONFIGURE_ENABLE=	nls
 
 .include <bsd.port.mk>
