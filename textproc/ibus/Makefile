@@ -1,5 +1,5 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD: head/textproc/ibus/Makefile 455210 2017-11-30 15:50:30Z mat $
+# $FreeBSD: head/textproc/ibus/Makefile 455422 2017-12-03 19:23:12Z yuri $
 
 PORTNAME=	ibus
 DISTVERSION=	1.5.17
@@ -53,14 +53,14 @@ NLS_CONFIGURE_ENABLE=	nls
 
 GTK2_USE=		GNOME=cairo,gtk20
 GTK2_CONFIGURE_ENABLE=	gtk2
-GTK2_LIB_DEPENDS=	libfreetype.so:print/freetype2 \
-		libfontconfig.so:x11-fonts/fontconfig \
-libdbus-1.so:devel/dbus
+GTK2_LIB_DEPENDS=	libdbus-1.so:devel/dbus \
+			libfontconfig.so:x11-fonts/fontconfig \
+			libfreetype.so:print/freetype2
 
 GTK3_USE=		GNOME=cairo,gtk30 XORG=x11,xi
 GTK3_CONFIGURE_ENABLE=	gtk3 libnotify
-GTK3_LIB_DEPENDS=	libnotify.so:devel/libnotify \
-			libdbus-1.so:devel/dbus
+GTK3_LIB_DEPENDS=	libdbus-1.so:devel/dbus \
+			libnotify.so:devel/libnotify
 GTK3_LIBS=		-lX11
 
 VALA_BUILD_DEPENDS=	vala>=0.20:lang/vala
@@ -69,8 +69,7 @@ VALA_IMPLIES=		GINTRO
 
 GINTRO_BUILD_DEPENDS=	gobject-introspection>=0.6.8:devel/gobject-introspection
 GINTRO_RUN_DEPENDS=	gobject-introspection>=0.6.8:devel/gobject-introspection
-GINTRO_CONFIGURE_ON=	--enable-introspection=yes
-GINTRO_CONFIGURE_OFF=	--enable-introspection=no
+GINTRO_CONFIGURE_ENABLE=	introspection
 
 PYTHON_LIB_USE=			GNOME=pygtk2
 PYTHON_LIB_CONFIGURE_ENABLE=	python-library
@@ -90,13 +89,12 @@ XIM_CONFIGURE_ENABLE=	xim
 ENGINE_CONFIGURE_ENABLE=	engine
 
 EMOJIONE_TAG=		ba845a7e24aac26cf3cf22abc19bea215d94fbf3 # 2.2.7
-EMOJI_CONFIGURE_ON=	--enable-emoji-dict \
-			--with-unicode-emoji-dir=${LOCALBASE}/share/unicode/emoji \
+EMOJI_CONFIGURE_ON=	--with-unicode-emoji-dir=${LOCALBASE}/share/unicode/emoji \
 			--with-emoji-annotation-dir=${LOCALBASE}/share/unicode/cldr/common/annotations
-EMOJI_CONFIGURE_OFF=	--disable-emoji-dict
+EMOJI_CONFIGURE_ENABLE=	emoji-dict
 EMOJI_BUILD_DEPENDS=	json-glib>=0:devel/json-glib \
-			${LOCALBASE}/share/unicode/emoji/emoji-data.txt:misc/unicode-emoji \
-			${LOCALBASE}/share/unicode/cldr/common/annotations/en.xml:misc/cldr-emoji-annotation
+			unicode-emoji>0:misc/unicode-emoji \
+			cldr-emoji-annotation>0:misc/cldr-emoji-annotation
 
 .include <bsd.port.pre.mk>
 
