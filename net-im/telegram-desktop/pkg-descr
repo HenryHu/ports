@@ -1,4 +1,13 @@
-Telegram Desktop messaging app. Fast and secure desktop app, perfectly synced
-with your mobile phone.
+Telegram Desktop is a messaging app. It is the fast and functional open source
+desktop app connected to the closed source Telegram server.
+
+Features:
+* accounts tied to telephone numbers
+* cloud-based messaging
+* bots for third party developers
+* channels
+* secret chats featuring with client-to-client encryption
+* stickers
+* voice calls
 
 WWW: https://desktop.telegram.org/

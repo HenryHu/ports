@@ -1,6 +1,6 @@
 bin/telegram-desktop
-share/appdata/telegramdesktop.appdata.xml
-share/applications/telegramdesktop.desktop
+share/appdata/telegram-desktop.appdata.xml
+share/applications/telegram-desktop.desktop
 share/kservices5/tg.protocol
 share/icons/hicolor/128x128/apps/telegram-desktop.png
 share/icons/hicolor/16x16/apps/telegram-desktop.png
