@@ -1,8 +1,9 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD: head/chinese/ibus-libpinyin/Makefile 415742 2016-05-23 20:35:01Z amdmi3 $
+# $FreeBSD: head/chinese/ibus-libpinyin/Makefile 456048 2017-12-11 16:48:54Z antoine $
 
 PORTNAME=	ibus-libpinyin
 PORTVERSION=	1.7.2
+PORTREVISION=	2
 CATEGORIES=	chinese
 MASTER_SITES=	SF/libpinyin/${PORTNAME}
 
@@ -17,6 +18,7 @@ LIB_DEPENDS=	libsqlite3.so:databases/sqlite3 \
 
 USES=		compiler:c++11-lib gmake python pkgconfig gettext
 USE_GNOME=	glib20
+USE_PYTHON=	py3kplist
 
 WRKSRC=	${WRKDIR}/${DISTNAME}
 
