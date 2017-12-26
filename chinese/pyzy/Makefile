@@ -1,9 +1,9 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD: head/chinese/pyzy/Makefile 441429 2017-05-21 21:55:08Z linimon $
+# $FreeBSD: head/chinese/pyzy/Makefile 455851 2017-12-09 12:25:00Z antoine $
 
 PORTNAME=	pyzy
 PORTVERSION=	0.1.0
-PORTREVISION=	4
+PORTREVISION=	5
 CATEGORIES=	chinese
 
 MAINTAINER=	henry.hu.sh@gmail.com
@@ -16,13 +16,14 @@ LIB_DEPENDS=	libsqlite3.so:databases/sqlite3
 USE_GITHUB=	yes
 GH_TAGNAME=	6d9c3cd
 
-USES=		compiler:c++11-lib gmake libtool pkgconfig python:build shebangfix autoreconf gettext-runtime pathfix
+USES=		compiler:c++11-lib gmake libtool pkgconfig python:2.7,build shebangfix autoreconf gettext-runtime pathfix
 SHEBANG_FILES=	data/db/android/create_db.py
 USE_GNOME=	glib20
 USE_LDCONFIG=	yes
 
 BROKEN_aarch64=		fails to compile: constant expression evaluates to -1
 BROKEN_armv6=		fails to compile: constant expression evaluates to -1
+BROKEN_armv7=		fails to compile: constant expression evaluates to -1
 BROKEN_powerpc64=	fails to compile: narrowing conversion of '-1' from 'int' to 'char'
 
 GNU_CONFIGURE=	yes
