@@ -23,6 +23,13 @@ TEST_DESC=	Build the testing tree
 TEST_CMAKE_OFF=	-DBUILD_TESTING:BOOL=OFF
 MODULES_CMAKE_ON=	-DRANGES_MODULES:BOOL=ON
 
-CMAKE_BUILD_TYPE=	Release
+.include <bsd.port.pre.mk>
 
-.include <bsd.port.mk>
+.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1100000
+CC=		clang40
+CXX=		clang++40
+BUILD_DEPENDS+=	clang++40:devel/llvm40
+RUN_DEPENDS+=	clang++40:devel/llvm40
+.endif
+
+.include <bsd.port.post.mk>
