@@ -1,6 +1,6 @@
---- Telegram/SourceFiles/ui/text/text.cpp.orig	2017-09-05 17:38:38 UTC
+--- Telegram/SourceFiles/ui/text/text.cpp.orig	2018-01-03 10:46:01 UTC
 +++ Telegram/SourceFiles/ui/text/text.cpp
-@@ -1689,11 +1689,11 @@ private:
+@@ -1694,11 +1694,11 @@ private:
  		if (item == -1)
  			return;
  

@@ -1,6 +1,6 @@
---- Telegram/SourceFiles/config.h.orig	2017-09-05 17:38:38 UTC
+--- Telegram/SourceFiles/config.h.orig	2018-02-06 05:51:58 UTC
 +++ Telegram/SourceFiles/config.h
-@@ -270,7 +270,7 @@ inline const char *cApiDeviceModel() {
+@@ -242,7 +242,7 @@ inline const char *cApiDeviceModel() {
  	return "PC";
  #elif defined Q_OS_MAC
  	return "Mac";
@@ -9,7 +9,7 @@
  	return "PC";
  #endif
  }
-@@ -281,6 +281,8 @@ inline const char *cApiSystemVersion() {
+@@ -253,6 +253,8 @@ inline const char *cApiSystemVersion() {
  	return "OS X";
  #elif defined Q_OS_LINUX
  	return "Linux";

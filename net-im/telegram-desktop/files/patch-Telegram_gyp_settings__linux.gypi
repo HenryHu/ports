@@ -1,14 +1,23 @@
---- Telegram/gyp/settings_linux.gypi.orig	2017-09-05 17:38:38 UTC
+--- Telegram/gyp/settings_linux.gypi.orig	2018-01-03 10:46:01 UTC
 +++ Telegram/gyp/settings_linux.gypi
-@@ -25,7 +25,6 @@
+@@ -11,7 +11,6 @@
+         'linux_common_flags': [
            '-pipe',
-           '-g',
            '-Wall',
 -          '-Werror',
            '-W',
            '-fPIC',
            '-Wno-unused-variable',
-@@ -61,7 +60,6 @@
+@@ -25,7 +24,7 @@
+         ],
+       },
+       'conditions': [
+-        [ '"<!(uname -p)" == "x86_64"', {
++        [ '"<!(uname -m)" == "amd64"', {
+           'defines': [
+             'Q_OS_LINUX64',
+           ],
+@@ -47,7 +46,6 @@
        ],
        'defines': [
          '_REENTRANT',
