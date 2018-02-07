@@ -12,7 +12,8 @@ LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 BUILD_DEPENDS=	dee>0:devel/dee \
-		gyp:devel/py-gyp@${PY_FLAVOR}
+		gyp:devel/py-gyp@${PY_FLAVOR} \
+		range-v3>0:devel/range-v3
 LIB_DEPENDS=	libasound.so:audio/alsa-lib \
 		libavformat.so:multimedia/ffmpeg \
 		libdbus-1.so:devel/dbus \
