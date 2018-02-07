@@ -32,7 +32,7 @@ GH_TUPLE=	catchorg:Catch2:5ca44b68:catch/Telegram/ThirdParty/Catch \
 		telegramdesktop:libtgvoip:0b53884c:libtgvoip/Telegram/ThirdParty/libtgvoip \
 		telegramdesktop:crl:344cbde9:crl/Telegram/ThirdParty/crl
 USE_GNOME=	glib20 gtk30
-USE_QT5=	core gui imageformats network widgets buildtools_build qmake_build
+USE_QT5=	core gui imageformats network widgets buildtools_build qmake_build dbus
 USE_XORG=	x11 xcb
 
 CMAKE_SOURCE_PATH=	${WRKSRC}/out/Release
