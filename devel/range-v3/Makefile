@@ -10,7 +10,7 @@ COMMENT=	Experimental range library for C++11/14/17
 LICENSE=	BSL
 LICENSE_FILE=	${WRKSRC}/LICENSE.txt
 
-USES=		cmake
+USES=		cmake compiler:c++14-lang
 USE_GITHUB=	yes
 GH_ACCOUNT=	ericniebler
 
@@ -23,13 +23,4 @@ TEST_DESC=	Build the testing tree
 TEST_CMAKE_OFF=	-DBUILD_TESTING:BOOL=OFF
 MODULES_CMAKE_ON=	-DRANGES_MODULES:BOOL=ON
 
-.include <bsd.port.pre.mk>
-
-.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1100000
-CC=		clang50
-CXX=		clang++50
-BUILD_DEPENDS+=	clang++50:devel/llvm50
-RUN_DEPENDS+=	clang++50:devel/llvm50
-.endif
-
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>

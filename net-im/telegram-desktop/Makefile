@@ -22,7 +22,7 @@ LIB_DEPENDS=	libasound.so:audio/alsa-lib \
 		libopus.so:audio/opus \
 		libpulse.so:audio/pulseaudio
 
-USES=		cmake:noninja,outsource desktop-file-utils gmake pkgconfig python:build ssl
+USES=		cmake:noninja,outsource desktop-file-utils gmake pkgconfig python:build ssl compiler:c++14-lang
 USE_GITHUB=	yes
 GH_ACCOUNT=	telegramdesktop
 GH_PROJECT=	tdesktop
@@ -40,13 +40,6 @@ CMAKE_SOURCE_PATH=	${WRKSRC}/out/Release
 GYP_DEFINES=	TDESKTOP_DISABLE_CRASH_REPORTS,TDESKTOP_DISABLE_AUTOUPDATE,TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME
 
 .include <bsd.port.pre.mk>
-
-.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1100000
-CC=		clang50
-CXX=		clang++50
-BUILD_DEPENDS+=	clang++50:devel/llvm50
-RUN_DEPENDS+=	clang++50:devel/llvm50
-.endif
 
 post-patch:
 	@cd ${WRKSRC} && \
