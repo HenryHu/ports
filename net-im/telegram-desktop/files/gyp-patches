@@ -354,6 +354,15 @@
          ],
          'direct_dependent_settings': {
            'include_dirs': [
+@@ -259,7 +260,7 @@
+             },
+           ],
+           [
+-            '"<(OS)" != "linux"', {
++            '"<(OS)" != "freebsd"', {
+               'sources/': [['exclude', '<(tgvoip_src_loc)/os/linux/']],
+             },
+           ],
 @@ -378,12 +379,13 @@
              },
            ],

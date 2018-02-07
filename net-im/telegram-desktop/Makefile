@@ -39,11 +39,14 @@ CMAKE_SOURCE_PATH=	${WRKSRC}/out/Release
 
 GYP_DEFINES=	TDESKTOP_DISABLE_CRASH_REPORTS,TDESKTOP_DISABLE_AUTOUPDATE,TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME
 
-OPTIONS_RADIO=	AUDIO
-OPTIONS_RADIO_AUDIO=	ALSA PULSEAUDIO OSS
-OPTIONS_DEFAULT=	OSS
+# Telegram uses OpenAL for its audio, but libtgvoip (for voice calls) can use PulseAudio or ALSA.
+# It dynamically loads PulseAudio, and if this fails, it loads ALSA.
+# If both of them are not installed, then voice calls do not work, but other functionalities still work.
+OPTIONS_MULTI=	AUDIO
+OPTIONS_MULTI_AUDIO=	ALSA PULSEAUDIO
+OPTIONS_DEFAULT=	ALSA
 
-AUDIO_DESC=	Audio backend
+AUDIO_DESC=	Audio backend for voice calls
 
 ALSA_LIB_DEPENDS=	libasound.so:audio/alsa-lib
 PULSEAUDIO_LIB_DEPENDS=	libpulse.so:audio/pulseaudio
