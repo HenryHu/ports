@@ -13,14 +13,14 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 
 BUILD_DEPENDS=	dee>0:devel/dee \
 		gyp:devel/py-gyp@${PY_FLAVOR} \
-		range-v3>0:devel/range-v3
-LIB_DEPENDS=	libasound.so:audio/alsa-lib \
-		libavformat.so:multimedia/ffmpeg \
+		range-v3>0:devel/range-v3 \
+		pulseaudio>0:audio/pulseaudio \
+		alsa-lib>0:audio/alsa-lib
+LIB_DEPENDS=	libavformat.so:multimedia/ffmpeg \
 		libdbus-1.so:devel/dbus \
 		libminizip.so:archivers/minizip \
 		libopenal.so:audio/openal-soft \
-		libopus.so:audio/opus \
-		libpulse.so:audio/pulseaudio
+		libopus.so:audio/opus
 
 USES=		cmake:noninja,outsource desktop-file-utils gmake pkgconfig python:build ssl compiler:c++14-lang
 USE_GITHUB=	yes
@@ -38,6 +38,15 @@ USE_XORG=	x11 xcb
 CMAKE_SOURCE_PATH=	${WRKSRC}/out/Release
 
 GYP_DEFINES=	TDESKTOP_DISABLE_CRASH_REPORTS,TDESKTOP_DISABLE_AUTOUPDATE,TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME
+
+OPTIONS_RADIO=	AUDIO
+OPTIONS_RADIO_AUDIO=	ALSA PULSEAUDIO OSS
+OPTIONS_DEFAULT=	OSS
+
+AUDIO_DESC=	Audio backend
+
+ALSA_LIB_DEPENDS=	libasound.so:audio/alsa-lib
+PULSEAUDIO_LIB_DEPENDS=	libpulse.so:audio/pulseaudio
 
 .include <bsd.port.pre.mk>
 
