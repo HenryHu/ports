@@ -26,10 +26,10 @@ MODULES_CMAKE_ON=	-DRANGES_MODULES:BOOL=ON
 .include <bsd.port.pre.mk>
 
 .if ${OPSYS} == FreeBSD && ${OSVERSION} < 1100000
-CC=		clang40
-CXX=		clang++40
-BUILD_DEPENDS+=	clang++40:devel/llvm40
-RUN_DEPENDS+=	clang++40:devel/llvm40
+CC=		clang50
+CXX=		clang++50
+BUILD_DEPENDS+=	clang++50:devel/llvm50
+RUN_DEPENDS+=	clang++50:devel/llvm50
 .endif
 
 .include <bsd.port.post.mk>
