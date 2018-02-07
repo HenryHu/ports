@@ -1,6 +1,15 @@
---- Telegram/SourceFiles/core/launcher.cpp.orig	2018-02-06 06:10:07 UTC
+--- Telegram/SourceFiles/core/launcher.cpp.orig	2018-01-03 10:46:01 UTC
 +++ Telegram/SourceFiles/core/launcher.cpp
-@@ -31,9 +31,10 @@ void Launcher::init() {
+@@ -13,6 +13,8 @@ https://github.com/telegramdesktop/tdesk
+ #include "core/main_queue_processor.h"
+ #include "application.h"
+ 
++#include "FREEBSD_QT_PLUGINDIR.h"
++
+ namespace Core {
+ 
+ std::unique_ptr<Launcher> Launcher::Create(int argc, char *argv[]) {
+@@ -31,9 +33,10 @@ void Launcher::init() {
  
  	QCoreApplication::setApplicationName(qsl("TelegramDesktop"));
  
@@ -13,7 +22,7 @@
  
  	initHook();
  }
-@@ -51,6 +52,13 @@ int Launcher::exec() {
+@@ -51,6 +54,13 @@ int Launcher::exec() {
  	Logs::start(this); // must be started before Platform is started
  	Platform::start(); // must be started before QApplication is created
  
@@ -27,7 +36,7 @@
  	auto result = executeApplication();
  
  	DEBUG_LOG(("Telegram finished, result: %1").arg(result));
-@@ -136,6 +144,10 @@ void Launcher::prepareSettings() {
+@@ -136,6 +146,10 @@ void Launcher::prepareSettings() {
  		gUpdateURL = QUrl(qsl("http://tdesktop.com/linux32/tupdates/current"));
  		gPlatformString = qsl("Linux32bit");
  	break;
