@@ -55,8 +55,10 @@ PULSEAUDIO_LIB_DEPENDS=	libpulse.so:audio/pulseaudio
 
 # This port needs C++17 libs/compiler.
 # Currently, this is not supported by USES=compiler
+# Using clang does not work: libc++ in base does not support C++17.
+# Using gcc does not work: using both libc++ and libstdc++ causes crashes.
 .if ${OPSYS} == FreeBSD && ${OSVERSION} < 1100000
-USE_GCC=	7+
+BROKEN=		Need C++17 support in compiler and runtime.
 .endif
 
 post-patch:
