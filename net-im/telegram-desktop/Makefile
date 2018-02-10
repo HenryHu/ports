@@ -22,7 +22,7 @@ LIB_DEPENDS=	libavformat.so:multimedia/ffmpeg \
 		libopenal.so:audio/openal-soft \
 		libopus.so:audio/opus
 
-USES=		cmake:noninja,outsource desktop-file-utils gmake pkgconfig python:build ssl compiler:c++14-lang
+USES=		cmake:noninja,outsource desktop-file-utils gmake pkgconfig python:2.7,build ssl
 USE_GITHUB=	yes
 GH_ACCOUNT=	telegramdesktop
 GH_PROJECT=	tdesktop
@@ -52,6 +52,12 @@ ALSA_LIB_DEPENDS=	libasound.so:audio/alsa-lib
 PULSEAUDIO_LIB_DEPENDS=	libpulse.so:audio/pulseaudio
 
 .include <bsd.port.pre.mk>
+
+# This port needs C++17 libs/compiler.
+# Currently, this is not supported by USES=compiler
+.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1100000
+USE_GCC=	yes
+.endif
 
 post-patch:
 	@cd ${WRKSRC} && \
