@@ -1,6 +1,6 @@
---- Telegram/SourceFiles/ui/text/text_block.cpp.orig	2018-01-03 10:46:01 UTC
+--- Telegram/SourceFiles/ui/text/text_block.cpp.orig	2018-04-08 17:34:33 UTC
 +++ Telegram/SourceFiles/ui/text/text_block.cpp
-@@ -320,6 +320,9 @@ TextBlock::TextBlock(const style::font &
+@@ -332,6 +332,9 @@ TextBlock::TextBlock(const style::font &
  
  		QStackTextEngine engine(part, blockFont->f);
  		BlockParser parser(&engine, this, minResizeWidth, _from, part);

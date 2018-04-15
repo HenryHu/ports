@@ -1,6 +1,6 @@
---- Telegram/SourceFiles/history/history_inner_widget.cpp.orig	2018-02-06 06:24:24 UTC
+--- Telegram/SourceFiles/history/history_inner_widget.cpp.orig	2018-04-08 17:34:33 UTC
 +++ Telegram/SourceFiles/history/history_inner_widget.cpp
-@@ -1187,16 +1187,16 @@ void HistoryInner::mouseActionFinish(con
+@@ -1336,7 +1336,7 @@ void HistoryInner::mouseActionFinish(
  	_widget->noSelectingScroll();
  	_widget->updateTopBarSelection();
  

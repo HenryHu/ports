@@ -1,6 +1,6 @@
---- Telegram/SourceFiles/layout.cpp.orig	2018-02-06 05:51:42 UTC
+--- Telegram/SourceFiles/layout.cpp.orig	2018-04-08 17:34:33 UTC
 +++ Telegram/SourceFiles/layout.cpp
-@@ -205,16 +205,16 @@ bool documentIsExecutableName(const QStr
+@@ -206,16 +206,16 @@ bool documentIsExecutableName(const QStr
  		*result = qsl("\
  action app bin command csh osx workflow\
  ").split(' ');
