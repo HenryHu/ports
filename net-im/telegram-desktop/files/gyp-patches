@@ -148,10 +148,18 @@
      '<(qt_loc)/plugins/bearer',
      '<(qt_loc)/plugins/platforms',
      '<(qt_loc)/plugins/imageformats',
-@@ -212,25 +184,16 @@
+@@ -204,33 +176,20 @@
+   ],
+   'conditions': [
+     [ 'build_linux', {
+-      'dependencies': [
+-        '<(DEPTH)/linux_glibc_wraps.gyp:linux_glibc_wraps',
+-      ],
+       'library_dirs': [
+         '<(qt_loc)/plugins/platforminputcontexts',
        ],
        'libraries': [
-         '<(PRODUCT_DIR)/obj.target/liblinux_glibc_wraps.a',
+-        '<(PRODUCT_DIR)/obj.target/liblinux_glibc_wraps.a',
 -        '<(linux_path_xkbcommon)/lib/libxkbcommon.a',
          '<@(qt_libs_release)',
 -        '<(linux_lib_ssl)',
