@@ -22,21 +22,19 @@
  
  	initHook();
  }
-@@ -51,6 +54,13 @@ int Launcher::exec() {
+@@ -51,6 +54,11 @@ int Launcher::exec() {
  	Logs::start(this); // must be started before Platform is started
  	Platform::start(); // must be started before QApplication is created
  
 +	// I don't know why path is not in QT_PLUGIN_PATH by default
 +	QCoreApplication::addLibraryPath(FREEBSD_QT_PLUGINDIR);
-+	// without this Telegram doesn't start on Ubuntu 17.04 due GTK errors
-+	setenv("QT_STYLE_OVERRIDE", "qwerty", false);
 +	// Telegram doesn't start when extraordinary theme is set, see launchpad.net/bugs/1680943
 +	unsetenv("QT_QPA_PLATFORMTHEME");
 +
  	auto result = executeApplication();
  
  	DEBUG_LOG(("Telegram finished, result: %1").arg(result));
-@@ -136,6 +146,10 @@ void Launcher::prepareSettings() {
+@@ -136,6 +144,10 @@ void Launcher::prepareSettings() {
  		gUpdateURL = QUrl(qsl("http://tdesktop.com/linux32/tupdates/current"));
  		gPlatformString = qsl("Linux32bit");
  	break;
