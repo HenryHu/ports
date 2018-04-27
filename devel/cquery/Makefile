@@ -1,4 +1,4 @@
-# $FreeBSD$
+# $FreeBSD: head/devel/cquery/Makefile 461814 2018-02-14 15:54:50Z lwhsu $
 
 PORTNAME=	cquery
 PORTVERSION=	20180213
@@ -25,8 +25,8 @@ GH_TUPLE=	miloyip:rapidjson:daabb88:rapidjson/third_party/rapidjson \
 
 PLIST_FILES=	bin/cquery
 
-CONFIGURE_ARGS+=	--variant=system --llvm-config=${LOCALBASE}/bin/llvm-config50
-MAKE_ARGS+=	--variant=system
+CONFIGURE_ARGS=	--variant=system --llvm-config=${LOCALBASE}/bin/llvm-config50
+MAKE_ARGS=	--variant=system
 
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/cquery
