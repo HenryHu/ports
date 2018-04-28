@@ -28,7 +28,13 @@ PLIST_FILES=	bin/cquery
 CONFIGURE_ARGS=	--variant=system --llvm-config=${LOCALBASE}/bin/llvm-config60
 MAKE_ARGS=	--variant=system
 
+.include <bsd.port.pre.mk>
+
+.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1100000
+CXXFLAGS+=	-std=c++1y
+.endif
+
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/cquery
 
-.include <bsd.port.mk>
+.include <bsd.port.post.mk>
