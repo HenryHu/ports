@@ -1,4 +1,4 @@
-# $FreeBSD: head/devel/cquery/Makefile 461814 2018-02-14 15:54:50Z lwhsu $
+# $FreeBSD: head/devel/cquery/Makefile 468562 2018-04-28 18:57:06Z jbeich $
 
 PORTNAME=	cquery
 PORTVERSION=	20180302
@@ -13,7 +13,7 @@ LICENSE=	MIT
 BUILD_DEPENDS=	llvm-config60:devel/llvm60
 LIB_DEPENDS=	libclang.so:devel/llvm60
 
-USES=		waf
+USES=		compiler:c++14-lang waf
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	cquery-project
@@ -28,13 +28,7 @@ PLIST_FILES=	bin/cquery
 CONFIGURE_ARGS=	--variant=system --llvm-config=${LOCALBASE}/bin/llvm-config60
 MAKE_ARGS=	--variant=system
 
-.include <bsd.port.pre.mk>
-
-.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1100000
-CXXFLAGS+=	-std=c++1y
-.endif
-
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/cquery
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>
