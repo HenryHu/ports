@@ -116,6 +116,7 @@ include/range/v3/detail/variant.hpp
 include/range/v3/distance.hpp
 include/range/v3/empty.hpp
 include/range/v3/experimental/utility/generator.hpp
+include/range/v3/experimental/view/shared.hpp
 include/range/v3/front.hpp
 include/range/v3/getlines.hpp
 include/range/v3/index.hpp
