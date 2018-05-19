@@ -1,8 +1,9 @@
-# $FreeBSD: head/net-im/telegram-desktop/Makefile 460442 2018-01-30 21:50:16Z antoine $
+# $FreeBSD: head/net-im/telegram-desktop/Makefile 468844 2018-05-02 15:07:27Z jbeich $
 
 PORTNAME=	telegram-desktop
 DISTVERSIONPREFIX=	v
 DISTVERSION=	1.2.17
+PORTREVISION=	1
 CATEGORIES=	net-im
 
 MAINTAINER=	henry.hu.sh@gmail.com
