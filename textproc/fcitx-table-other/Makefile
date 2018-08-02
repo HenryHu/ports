@@ -1,8 +1,7 @@
-# Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD$
+# $FreeBSD: head/textproc/fcitx-table-other/Makefile 470688 2018-05-23 08:28:55Z yuri $
 
 PORTNAME=	fcitx-table-other
-PORTVERSION=	0.2.3
+DISTVERSION=	0.2.3
 CATEGORIES=	textproc
 MASTER_SITES=	http://download.fcitx-im.org/${PORTNAME}/
 DIST_SUBDIR=	fcitx
@@ -11,11 +10,12 @@ MAINTAINER=	henry.hu.sh@gmail.com
 COMMENT=	Table-based input methods for Fcitx
 
 LICENSE=	GPLv3
+LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libfcitx-config.so:chinese/fcitx
 
-USES=		tar:xz cmake gettext
-INSTALLS_ICONS=	yes
-STRIP=
+USES=		cmake:outsource gettext tar:xz
+NO_ARCH=	yes
+STRIP=		# ninja breaks without this: unknown target 'install/strip'
 
 .include <bsd.port.mk>

@@ -1,5 +1,5 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD: head/net-im/linux-telegram-desktop/Makefile 451520 2017-10-08 11:48:15Z joneum $
+# $FreeBSD: head/net-im/linux-telegram-desktop/Makefile 471486 2018-06-03 10:21:46Z joneum $
 
 PORTNAME=	telegram-desktop
 PORTVERSION=	1.3.0
