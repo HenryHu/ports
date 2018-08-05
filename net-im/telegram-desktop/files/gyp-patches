@@ -36,6 +36,17 @@
        '<(submodules_loc)/GSL/include',
        '<(submodules_loc)/variant/include',
        '<(submodules_loc)/crl/src',
+--- Telegram/gyp/lib_scheme.gyp.orig	2018-08-04 18:53:40 UTC
++++ Telegram/gyp/lib_scheme.gyp
+@@ -48,7 +48,7 @@
+         '<(SHARED_INTERMEDIATE_DIR)/scheme.h',
+       ],
+       'action': [
+-        'python', '<(src_loc)/codegen/scheme/codegen_scheme.py',
++        '%%PYTHON_CMD%%', '<(src_loc)/codegen/scheme/codegen_scheme.py',
+         '-o', '<(SHARED_INTERMEDIATE_DIR)', '<(res_loc)/scheme.tl',
+       ],
+       'message': 'codegen_scheme-ing scheme.tl..',
 --- Telegram/gyp/qt_moc.gypi.orig	2018-08-04 18:53:40 UTC
 +++ Telegram/gyp/qt_moc.gypi
 @@ -12,12 +12,12 @@
