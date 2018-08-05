@@ -1,4 +1,4 @@
---- Telegram/SourceFiles/qt_functions.cpp.orig	2018-02-06 05:16:48 UTC
+--- Telegram/SourceFiles/qt_functions.cpp.orig	2018-08-05 17:48:23 UTC
 +++ Telegram/SourceFiles/qt_functions.cpp
 @@ -0,0 +1,94 @@
 +/****************************************************************************
