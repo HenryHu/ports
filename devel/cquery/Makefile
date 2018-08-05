@@ -1,4 +1,4 @@
-# $FreeBSD: head/devel/cquery/Makefile 472670 2018-06-18 03:49:09Z linimon $
+# $FreeBSD: head/devel/cquery/Makefile 476391 2018-08-05 05:57:02Z joneum $
 
 PORTNAME=	cquery
 PORTVERSION=	20180718
