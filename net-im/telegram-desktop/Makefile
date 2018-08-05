@@ -53,6 +53,14 @@ GTK_DESC=	Gtk integration (Use Gtk dialogs, etc.)
 ALSA_LIB_DEPENDS=	libasound.so:audio/alsa-lib
 PULSEAUDIO_LIB_DEPENDS=	libpulse.so:audio/pulseaudio
 
+.include <bsd.port.options.mk>
+
+.if ${PORT_OPTIONS:MGTK}
+USE_GNOME+=	gtk30
+.else
+GYP_DEFINES:=	${GYP_DEFINES},TDESKTOP_DISABLE_GTK_INTEGRATION
+.endif
+
 .include <bsd.port.pre.mk>
 
 # This port needs C++17 libs/compiler.
@@ -61,12 +69,6 @@ PULSEAUDIO_LIB_DEPENDS=	libpulse.so:audio/pulseaudio
 # Using gcc does not work: using both libc++ and libstdc++ causes crashes.
 .if ${OPSYS} == FreeBSD && ${OSVERSION} < 1100000
 BROKEN=		Need C++17 support in compiler and runtime
-.endif
-
-.if ${PORT_OPTIONS:MGTK}
-USE_GNOME+=	gtk30
-.else
-GYP_DEFINES:=	${GYP_DEFINES},TDESKTOP_DISABLE_GTK_INTEGRATION
 .endif
 
 post-patch:
