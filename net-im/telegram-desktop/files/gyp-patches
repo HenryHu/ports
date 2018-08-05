@@ -428,7 +428,7 @@
                'sources/': [['exclude', '<(tgvoip_src_loc)/os/linux/']],
              },
            ],
-@@ -382,12 +383,12 @@
+@@ -382,12 +383,15 @@
              },
            ],
            [
@@ -437,6 +437,9 @@
                'defines': [
                  'WEBRTC_POSIX',
                ],
++              'cflags_cc': [
++                '-std=c++11',
++              ],
                'conditions': [
 -                [ '"<!(uname -m)" == "i686"', {
 +                [ '"<!(uname -m)" == "i386"', {
