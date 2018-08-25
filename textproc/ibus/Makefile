@@ -29,7 +29,7 @@ GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes
 OPTIONS_SUB=	yes
 INSTALL_TARGET=	install-strip
-CONFIGURE_ARGS=	--disable-tests --with-html-dir=${PREFIX}/share/doc	\
+CONFIGURE_ARGS=	--with-html-dir=${PREFIX}/share/doc	\
 		--with-ucd-dir=${LOCALBASE}/share/unicode/ucd
 
 OPTIONS_DEFINE=	NLS GTK2 GTK3 VALA GINTRO PYTHON_LIB DOCS XIM ENGINE EMOJI
@@ -113,5 +113,8 @@ PLIST_SUB+=	COMPDIR="@comment "
 post-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/etc/xdg/autostart
 	${INSTALL_DATA} ${PATCHDIR}/ibus.desktop ${STAGEDIR}${PREFIX}/etc/xdg/autostart
+
+test:
+	${MAKE} -C ${WRKSRC}/src/tests check
 
 .include <bsd.port.post.mk>
