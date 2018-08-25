@@ -175,8 +175,8 @@ man/man1/ibus-setup.1.gz
 man/man1/ibus.1.gz
 %%EMOJI%%man/man7/ibus-emoji.7.gz
 share/applications/ibus-setup.desktop
-share/applications/org.freedesktop.IBus.Panel.Emojier.desktop
-share/applications/org.freedesktop.IBus.Panel.Extension.Gtk3.desktop
+%%EMOJI%%share/applications/org.freedesktop.IBus.Panel.Emojier.desktop
+%%GTK3%%share/applications/org.freedesktop.IBus.Panel.Extension.Gtk3.desktop
 share/dbus-1/services/org.freedesktop.IBus.service
 share/dbus-1/services/org.freedesktop.portal.IBus.service
 %%PORTDOCS%%%%DOCSDIR%%/IBusAttrList.html
