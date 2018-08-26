@@ -114,7 +114,7 @@ post-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/etc/xdg/autostart
 	${INSTALL_DATA} ${PATCHDIR}/ibus.desktop ${STAGEDIR}${PREFIX}/etc/xdg/autostart
 
-test:
+do-test:
 	${MAKE} -C ${WRKSRC}/src/tests check
 
 .include <bsd.port.post.mk>
