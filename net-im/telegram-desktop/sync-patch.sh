@@ -1,7 +1,10 @@
 #! /bin/sh
 
-(cd $HOME/proj/tdesktop && git diff v1.3.12..bsd_1.3.12 > patch)
-(cd $HOME/proj/libtgvoip && git diff 5380aab..HEAD > patch)
+TG_VER=1.3.14
+LIBTGVOIP_VER=bfa1e6a
+
+(cd $HOME/proj/tdesktop && git diff v$TG_VER..bsd_$TG_VER > patch)
+(cd $HOME/proj/libtgvoip && git diff bfa1e6a..HEAD > patch)
 rm -f files/patch-* files/gyp-patches
 make clean
 make extract
