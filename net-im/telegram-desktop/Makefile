@@ -78,6 +78,7 @@ BROKEN=		Need C++17 support in compiler and runtime
 BUILD_DEPENDS+=	clang60:devel/llvm60
 CC=		clang60
 CXX=		clang++60
+CXXFLAGS+=	-DGSL_USE_STD_BYTE=0
 .endif
 
 post-patch:
