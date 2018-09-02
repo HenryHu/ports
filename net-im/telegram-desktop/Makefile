@@ -72,6 +72,14 @@ GYP_DEFINES:=	${GYP_DEFINES},TDESKTOP_DISABLE_GTK_INTEGRATION
 BROKEN=		Need C++17 support in compiler and runtime
 .endif
 
+# Since 1.3.14, the clang compiler provided in 11.1 (4.0.0) gets a segmentation
+# fault.
+.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1102000
+BUILD_DEPENDS+=	clang60:devel/llvm60
+CC=		clang60
+CXX=		clang++60
+.endif
+
 post-patch:
 	@cd ${WRKSRC} && \
 		(${SED} -e " \
