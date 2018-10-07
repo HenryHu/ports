@@ -1,13 +1,19 @@
 The workflow of importing a new version is:
 
-1. create a new branch from last patched branch
-2. git fetch upstream && git pull upstream <new version tag>
-3. resolve conflicts & git commit
-4. git diff <new version tag>..HEAD > new_patch
-5. remove old patches
-6. make extract
-7. apply new_patch
-8. make makepatch
-9. test & fix problems. repeat steps 4..8
+1. update Makefile's DISTVERSION to new version
+2. check Telegram/ThirdParty and update Makefile
+3. make makesum
+4. sync files/CMakeLists.inj with Arch's version
+5. create a new branch from last patched branch
+6. git fetch upstream && git pull upstream <new version tag>
+7. resolve conflicts & git commit
+8. git diff <new version tag>..HEAD > new_patch
+9. remove old patches
+10. make extract
+11. apply new_patch
+12. make makepatch
+13. test & fix problems. repeat steps 8..12
 
-Steps 4..8 are implemented in sync-patch.sh
+Steps 8..12 are implemented in sync-patch.sh. To use it, version numbers must
+be filled in. Step 4 has to be done for both tdesktop and libtgvoip. For
+libtgvoip, the version tag may be "tdesktop".
