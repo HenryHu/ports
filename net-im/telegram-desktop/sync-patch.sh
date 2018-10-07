@@ -1,10 +1,10 @@
 #! /bin/sh
 
-TG_VER=1.3.14
-LIBTGVOIP_VER=bfa1e6a
+TG_VER=1.4.0
+LIBTGVOIP_VER=9b292fd
 
 (cd $HOME/proj/tdesktop && git diff v$TG_VER..bsd_$TG_VER > patch)
-(cd $HOME/proj/libtgvoip && git diff bfa1e6a..HEAD > patch)
+(cd $HOME/proj/libtgvoip && git diff $LIBTGVOIP_VER..HEAD > patch)
 rm -f files/patch-* files/gyp-patches
 make clean
 make extract
