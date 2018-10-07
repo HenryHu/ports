@@ -1,4 +1,4 @@
-# $FreeBSD: head/net-im/telegram-desktop/Makefile 473503 2018-06-28 17:39:53Z tcberner $
+# $FreeBSD: head/net-im/telegram-desktop/Makefile 479074 2018-09-06 00:56:02Z swills $
 
 PORTNAME=	telegram-desktop
 DISTVERSIONPREFIX=	v
@@ -22,7 +22,7 @@ LIB_DEPENDS=	libavformat.so:multimedia/ffmpeg \
 		libopenal.so:audio/openal-soft \
 		libopus.so:audio/opus
 
-USES=		cmake:noninja,outsource desktop-file-utils gmake pkgconfig python:2.7,build qt:5 ssl
+USES=		compiler:c++17-lang cmake:noninja,outsource desktop-file-utils gmake pkgconfig python:2.7,build qt:5 ssl
 USE_GITHUB=	yes
 GH_ACCOUNT=	telegramdesktop
 GH_PROJECT=	tdesktop
@@ -64,20 +64,18 @@ GYP_DEFINES:=	${GYP_DEFINES},TDESKTOP_DISABLE_GTK_INTEGRATION
 
 .include <bsd.port.pre.mk>
 
+
 # This port needs C++17 libs/compiler.
 # Currently, this is not supported by USES=compiler
 # Using clang does not work: libc++ in base does not support C++17.
 # Using gcc does not work: using both libc++ and libstdc++ causes crashes.
 .if ${OPSYS} == FreeBSD && ${OSVERSION} < 1100000
-BROKEN=		Need C++17 support in compiler and runtime
+IGNORE=		Need C++17 support in compiler and runtime
 .endif
 
 # Since 1.3.14, the clang compiler provided in 11.1 (4.0.0) gets a segmentation
 # fault.
 .if ${OPSYS} == FreeBSD && ${OSVERSION} < 1102000
-BUILD_DEPENDS+=	clang60:devel/llvm60
-CC=		clang60
-CXX=		clang++60
 CXXFLAGS+=	-DGSL_USE_STD_BYTE=0
 QMAKE_COMPILER=	clang
 .endif
