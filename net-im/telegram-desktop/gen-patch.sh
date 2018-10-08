@@ -7,4 +7,4 @@
 #
 
 
-diff -ruN -x work -x sync-patch.sh -x gen-patch.sh -x update.txt /usr/ports/net-im/telegram-desktop .
+diff -ruN -x work -x sync-patch.sh -x gen-patch.sh -x update.txt -x check-diff.py -x files.bak /usr/ports/net-im/telegram-desktop .
