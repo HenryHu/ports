@@ -1,5 +1,5 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD: head/textproc/ibus/Makefile 474138 2018-07-07 21:06:14Z yuri $
+# $FreeBSD: head/textproc/ibus/Makefile 481010 2018-10-01 08:24:56Z antoine $
 
 PORTNAME=	ibus
 PORTVERSION=	1.5.18
@@ -22,9 +22,10 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dbus>=0.83.0:devel/py-dbus@${PY_FLAVOR} \
 		${LOCALBASE}/share/xml/iso-codes/iso_639.xml:misc/iso-codes \
 		setxkbmap:x11/setxkbmap
 
-USES=		compiler cpe gmake libtool localbase pathfix pkgconfig python
+USES=		compiler cpe gmake gnome libtool localbase pathfix pkgconfig python:2.7
 USE_GNOME=	glib20 intltool librsvg2 pygobject3
 USE_LDCONFIG=	yes
+
 GNU_CONFIGURE=	yes
 INSTALLS_ICONS=	yes
 OPTIONS_SUB=	yes
