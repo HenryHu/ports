@@ -2,7 +2,7 @@
 # $FreeBSD: head/net-im/linux-telegram-desktop/Makefile 471486 2018-06-03 10:21:46Z joneum $
 
 PORTNAME=	telegram-desktop
-PORTVERSION=	1.3.0
+PORTVERSION=	1.4.0
 CATEGORIES=	net-im linux
 MASTER_SITES=	https://updates.tdesktop.com/tlinux32/
 PKGNAMEPREFIX=	linux-
@@ -24,10 +24,10 @@ SUB_FILES=	telegram-desktop.sh
 SUB_LIST=	TDESKTOPDIR=${TDESKTOPDIR}
 
 DESKTOP_ENTRIES=	"Telegram Desktop" "${COMMENT}" "" \
-			"${PREFIX}/bin/telegram-desktop -- %u" \
+			"${PREFIX}/bin/linux-telegram-desktop -- %u" \
 			"Network;InstantMessaging;" false
 
-PLIST_FILES=	bin/telegram-desktop ${TDESKTOPDIR}/Telegram
+PLIST_FILES=	bin/linux-telegram-desktop ${TDESKTOPDIR}/Telegram
 
 do-install:
 	@${MKDIR} ${STAGEDIR}${PREFIX}/${TDESKTOPDIR}
@@ -36,6 +36,6 @@ do-install:
 		${STAGEDIR}${PREFIX}/${TDESKTOPDIR}
 # Wrapper for the main program
 	${INSTALL_SCRIPT} ${WRKDIR}/telegram-desktop.sh \
-		${STAGEDIR}${PREFIX}/bin/telegram-desktop
+		${STAGEDIR}${PREFIX}/bin/linux-telegram-desktop
 
 .include <bsd.port.mk>
