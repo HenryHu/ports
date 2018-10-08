@@ -2,8 +2,7 @@
 # $FreeBSD: head/chinese/ibus-libpinyin/Makefile 475857 2018-07-29 22:18:44Z gerald $
 
 PORTNAME=	ibus-libpinyin
-PORTVERSION=	1.7.2
-PORTREVISION=	3
+PORTVERSION=	1.10.0
 CATEGORIES=	chinese
 MASTER_SITES=	SF/libpinyin/${PORTNAME}
 
