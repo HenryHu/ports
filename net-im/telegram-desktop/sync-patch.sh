@@ -1,7 +1,7 @@
 #! /bin/sh
 
-TG_VER=1.4.0
-LIBTGVOIP_VER=9b292fd
+TG_VER=`make -VDISTVERSION`
+LIBTGVOIP_VER=`cat Makefile | grep telegramdesktop:libtgvoip | cut -d : -f 3-3`
 
 (cd $HOME/proj/tdesktop && git diff v$TG_VER..bsd_$TG_VER > patch)
 (cd $HOME/proj/libtgvoip && git diff $LIBTGVOIP_VER..HEAD > patch)
