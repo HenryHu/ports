@@ -7,7 +7,7 @@ CATEGORIES=	devel
 MAINTAINER=	henry.hu.sh@gmail.com
 COMMENT=	C/C++/Objective-C language server
 
-LICENSE=	MIT
+LICENSE=	APACHE20
 
 BROKEN_powerpc64=	fails to build: Checking for 'clang++' (C++ compiler): not found
 
