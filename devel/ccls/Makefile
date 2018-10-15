@@ -23,4 +23,10 @@ PLIST_FILES=	bin/ccls
 
 CMAKE_ARGS+=	-DSYSTEM_CLANG=ON -DCLANG_ROOT=${PREFIX}/llvm60
 
-.include <bsd.port.mk>
+.include <bsd.port.pre.mk>
+
+.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1100000
+IGNORE=		need C++17 support in C++ runtime
+.endif
+
+.include <bsd.port.post.mk>
