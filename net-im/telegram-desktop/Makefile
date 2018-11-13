@@ -68,7 +68,7 @@ GYP_DEFINES:=	${GYP_DEFINES},TDESKTOP_DISABLE_GTK_INTEGRATION
 
 post-patch:
 	@cd ${WRKSRC} && \
-		(${REINPLACE_CMD} -e " \
+		(${SED} -e " \
 			s|%%QT_VERSION%%|${QT5_VERSION}| ; \
 			s|%%LOCALBASE%%|${LOCALBASE}| ; \
 			s|%%CFLAGS%%|${CFLAGS:C/(.*)/'\1',/}| ; \
@@ -82,7 +82,7 @@ post-patch:
 		${FILESDIR}/gyp-patches | \
 		${PATCH} -z .bak -s)
 	@${ECHO} "#define FREEBSD_QT_PLUGINDIR \"${QT_PLUGINDIR}\"" > ${WRKSRC}/Telegram/SourceFiles/FREEBSD_QT_PLUGINDIR.h
-	${REINPLACE_CMD} -i -e "/Icon=/s|telegram|${PORTNAME}|" ${WRKSRC}/lib/xdg/telegramdesktop.desktop
+	${REINPLACE_CMD} -e "/Icon=/s|telegram|${PORTNAME}|" ${WRKSRC}/lib/xdg/telegramdesktop.desktop
 
 pre-configure:
 	@cd ${WRKSRC} && gyp \
@@ -90,7 +90,7 @@ pre-configure:
 	    -Gconfig=Release \
 	    --depth=Telegram/gyp --generator-output=../.. -Goutput_dir=out Telegram/gyp/Telegram.gyp --format=cmake
 	@TOT=`wc -l < ${WRKSRC}/out/Release/CMakeLists.txt` && NUM=`expr $$TOT - 2` && \
-	    ${REINPLACE_CMD} -i -e "$$NUM r ${FILESDIR}/CMakeLists.inj" ${WRKSRC}/out/Release/CMakeLists.txt
+	    ${REINPLACE_CMD} -e "$$NUM r ${FILESDIR}/CMakeLists.inj" ${WRKSRC}/out/Release/CMakeLists.txt
 
 do-install:
 	${INSTALL_PROGRAM} ${BUILD_WRKSRC}/Telegram ${STAGEDIR}${PREFIX}/bin/${PORTNAME}
