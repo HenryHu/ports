@@ -2,7 +2,7 @@
 # $FreeBSD: head/net-im/linux-telegram-desktop/Makefile 471486 2018-06-03 10:21:46Z joneum $
 
 PORTNAME=	telegram-desktop
-PORTVERSION=	1.4.0
+PORTVERSION=	1.5.4
 CATEGORIES=	net-im linux
 MASTER_SITES=	https://updates.tdesktop.com/tlinux32/
 PKGNAMEPREFIX=	linux-
