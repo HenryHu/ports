@@ -1,4 +1,4 @@
---- Telegram/SourceFiles/core/launcher.cpp.orig	2019-02-01 12:51:46 UTC
+--- Telegram/SourceFiles/core/launcher.cpp.orig	2019-06-01 09:44:13 UTC
 +++ Telegram/SourceFiles/core/launcher.cpp
 @@ -15,6 +15,8 @@ https://github.com/telegramdesktop/tdesktop/blob/maste
  #include "core/sandbox.h"
@@ -9,10 +9,14 @@
  namespace Core {
  namespace {
  
-@@ -208,9 +210,10 @@ void Launcher::init() {
- 
- 	QApplication::setApplicationName(qsl("TelegramDesktop"));
- 
+@@ -245,12 +247,13 @@ void Launcher::init() {
+ #define TDESKTOP_LAUNCHER_FILENAME_TO_STRING_HELPER(V) #V
+ #define TDESKTOP_LAUNCHER_FILENAME_TO_STRING(V) TDESKTOP_LAUNCHER_FILENAME_TO_STRING_HELPER(V)
+ 	QApplication::setDesktopFileName(qsl(TDESKTOP_LAUNCHER_FILENAME_TO_STRING(TDESKTOP_LAUNCHER_FILENAME)));
+-#elif defined(Q_OS_LINUX) && QT_VERSION >= QT_VERSION_CHECK(5, 7, 0)
++#elif (defined(Q_OS_LINUX) || defined(Q_OS_FREEBSD)) && QT_VERSION >= QT_VERSION_CHECK(5, 7, 0)
+ 	QApplication::setDesktopFileName(qsl("telegramdesktop.desktop"));
+ #endif
 -#ifndef OS_MAC_OLD
 +#if !defined(Q_OS_MAC) && QT_VERSION >= QT_VERSION_CHECK(5, 6, 0)
 +	// Retina display support is working fine, others are not.
@@ -22,7 +26,7 @@
  
  	initHook();
  }
-@@ -228,6 +231,11 @@ int Launcher::exec() {
+@@ -268,6 +271,11 @@ int Launcher::exec() {
  	Logs::start(this); // must be started before Platform is started
  	Platform::start(); // must be started before Sandbox is created
  
@@ -34,7 +38,7 @@
  	auto result = executeApplication();
  
  	DEBUG_LOG(("Telegram finished, result: %1").arg(result));
-@@ -329,6 +337,9 @@ void Launcher::prepareSettings() {
+@@ -369,6 +377,9 @@ void Launcher::prepareSettings() {
  	break;
  	case dbipLinux32:
  		gPlatformString = qsl("Linux32bit");
