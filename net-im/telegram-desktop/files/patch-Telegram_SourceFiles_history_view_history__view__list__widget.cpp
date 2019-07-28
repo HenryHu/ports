@@ -1,4 +1,4 @@
---- Telegram/SourceFiles/history/view/history_view_list_widget.cpp.orig	2019-06-01 09:44:13 UTC
+--- Telegram/SourceFiles/history/view/history_view_list_widget.cpp.orig	2019-07-07 13:34:35 UTC
 +++ Telegram/SourceFiles/history/view/history_view_list_widget.cpp
 @@ -2042,7 +2042,7 @@ void ListWidget::mouseActionFinish(
  	_mouseSelectType = TextSelectType::Letters;

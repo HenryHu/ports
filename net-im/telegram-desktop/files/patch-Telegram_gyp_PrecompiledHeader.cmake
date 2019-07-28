@@ -1,4 +1,4 @@
---- Telegram/gyp/PrecompiledHeader.cmake.orig	2019-06-01 09:44:13 UTC
+--- Telegram/gyp/PrecompiledHeader.cmake.orig	2019-07-07 13:34:35 UTC
 +++ Telegram/gyp/PrecompiledHeader.cmake
 @@ -114,7 +114,7 @@ function(add_precompiled_header _target _input)
        set(_compiler_FLAGS "@${_pch_c_flags_file}")

@@ -1,4 +1,4 @@
---- Telegram/gyp/settings_linux.gypi.orig	2019-06-01 09:44:13 UTC
+--- Telegram/gyp/settings_linux.gypi.orig	2019-07-07 13:34:35 UTC
 +++ Telegram/gyp/settings_linux.gypi
 @@ -11,7 +11,6 @@
          'linux_common_flags': [

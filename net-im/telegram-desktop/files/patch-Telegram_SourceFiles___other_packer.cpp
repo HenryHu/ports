@@ -1,4 +1,4 @@
---- Telegram/SourceFiles/_other/packer.cpp.orig	2019-06-01 09:44:13 UTC
+--- Telegram/SourceFiles/_other/packer.cpp.orig	2019-07-07 13:34:35 UTC
 +++ Telegram/SourceFiles/_other/packer.cpp
 @@ -254,7 +254,7 @@ int main(int argc, char *argv[])
  			}
