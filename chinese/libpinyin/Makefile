@@ -1,8 +1,8 @@
 # Created by: Zhihao Yuan <lichray@gmail.com>
-# $FreeBSD: head/chinese/libpinyin/Makefile 482136 2018-10-15 07:43:30Z wen $
+# $FreeBSD: head/chinese/libpinyin/Makefile 509067 2019-08-16 08:31:55Z delphij $
 
 PORTNAME=	libpinyin
-PORTVERSION=	2.2.0
+PORTVERSION=	2.3.0
 CATEGORIES=	chinese textproc
 MASTER_SITES=	SF/${PORTNAME}/${PORTNAME}
 
@@ -11,8 +11,9 @@ COMMENT=	Library to deal with pinyin
 
 LICENSE=	GPLv2
 
+USES=		bdb compiler:c++11-lang gmake gnome libtool pathfix pkgconfig
 USE_GNOME=	glib20
-USES=		bdb gettext gmake libtool pathfix pkgconfig
+
 GNU_CONFIGURE=	yes
 USE_LDCONFIG=	yes
 
@@ -20,6 +21,10 @@ CONFIGURE_ARGS+=CPPFLAGS="-I${LOCALBASE}/include \
 		-I${BDB_INCLUDE_DIR} -D_WITH_GETLINE" \
 		LDFLAGS="-L${LOCALBASE}/lib -l${BDB_LIB_NAME}"
 INSTALL_TARGET=install-strip
+
+OPTIONS_DEFINE=	NLS
+
+NLS_USES=	gettext
 
 PLIST_SUB+=	VER=${PORTVERSION}
 

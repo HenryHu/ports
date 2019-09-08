@@ -1,8 +1,8 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD: head/chinese/ibus-libpinyin/Makefile 482137 2018-10-15 07:44:55Z wen $
+# $FreeBSD: head/chinese/ibus-libpinyin/Makefile 509067 2019-08-16 08:31:55Z delphij $
 
 PORTNAME=	ibus-libpinyin
-PORTVERSION=	1.10.0
+PORTVERSION=	1.11.1
 CATEGORIES=	chinese
 MASTER_SITES=	SF/libpinyin/${PORTNAME}
 
@@ -11,15 +11,14 @@ COMMENT=	Intelligent Pinyin engine based on libpinyin for IBus
 
 LICENSE=	GPLv2
 
-BROKEN_powerpc64=	fails to compile: PYLibPinyin.cc:222:54: 'getline' was not declared in this scope
-
 LIB_DEPENDS=	libsqlite3.so:databases/sqlite3 \
 		libibus-1.0.so:textproc/ibus \
 		libpinyin.so:chinese/libpinyin
 
-USES=		compiler:c++11-lib gmake python pkgconfig gettext
-USE_GNOME=	glib20
+USES=		compiler:c++11-lib gmake gnome python pkgconfig gettext
 USE_PYTHON=	py3kplist
+USE_GNOME=	glib20
+GLIB_SCHEMAS=	com.github.libpinyin.ibus-libpinyin.gschema.xml
 
 WRKSRC=	${WRKDIR}/${DISTNAME}
 
@@ -28,7 +27,7 @@ CONFIGURE_ARGS=	--disable-dependency-tracking --disable-boost \
 				--disable-lua-extension
 
 OPTIONS_DEFINE=		ENGLISH STROKE OPENCC NLS
-OPTIONS_DEFAULT=	ENGLISH STROKE
+OPTIONS_DEFAULT=	ENGLISH STROKE OPENCC
 OPTIONS_SUB=		yes
 ENGLISH_DESC=		Enable English input mode
 STROKE_DESC=		Enable stroke input mode
@@ -37,7 +36,6 @@ OPENCC_DESC=		Use opencc for simplified and traditional Chinese conversion
 ENGLISH_CONFIGURE_ENABLE=	english-input-mode
 STROKE_CONFIGURE_ENABLE=	stroke-input-mode
 
-OPENCC_BROKEN=			Requires newer OpenCC
 OPENCC_CONFIGURE_ENABLE=	opencc
 OPENCC_LIB_DEPENDS=		libopencc.so:chinese/opencc
 

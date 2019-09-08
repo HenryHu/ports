@@ -1,5 +1,5 @@
-TIMESTAMP = 1539555354
-SHA256 (MaskRay-ccls-0.20181010_GH0.tar.gz) = 977ff512193eb3207a35ea9f9e60d0626d9b908c3e33d66300b12c85017ae57c
-SIZE (MaskRay-ccls-0.20181010_GH0.tar.gz) = 164653
-SHA256 (Tencent-rapidjson-6a905f9_GH0.tar.gz) = 1f38c88b22320b03fef56bc38ac5c81a61a574c4aa97a8e3cfe9da161ce7c794
-SIZE (Tencent-rapidjson-6a905f9_GH0.tar.gz) = 1053791
+TIMESTAMP = 1567510618
+SHA256 (MaskRay-ccls.wiki-20190903.tar.gz) = da8d2ed4464ca445001eb2b22439ab265314ad8cf86b4b9509ac8a6a19c481e8
+SIZE (MaskRay-ccls.wiki-20190903.tar.gz) = 32080
+SHA256 (MaskRay-ccls-0.20190823.1_GH0.tar.gz) = 247e9fd99520fe2cf010c558eb2d76350e761ac3070f3bd34ab632eedba9b655
+SIZE (MaskRay-ccls-0.20190823.1_GH0.tar.gz) = 160148

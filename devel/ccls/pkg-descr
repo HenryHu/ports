@@ -1,23 +1,18 @@
-ccls, which originates from cquery, is a C/C++/Objective-C language server.
+Ccls is a C/C++/Objective-C language server with the following
+features:
 
- * code completion (with both signature help and snippets)
- * definition/references, and other cross references
- * cross reference extensions: $ccls/call $ccls/inheritance $ccls/member
-   $ccls/vars ...
- * formatting
- * hierarchies: call (caller/callee) hierarchy, inheritance (base/derived)
-   hierarchy, member hierarchy
- * symbol rename
- * document symbols and approximate search of workspace symbol
- * hover information
- * diagnostics and code actions (clang FixIts)
- * semantic highlighting and preprocessor skipped regions
- * semantic navigation: $ccls/navigate
-
-It has a global view of the code base and support a lot of cross reference
-features, see wiki/FAQ. It starts indexing the whole project (including
-subprojects if exist) parallelly when you open the first file, while the main
-thread can serve requests before the indexing is complete. Saving files will
-incrementally update the index.
+- Code completion (with both signature help and snippets)
+- Definition/references, and other cross references
+- Cross reference extensions: $ccls/call $ccls/inheritance $ccls/member
+  $ccls/vars ...
+- Formatting
+- Hierarchies: call (caller/callee) hierarchy, inheritance
+  (base/derived) hierarchy, member hierarchy
+- Symbol rename
+- Document symbols and approximate search of workspace symbol
+- Hover information
+- Diagnostics and code actions (clang FixIts)
+- Semantic highlighting and preprocessor skipped regions
+- Semantic navigation: $ccls/navigate
 
 WWW: https://github.com/MaskRay/ccls

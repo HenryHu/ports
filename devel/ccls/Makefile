@@ -1,32 +1,38 @@
-# $FreeBSD$
+# $FreeBSD: head/devel/ccls/Makefile 510940 2019-09-03 12:32:35Z tobik $
 
 PORTNAME=	ccls
-PORTVERSION=	0.20181010
+DISTVERSION=	0.20190823.1
 CATEGORIES=	devel
+MASTER_SITES=	LOCAL/tobik
 
-MAINTAINER=	henry.hu.sh@gmail.com
-COMMENT=	C/C++/Objective-C language server
+MAINTAINER=	tobik@FreeBSD.org
+COMMENT=	C/C++/ObjC language server
 
 LICENSE=	APACHE20
+LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BROKEN_powerpc64=	fails to build: Checking for 'clang++' (C++ compiler): not found
+BUILD_DEPENDS=	llvm${LLVM_DEFAULT}>0:devel/llvm${LLVM_DEFAULT} \
+		rapidjson>=1.1.0_4:devel/rapidjson
+LIB_DEPENDS=	libLLVM.so:devel/llvm${LLVM_DEFAULT}
 
-BUILD_DEPENDS=	llvm-config60:devel/llvm60
-
-USES=		compiler:c++17-lang cmake
-
+USES=		cmake compiler:c++17-lang localbase
 USE_GITHUB=	yes
 GH_ACCOUNT=	MaskRay
-GH_TUPLE=	Tencent:rapidjson:6a905f9:rapidjson/third_party/rapidjson
+
+CMAKE_ARGS=	-DClang_DIR:PATH="${LOCALBASE}/llvm${LLVM_DEFAULT}/lib/cmake/clang" \
+		-DLLVM_DIR:PATH="${LOCALBASE}/llvm${LLVM_DEFAULT}/lib/cmake/llvm"
+CXXFLAGS+=	-DNDEBUG
 
 PLIST_FILES=	bin/ccls
+PORTDOCS=	*
 
-CMAKE_ARGS+=	-DSYSTEM_CLANG=ON -DCLANG_ROOT=${PREFIX}/llvm60
+OPTIONS_DEFINE=	DOCS
 
-.include <bsd.port.pre.mk>
+DOCS_MASTER_SITES=	LOCAL/tobik:docs
+DOCS_DISTFILES=		MaskRay-ccls.wiki-20190903.tar.gz:docs
 
-.if ${OPSYS} == FreeBSD && ${OSVERSION} < 1100000
-IGNORE=		need C++17 support in C++ runtime
-.endif
+post-install-DOCS-on:
+	@${MKDIR} ${STAGEDIR}${DOCSDIR}
+	cd ${WRKDIR}/ccls.wiki && ${COPYTREE_SHARE} . ${STAGEDIR}${DOCSDIR}
 
-.include <bsd.port.post.mk>
+.include <bsd.port.mk>
