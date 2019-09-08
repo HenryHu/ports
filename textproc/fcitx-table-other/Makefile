@@ -1,4 +1,4 @@
-# $FreeBSD: head/textproc/fcitx-table-other/Makefile 470688 2018-05-23 08:28:55Z yuri $
+# $FreeBSD: head/textproc/fcitx-table-other/Makefile 488341 2018-12-25 20:25:39Z tcberner $
 
 PORTNAME=	fcitx-table-other
 DISTVERSION=	0.2.3
@@ -15,7 +15,7 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 LIB_DEPENDS=	libfcitx-config.so:chinese/fcitx
 BUILD_DEPENDS=	bash:shells/bash
 
-USES=		cmake:outsource gettext tar:xz
+USES=		cmake gettext tar:xz
 NO_ARCH=	yes
 STRIP=		# ninja breaks without this: unknown target 'install/strip'
 
