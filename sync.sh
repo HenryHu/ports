@@ -44,4 +44,7 @@ for makefile in `find . -name Makefile -depth 3`; do
     diff -ruN -x work -x '*.orig' $portdir /usr/ports/$fullname
     read -e -p "Sync $fullname with the port version? " answer
     [ $answer == "y" -o $answer == "Y" ] && cp -r /usr/ports/$fullname/* $portdir/ && git add -p $portdir
+    if [ -d $portdir/files ]; then
+        git add $portdir/files
+    fi
 done
