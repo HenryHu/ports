@@ -20,3 +20,8 @@ The workflow of importing a new version is:
 14. remove unnecessary diff in patch with check-diff.py
 
 Steps 8..12 are implemented in sync-patch.sh.
+
+Troubleshooting
+
+If some basic classes, such as QObject, is not found in a file:
+  Perform step 4 again, check if there are new precompiled headers.
