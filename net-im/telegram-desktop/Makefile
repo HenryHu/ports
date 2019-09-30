@@ -1,4 +1,4 @@
-# $FreeBSD: head/net-im/telegram-desktop/Makefile 509139 2019-08-17 06:50:17Z delphij $
+# $FreeBSD: head/net-im/telegram-desktop/Makefile 512333 2019-09-19 12:21:06Z pkubaj $
 
 PORTNAME=	telegram-desktop
 DISTVERSIONPREFIX=	v
@@ -12,20 +12,21 @@ LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 NOT_FOR_ARCHS=		powerpc powerpc64 powerpcspe
-NOT_FOR_ARCHS_REASON=	Please add support for your architecture in base/build_config.h
+NOT_FOR_ARCHS_REASON=	Only little endian is supported
 
-BUILD_DEPENDS=	dee>0:devel/dee \
+BUILD_DEPENDS=	alsa-lib>0:audio/alsa-lib \
+		dee>0:devel/dee \
 		gyp:devel/py-gyp@${PY_FLAVOR} \
-		range-v3>0:devel/range-v3 \
 		pulseaudio>0:audio/pulseaudio \
-		alsa-lib>0:audio/alsa-lib
+		range-v3>0:devel/range-v3
 LIB_DEPENDS=	libavformat.so:multimedia/ffmpeg \
 		libdbus-1.so:devel/dbus \
 		libminizip.so:archivers/minizip \
 		libopenal.so:audio/openal-soft \
 		libopus.so:audio/opus
 
-USES=		compiler:c++17-lang cmake:noninja desktop-file-utils gmake gnome pkgconfig python:2.7,build qt:5 ssl
+USES=		cmake:noninja compiler:c++17-lang desktop-file-utils gmake \
+		gnome pkgconfig python:2.7,build qt:5 ssl xorg
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	telegramdesktop
@@ -39,7 +40,8 @@ GH_TUPLE=	catchorg:Catch2:5ca44b68:catch/Telegram/ThirdParty/Catch \
 		john-preston:rlottie:589db02:rlottie/Telegram/ThirdParty/rlottie \
 		lz4:lz4:9a2a9f2:lz4/Telegram/ThirdParty/lz4
 USE_GNOME=	glib20
-USE_QT=		core gui imageformats network widgets buildtools_build qmake_build dbus
+USE_QT=		core dbus gui imageformats network widgets buildtools_build \
+		qmake_build
 USE_XORG=	x11 xcb
 
 CMAKE_SOURCE_PATH=	${WRKSRC}/out/Release
@@ -49,14 +51,14 @@ CMAKE_SOURCE_PATH=	${WRKSRC}/out/Release
 # or create our own.
 TELEGRAM_API_ID=	17349
 TELEGRAM_API_HASH=	344583e45741c457fe1862106095a5eb
-GYP_DEFINES=	TDESKTOP_DISABLE_CRASH_REPORTS,TDESKTOP_DISABLE_AUTOUPDATE,TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME
+GYP_DEFINES=		TDESKTOP_DISABLE_CRASH_REPORTS,TDESKTOP_DISABLE_AUTOUPDATE,TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME
 
 # Telegram uses OpenAL for its audio, but libtgvoip (for voice calls) can use PulseAudio or ALSA.
 # It dynamically loads PulseAudio, and if this fails, it loads ALSA.
 # If both of them are not installed, then voice calls do not work, but other functionalities still work.
-OPTIONS_MULTI=	AUDIO
+OPTIONS_MULTI=		AUDIO
 OPTIONS_MULTI_AUDIO=	ALSA PULSEAUDIO
-OPTIONS_DEFINE=	GTK
+OPTIONS_DEFINE=		GTK
 OPTIONS_DEFAULT=	ALSA
 
 AUDIO_DESC=	Audio backend for voice calls
