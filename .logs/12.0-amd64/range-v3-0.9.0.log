@@ -1,0 +1,382 @@
+=>> Building devel/range-v3
+build started at Wed Oct 16 22:57:50 EDT 2019
+port directory: /usr/ports/devel/range-v3
+package name: range-v3-0.9.0
+building for: FreeBSD 120-default-job-01 12.0-RELEASE-p1 FreeBSD 12.0-RELEASE-p1 amd64
+maintained by: henry.hu.sh@gmail.com
+Makefile ident:      $FreeBSD: head/devel/range-v3/Makefile 488341 2018-12-25 20:25:39Z tcberner $
+Poudriere version: 3.3.2_1
+Host OSVERSION: 1200516
+Jail OSVERSION: 1200086
+Job Id: 01
+
+---Begin Environment---
+SHELL=/bin/csh
+OSVERSION=1200086
+UNAME_v=FreeBSD 12.0-RELEASE-p1
+UNAME_r=12.0-RELEASE-p1
+BLOCKSIZE=K
+MAIL=/var/mail/root
+STATUS=1
+HOME=/root
+PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/root/bin
+LOCALBASE=/usr/local
+USER=root
+LIBEXECPREFIX=/usr/local/libexec/poudriere
+POUDRIERE_VERSION=3.3.2_1
+MASTERMNT=/usr/local/poudriere/data/.m/120-default/ref
+POUDRIERE_BUILD_TYPE=bulk
+PACKAGE_BUILDING=yes
+SAVED_TERM=screen-256color
+GID=0
+UID=0
+PWD=/usr/local/poudriere/data/.m/120-default/ref/.p/pool
+P_PORTS_FEATURES=FLAVORS SELECTED_OPTIONS
+MASTERNAME=120-default
+SCRIPTPREFIX=/usr/local/share/poudriere
+OLDPWD=/usr/local/poudriere/data/.m/120-default/ref/.p
+SCRIPTPATH=/usr/local/share/poudriere/bulk.sh
+POUDRIEREPATH=/usr/local/bin/poudriere
+---End Environment---
+
+---Begin Poudriere Port Flags/Env---
+PORT_FLAGS=
+PKGENV=
+FLAVOR=
+DEPENDS_ARGS=
+MAKE_ARGS=
+---End Poudriere Port Flags/Env---
+
+---Begin OPTIONS List---
+---End OPTIONS List---
+
+--MAINTAINER--
+henry.hu.sh@gmail.com
+--End MAINTAINER--
+
+--CONFIGURE_ARGS--
+
+--End CONFIGURE_ARGS--
+
+--CONFIGURE_ENV--
+XDG_DATA_HOME=/wrkdirs/usr/ports/devel/range-v3/work  XDG_CONFIG_HOME=/wrkdirs/usr/ports/devel/range-v3/work  HOME=/wrkdirs/usr/ports/devel/range-v3/work TMPDIR="/tmp" PATH=/wrkdirs/usr/ports/devel/range-v3/work/.bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/root/bin SHELL=/bin/sh CONFIG_SHELL=/bin/sh
+--End CONFIGURE_ENV--
+
+--MAKE_ENV--
+XDG_DATA_HOME=/wrkdirs/usr/ports/devel/range-v3/work  XDG_CONFIG_HOME=/wrkdirs/usr/ports/devel/range-v3/work  HOME=/wrkdirs/usr/ports/devel/range-v3/work TMPDIR="/tmp" PATH=/wrkdirs/usr/ports/devel/range-v3/work/.bin:/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin:/root/bin NO_PIE=yes MK_DEBUG_FILES=no MK_KERNEL_SYMBOLS=no SHELL=/bin/sh NO_LINT=YES DESTDIR=/wrkdirs/usr/ports/devel/range-v3/work/stage PREFIX=/usr/local  LOCALBASE=/usr/local  CC="cc" CFLAGS="-O2 -pipe  -fstack-protector-strong -fno-strict-aliasing "  CPP="cpp" CPPFLAGS=""  LDFLAGS=" -fstack-protector-strong " LIBS=""  CXX="c++" CXXFLAGS="-O2 -pipe -fstack-protector-strong -fno-strict-aliasing  "  MANPREFIX="/usr/local" BSD_INSTALL_PROGRAM="install  -s -m 555"  BSD_INSTALL_LIB="install  -s -m 0644"  BSD_INSTALL_SCRIPT="install  -m 555"  BSD_INSTALL_DATA="install  -m 0644"  BSD_INSTALL_MAN="install  -m 444"
+--End MAKE_ENV--
+
+--PLIST_SUB--
+CMAKE_BUILD_TYPE="release" OSREL=12.0 PREFIX=%D LOCALBASE=/usr/local  RESETPREFIX=/usr/local LIB32DIR=lib DOCSDIR="share/doc/range-v3"  EXAMPLESDIR="share/examples/range-v3"  DATADIR="share/range-v3"  WWWDIR="www/range-v3"  ETCDIR="etc/range-v3"
+--End PLIST_SUB--
+
+--SUB_LIST--
+PREFIX=/usr/local LOCALBASE=/usr/local  DATADIR=/usr/local/share/range-v3 DOCSDIR=/usr/local/share/doc/range-v3 EXAMPLESDIR=/usr/local/share/examples/range-v3  WWWDIR=/usr/local/www/range-v3 ETCDIR=/usr/local/etc/range-v3
+--End SUB_LIST--
+
+---Begin make.conf---
+USE_PACKAGE_DEPENDS=yes
+BATCH=yes
+WRKDIRPREFIX=/wrkdirs
+PORTSDIR=/usr/ports
+PACKAGES=/packages
+DISTDIR=/distfiles
+FORCE_PACKAGE=yes
+PACKAGE_BUILDING=yes
+PACKAGE_BUILDING_FLAVORS=yes
+#### /usr/ports/Mk/Scripts/ports_env.sh ####
+_CCVERSION_921dbbb2=FreeBSD clang version 6.0.1 (tags/RELEASE_601/final 335540) (based on LLVM 6.0.1) Target: x86_64-unknown-freebsd12.0 Thread model: posix InstalledDir: /usr/bin
+_ALTCCVERSION_921dbbb2=none
+_CXXINTERNAL_acaad9ca=FreeBSD clang version 6.0.1 (tags/RELEASE_601/final 335540) (based on LLVM 6.0.1) Target: x86_64-unknown-freebsd12.0 Thread model: posix InstalledDir: /usr/bin "/usr/bin/ld" "--eh-frame-hdr" "-dynamic-linker" "/libexec/ld-elf.so.1" "--hash-style=both" "--enable-new-dtags" "-o" "a.out" "/usr/lib/crt1.o" "/usr/lib/crti.o" "/usr/lib/crtbegin.o" "-L/usr/lib" "/dev/null" "-lc++" "-lm" "-lgcc" "--as-needed" "-lgcc_s" "--no-as-needed" "-lc" "-lgcc" "--as-needed" "-lgcc_s" "--no-as-needed" "/usr/lib/crtend.o" "/usr/lib/crtn.o"
+CC_OUTPUT_921dbbb2_58173849=yes
+CC_OUTPUT_921dbbb2_9bdba57c=yes
+CC_OUTPUT_921dbbb2_6a4fe7f5=yes
+CC_OUTPUT_921dbbb2_6bcac02b=yes
+CC_OUTPUT_921dbbb2_67d20829=yes
+CC_OUTPUT_921dbbb2_bfa62e83=yes
+CC_OUTPUT_921dbbb2_f0b4d593=yes
+CC_OUTPUT_921dbbb2_308abb44=yes
+CC_OUTPUT_921dbbb2_f00456e5=yes
+CC_OUTPUT_921dbbb2_65ad290d=yes
+CC_OUTPUT_921dbbb2_f2776b26=yes
+CC_OUTPUT_921dbbb2_b2657cc3=yes
+CC_OUTPUT_921dbbb2_380987f7=yes
+CC_OUTPUT_921dbbb2_160933ec=yes
+CC_OUTPUT_921dbbb2_fb62803b=yes
+_OBJC_CCVERSION_921dbbb2=FreeBSD clang version 6.0.1 (tags/RELEASE_601/final 335540) (based on LLVM 6.0.1) Target: x86_64-unknown-freebsd12.0 Thread model: posix InstalledDir: /usr/bin
+_OBJC_ALTCCVERSION_921dbbb2=none
+ARCH=amd64
+OPSYS=FreeBSD
+_OSRELEASE=12.0-RELEASE-p1
+OSREL=12.0
+OSVERSION=1200086
+PYTHONBASE=/usr/local
+HAVE_COMPAT_IA32_KERN=YES
+_SMP_CPUS=8
+CONFIGURE_MAX_CMD_LEN=262144
+HAVE_PORTS_ENV=1
+#### Misc Poudriere ####
+---End make.conf---
+--Resource limits--
+cpu time               (seconds, -t)  unlimited
+file size           (512-blocks, -f)  unlimited
+data seg size           (kbytes, -d)  33554432
+stack size              (kbytes, -s)  524288
+core file size      (512-blocks, -c)  unlimited
+max memory size         (kbytes, -m)  unlimited
+locked memory           (kbytes, -l)  unlimited
+max user processes              (-u)  34232
+open files                      (-n)  1024
+virtual mem size        (kbytes, -v)  unlimited
+swap limit              (kbytes, -w)  unlimited
+socket buffer size       (bytes, -b)  unlimited
+pseudo-terminals                (-p)  unlimited
+kqueues                         (-k)  unlimited
+umtx shared locks               (-o)  unlimited
+--End resource limits--
+=======================<phase: check-sanity   >============================
+===>  License BSL accepted by the user
+===========================================================================
+=======================<phase: pkg-depends    >============================
+===>   range-v3-0.9.0 depends on file: /usr/local/sbin/pkg - not found
+===>   Installing existing package /packages/All/pkg-1.12.0.txz
+[120-default-job-01] Installing pkg-1.12.0...
+[120-default-job-01] Extracting pkg-1.12.0: .......... done
+===>   range-v3-0.9.0 depends on file: /usr/local/sbin/pkg - found
+===>   Returning to build of range-v3-0.9.0
+===========================================================================
+=======================<phase: fetch-depends  >============================
+===========================================================================
+=======================<phase: fetch          >============================
+===>  License BSL accepted by the user
+===> Fetching all distfiles required by range-v3-0.9.0 for building
+===========================================================================
+=======================<phase: checksum       >============================
+===>  License BSL accepted by the user
+===> Fetching all distfiles required by range-v3-0.9.0 for building
+=> SHA256 Checksum OK for ericniebler-range-v3-0.9.0_GH0.tar.gz.
+===========================================================================
+=======================<phase: extract-depends>============================
+===========================================================================
+=======================<phase: extract        >============================
+===>  License BSL accepted by the user
+===> Fetching all distfiles required by range-v3-0.9.0 for building
+===>  Extracting for range-v3-0.9.0
+=> SHA256 Checksum OK for ericniebler-range-v3-0.9.0_GH0.tar.gz.
+===========================================================================
+=======================<phase: patch-depends  >============================
+===========================================================================
+=======================<phase: patch          >============================
+===>  Patching for range-v3-0.9.0
+===========================================================================
+=======================<phase: build-depends  >============================
+===>   range-v3-0.9.0 depends on file: /usr/local/bin/cmake - not found
+===>   Installing existing package /packages/All/cmake-3.15.4.txz
+[120-default-job-01] Installing cmake-3.15.4...
+[120-default-job-01] `-- Installing curl-7.66.0...
+[120-default-job-01] |   `-- Installing ca_root_nss-3.46.1...
+[120-default-job-01] |   `-- Extracting ca_root_nss-3.46.1: ........ done
+[120-default-job-01] |   `-- Installing libnghttp2-1.39.2...
+[120-default-job-01] |   `-- Extracting libnghttp2-1.39.2: .......... done
+[120-default-job-01] `-- Extracting curl-7.66.0: .......... done
+[120-default-job-01] `-- Installing expat-2.2.8...
+[120-default-job-01] `-- Extracting expat-2.2.8: .......... done
+[120-default-job-01] `-- Installing jsoncpp-1.8.1_7...
+[120-default-job-01] `-- Extracting jsoncpp-1.8.1_7: .......... done
+[120-default-job-01] `-- Installing libarchive-3.4.0,1...
+[120-default-job-01] |   `-- Installing liblz4-1.9.2,1...
+[120-default-job-01] |   `-- Extracting liblz4-1.9.2,1: .......... done
+[120-default-job-01] |   `-- Installing lzo2-2.10_1...
+[120-default-job-01] |   `-- Extracting lzo2-2.10_1: .......... done
+[120-default-job-01] `-- Extracting libarchive-3.4.0,1: .......... done
+[120-default-job-01] `-- Installing libuv-1.33.0...
+[120-default-job-01] `-- Extracting libuv-1.33.0: .......... done
+[120-default-job-01] `-- Installing rhash-1.3.5...
+[120-default-job-01] `-- Extracting rhash-1.3.5: .......... done
+[120-default-job-01] Extracting cmake-3.15.4: .......... done
+=====
+Message from ca_root_nss-3.46.1:
+
+--
+FreeBSD does not, and can not warrant that the certification authorities
+whose certificates are included in this package have in any way been
+audited for trustworthiness or RFC 3647 compliance.
+
+Assessment and verification of trust is the complete responsibility of the
+system administrator.
+
+
+This package installs symlinks to support root certificates discovery by
+default for software that uses OpenSSL.
+
+This enables SSL Certificate Verification by client software without manual
+intervention.
+
+If you prefer to do this manually, replace the following symlinks with
+either an empty file or your site-local certificate bundle.
+
+  * /etc/ssl/cert.pem
+  * /usr/local/etc/ssl/cert.pem
+  * /usr/local/openssl/cert.pem
+===>   range-v3-0.9.0 depends on file: /usr/local/bin/cmake - found
+===>   Returning to build of range-v3-0.9.0
+===>   range-v3-0.9.0 depends on executable: ninja - not found
+===>   Installing existing package /packages/All/ninja-1.9.0,2.txz
+[120-default-job-01] Installing ninja-1.9.0,2...
+[120-default-job-01] `-- Installing python36-3.6.9...
+[120-default-job-01] |   `-- Installing gettext-runtime-0.20.1...
+[120-default-job-01] |   | `-- Installing indexinfo-0.3.1...
+[120-default-job-01] |   | `-- Extracting indexinfo-0.3.1: .... done
+[120-default-job-01] |   `-- Extracting gettext-runtime-0.20.1: .......... done
+[120-default-job-01] |   `-- Installing libffi-3.2.1_3...
+[120-default-job-01] |   `-- Extracting libffi-3.2.1_3: .......... done
+[120-default-job-01] |   `-- Installing readline-8.0.0...
+[120-default-job-01] |   `-- Extracting readline-8.0.0: .......... done
+[120-default-job-01] `-- Extracting python36-3.6.9: .......... done
+[120-default-job-01] Extracting ninja-1.9.0,2: ......... done
+=====
+Message from python36-3.6.9:
+
+--
+===========================================================================
+
+Note that some standard Python modules are provided as separate ports
+as they require additional dependencies. They are available as:
+
+py36-gdbm       databases/py-gdbm@py36
+py36-sqlite3    databases/py-sqlite3@py36
+py36-tkinter    x11-toolkits/py-tkinter@py36
+
+===========================================================================
+===>   range-v3-0.9.0 depends on executable: ninja - found
+===>   Returning to build of range-v3-0.9.0
+===========================================================================
+=======================<phase: lib-depends    >============================
+===========================================================================
+=======================<phase: configure      >============================
+===>  Configuring for range-v3-0.9.0
+===>  Performing out-of-source build
+/bin/mkdir -p /wrkdirs/usr/ports/devel/range-v3/work/.build
+-- The CXX compiler identification is Clang 6.0.1
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+CMake Warning at cmake/ranges_env.cmake:50 (message):
+  [range-v3 warning]: unknown system FreeBSD !
+Call Stack (most recent call first):
+  CMakeLists.txt:47 (include)
+
+
+-- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
+-- Could NOT find Git (missing: GIT_EXECUTABLE) 
+-- [range-v3]: C++ std=14
+-- Performing Test RANGES_HAS_CXXSTD
+-- Performing Test RANGES_HAS_CXXSTD - Success
+-- Performing Test RANGES_HAS_WALL
+-- Performing Test RANGES_HAS_WALL - Success
+-- Performing Test RANGES_HAS_WEXTRA
+-- Performing Test RANGES_HAS_WEXTRA - Success
+-- Performing Test RANGES_HAS_WERROR
+-- Performing Test RANGES_HAS_WERROR - Success
+-- Performing Test RANGES_HAS_FDIAGNOSTIC_SHOW_TEMPLATE_TREE
+-- Performing Test RANGES_HAS_FDIAGNOSTIC_SHOW_TEMPLATE_TREE - Success
+-- Performing Test RANGES_HAS_FTEMPLATE_BACKTRACE_LIMIT
+-- Performing Test RANGES_HAS_FTEMPLATE_BACKTRACE_LIMIT - Success
+-- Performing Test RANGES_HAS_FMACRO_BACKTRACE_LIMIT
+-- Performing Test RANGES_HAS_FMACRO_BACKTRACE_LIMIT - Success
+-- Performing Test RANGES_HAS_OMIT_FRAME_POINTER
+-- Performing Test RANGES_HAS_OMIT_FRAME_POINTER - Success
+-- Performing Test RANGES_HAS_OFAST
+-- Performing Test RANGES_HAS_OFAST - Success
+-- Performing Test RANGES_HAS_STRICT_ALIASING
+-- Performing Test RANGES_HAS_STRICT_ALIASING - Success
+-- Performing Test RANGES_HAS_STRICT_VTABLE_POINTERS
+-- Performing Test RANGES_HAS_STRICT_VTABLE_POINTERS - Success
+-- Performing Test RANGES_HAS_FAST_MATH
+-- Performing Test RANGES_HAS_FAST_MATH - Success
+-- Performing Test RANGES_HAS_VECTORIZE
+-- Performing Test RANGES_HAS_VECTORIZE - Success
+-- Performing Test RANGES_HAS_SIZED_DEALLOCATION
+-- Performing Test RANGES_HAS_SIZED_DEALLOCATION - Success
+-- Performing Test RANGES_HAS_MARCH_NATIVE
+-- Performing Test RANGES_HAS_MARCH_NATIVE - Success
+-- Performing Test RANGES_HAS_MTUNE_NATIVE
+-- Performing Test RANGES_HAS_MTUNE_NATIVE - Success
+-- Performing Test RANGE_V3_ALIGNED_NEW_PROBE
+-- Performing Test RANGE_V3_ALIGNED_NEW_PROBE - Failed
+-- Performing Test RANGES_HAS_FCOROUTINES_TS
+-- Performing Test RANGES_HAS_FCOROUTINES_TS - Success
+-- Performing Test RANGE_V3_HAS_FCONCEPTS
+-- Performing Test RANGE_V3_HAS_FCONCEPTS - Failed
+-- Doxygen not found; the 'doc' and 'gh-pages.{clean,copy,update}' targets will be unavailable.
+-- Performing Test RANGES_HAS_WEVERYTHING
+-- Performing Test RANGES_HAS_WEVERYTHING - Success
+-- Performing Test RANGES_HAS_PEDANTIC
+-- Performing Test RANGES_HAS_PEDANTIC - Success
+-- Performing Test RANGES_HAS_PEDANTIC_ERRORS
+-- Performing Test RANGES_HAS_PEDANTIC_ERRORS - Success
+-- Performing Test RANGES_HAS_WNO_CXX98_COMPAT
+-- Performing Test RANGES_HAS_WNO_CXX98_COMPAT - Success
+-- Performing Test RANGES_HAS_WNO_CXX98_COMPAT_PEDANTIC
+-- Performing Test RANGES_HAS_WNO_CXX98_COMPAT_PEDANTIC - Success
+-- Performing Test RANGES_HAS_WNO_WEAK_VTABLES
+-- Performing Test RANGES_HAS_WNO_WEAK_VTABLES - Success
+-- Performing Test RANGES_HAS_WNO_PADDED
+-- Performing Test RANGES_HAS_WNO_PADDED - Success
+-- Performing Test RANGES_HAS_WNO_MISSING_PROTOTYPES
+-- Performing Test RANGES_HAS_WNO_MISSING_PROTOTYPES - Success
+-- Performing Test RANGES_HAS_WNO_MISSING_VARIABLE_DECLARATIONS
+-- Performing Test RANGES_HAS_WNO_MISSING_VARIABLE_DECLARATIONS - Success
+-- Performing Test RANGES_HAS_WNO_DOCUMENTATION
+-- Performing Test RANGES_HAS_WNO_DOCUMENTATION - Success
+-- Performing Test RANGES_HAS_WNO_DOCUMENTATION_UNKNOWN_COMMAND
+-- Performing Test RANGES_HAS_WNO_DOCUMENTATION_UNKNOWN_COMMAND - Success
+-- Performing Test RANGES_HAS_WNO_OLD_STYLE_CAST
+-- Performing Test RANGES_HAS_WNO_OLD_STYLE_CAST - Success
+-- Performing Test RANGES_HAS_CXX2A
+-- Performing Test RANGES_HAS_CXX2A - Success
+-- Performing Test RANGES_HAS_WNO_MISSING_BRACES
+-- Performing Test RANGES_HAS_WNO_MISSING_BRACES - Success
+-- Performing Test RANGES_HAS_WNO_SHORTEN_64_TO_32
+-- Performing Test RANGES_HAS_WNO_SHORTEN_64_TO_32 - Success
+-- Performing Test RANGES_HAS_WNO_GLOBAL_CONSTRUCTORS
+-- Performing Test RANGES_HAS_WNO_GLOBAL_CONSTRUCTORS - Success
+-- Could NOT find Boost (missing: Boost_INCLUDE_DIR date_time program_options) (Required is at least version "1.59.0")
+-- Configuring done
+-- Generating done
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    CMAKE_COLOR_MAKEFILE
+    CMAKE_CXX_FLAGS_DEBUG
+    CMAKE_C_FLAGS
+    CMAKE_C_FLAGS_DEBUG
+    CMAKE_C_FLAGS_RELEASE
+    CMAKE_MODULE_LINKER_FLAGS
+    CMAKE_SHARED_LINKER_FLAGS
+    CMAKE_VERBOSE_MAKEFILE
+    THREADS_HAVE_PTHREAD_ARG
+
+
+-- Build files have been written to: /wrkdirs/usr/ports/devel/range-v3/work/.build
+===========================================================================
+=======================<phase: build          >============================
+===========================================================================
+=======================<phase: run-depends    >============================
+===========================================================================
+=======================<phase: stage          >============================
+===>  Staging for range-v3-0.9.0
+===>   Generating temporary packing list
+cd /wrkdirs/usr/ports/devel/range-v3/work/range-v3-0.9.0/include && /bin/sh -c '(/usr/bin/find -Ed $1 $3 | /usr/bin/cpio -dumpl $2 >/dev/null 2>&1) &&  /usr/bin/find -Ed $1 $3 \(   -type d -exec /bin/sh -c '\''cd '\''$2'\'' && chmod 755 "$@"'\'' . {} +  -o -type f -exec /bin/sh -c '\''cd '\''$2'\'' && chmod 0644 "$@"'\'' . {} + \)' COPYTREE_SHARE . /wrkdirs/usr/ports/devel/range-v3/work/stage/usr/local/include/
+====> Compressing man pages (compress-man)
+===========================================================================
+=======================<phase: package        >============================
+===>  Building package for range-v3-0.9.0
+===========================================================================
+=>> Cleaning up wrkdir
+===>  Cleaning for range-v3-0.9.0
+build of devel/range-v3 | range-v3-0.9.0 ended at Wed Oct 16 22:58:15 EDT 2019
+build time: 00:00:25
