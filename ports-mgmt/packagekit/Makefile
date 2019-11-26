@@ -40,10 +40,11 @@ INSTALL_TARGET=	install-strip
 MAKE_JOBS_UNSAFE=yes
 
 .if !defined(SLAVEPORT)
-OPTIONS_DEFINE=	PORTS MANPAGES DOCS BASH
+OPTIONS_DEFINE=	PORTS MANPAGES DOCS BASH VAPI
 OPTIONS_DEFAULT=PORTS
 PORTS_DESC=Use portupgrade for management, dummy if disabled
 BASH_DESC=Install bash completion for PackageKit
+VAPI_DESC=Install Vala binding
 
 .include <bsd.port.options.mk>
 
@@ -58,10 +59,8 @@ PLIST_SUB+=	MAN='@comment '
 . endif
 
 . if ${PORT_OPTIONS:MDOCS}
-CONFIGURE_ARGS+=--enable-gtk-doc-html
 PLIST_SUB+=	DOCS=''
 . else
-CONFIGURE_ARGS+=--disable-gtk-doc-html
 PLIST_SUB+=	DOCS='@comment '
 . endif
 
@@ -81,12 +80,21 @@ PLIST_SUB+=	GTK="@comment "
 CONFIGURE_ARGS+=--disable-qt
 
 . if ${PORT_OPTIONS:MBASH}
-BUILD_DEPENDS=	bash-completion>0:shells/bash-completion
+BUILD_DEPENDS+=	bash-completion>0:shells/bash-completion
 CONFIGURE_ARGS+=--enable-bash-completion
 PLIST_SUB+=	BASH=''
 . else
 CONFIGURE_ARGS+=--disable-bash-completion
 PLIST_SUB+=	BASH='@comment '
+. endif
+
+. if ${PORT_OPTIONS:MVAPI}
+BUILD_DEPENDS+=	vapigen:lang/vala
+CONFIGURE_ARGS+=--enable-vala=yes
+PLIST_SUB+=	VAPI=''
+. else
+CONFIGURE_ARGS+=--enable-vala=no
+PLIST_SUB+=	VAPI='@comment '
 . endif
 .endif
 

@@ -69,7 +69,7 @@ libexec/pk-command-not-found
 %%DATADIR%%/pk-upgrade-distro.sh
 %%DATADIR%%/transactions.db
 @postexec if [ ! -f /var/lib/PackageKit/%f ]; then cp -f %B/%f /var/lib/PackageKit; chmod o-r /var/lib/PackageKit/%f; fi
-share/bash-completion/completions/pkcon
+%%BASH%%share/bash-completion/completions/pkcon
 share/dbus-1/interfaces/org.freedesktop.PackageKit.Transaction.xml
 share/dbus-1/interfaces/org.freedesktop.PackageKit.xml
 share/dbus-1/system-services/org.freedesktop.PackageKit.service
@@ -246,7 +246,7 @@ share/locale/zh_HK/LC_MESSAGES/PackageKit.mo
 share/locale/zh_TW/LC_MESSAGES/PackageKit.mo
 share/polkit-1/actions/org.freedesktop.packagekit.policy
 share/polkit-1/rules.d/org.freedesktop.packagekit.rules
-share/vala/vapi/packagekit-glib2.vapi
+%%VAPI%%share/vala/vapi/packagekit-glib2.vapi
 @dir /var/cache/PackageKit/downloads
 @dir /var/cache/PackageKit/metadata
 @dir /var/cache/PackageKit
