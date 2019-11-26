@@ -40,7 +40,7 @@ INSTALL_TARGET=	install-strip
 MAKE_JOBS_UNSAFE=yes
 
 .if !defined(SLAVEPORT)
-OPTIONS_DEFINE=	PORTS MANPAGES DOCS BASH VAPI
+OPTIONS_DEFINE=	PORTS MANPAGES DOCS BASH VAPI NLS
 OPTIONS_DEFAULT=PORTS
 PORTS_DESC=Use portupgrade for management, dummy if disabled
 BASH_DESC=Install bash completion for PackageKit
