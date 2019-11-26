@@ -16,8 +16,8 @@ LIB_DEPENDS=	libdbus-glib-1.so:devel/dbus-glib \
 RUN_DEPENDS=	lsof:sysutils/lsof \
 		bash:shells/bash
 
-USES=		cpe gettext gmake iconv libtool pathfix pkgconfig \
-		python:build shared-mime-info shebangfix sqlite:3 tar:xz
+USES=		cpe gmake iconv libtool pathfix pkgconfig \
+		python:build shebangfix sqlite:3 tar:xz
 CPE_VENDOR=	packagekit_project
 SHEBANG_FILES=	backends/test/helpers/search-name.sh \
 		contrib/cron/packagekit-background.cron
