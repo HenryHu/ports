@@ -42,60 +42,35 @@ MAKE_JOBS_UNSAFE=yes
 .if !defined(SLAVEPORT)
 OPTIONS_DEFINE=	PORTS MANPAGES DOCS BASH VAPI NLS
 OPTIONS_DEFAULT=PORTS
+OPTIONS_SUB=	yes
 PORTS_DESC=Use portupgrade for management, dummy if disabled
 BASH_DESC=Install bash completion for PackageKit
 VAPI_DESC=Install Vala binding
 
-.include <bsd.port.options.mk>
+NLS_USES=	gettext
+NLS_CONFIGURE_ENABLE=	nls
 
-. if ${PORT_OPTIONS:MMANPAGES}
-BUILD_DEPENDS+=	docbook-sgml>0:textproc/docbook-sgml \
+MANPAGES_BUILD_DEPENDS=	docbook-sgml>0:textproc/docbook-sgml \
 		xsltproc:textproc/libxslt \
 		${LOCALBASE}/share/xsl/docbook/manpages/docbook.xsl:textproc/docbook-xsl
-PLIST_SUB+=	MAN=''
-. else
-CONFIGURE_ARGS+=--disable-man-pages
-PLIST_SUB+=	MAN='@comment '
-. endif
+MANPAGES_CONFIGURE_ENABLE= man-pages
 
-. if ${PORT_OPTIONS:MDOCS}
-PLIST_SUB+=	DOCS=''
-. else
-PLIST_SUB+=	DOCS='@comment '
-. endif
-
-. if ${PORT_OPTIONS:MPORTS}
-RUN_DEPENDS+=	${LOCALBASE}/sbin/portupgrade:ports-mgmt/portupgrade
-USE_RUBY=	yes
-CONFIGURE_ARGS+=--enable-ports --with-default-backend=ports
-PLIST_SUB+=	PORTS=""
-. else
-CONFIGURE_ARGS+=--disable-ports --with-default-backend=dummy
-PLIST_SUB+=	PORTS="@comment "
-. endif
+PORTS_RUN_DEPENDS=	${LOCALBASE}/sbin/portupgrade:ports-mgmt/portupgrade
+PORTS_USE=	RUBY=yes
+PORTS_CONFIGURE_ENABLE=	ports
+PORTS_CONFIGURE_ON=	--with-default-backend=ports
+PORTS_CONFIGURE_OFF=	--with-default-backend=dummy
 
 CONFIGURE_ARGS+=--disable-gtk-module
 PLIST_SUB+=	GTK="@comment "
 
 CONFIGURE_ARGS+=--disable-qt
 
-. if ${PORT_OPTIONS:MBASH}
-BUILD_DEPENDS+=	bash-completion>0:shells/bash-completion
-CONFIGURE_ARGS+=--enable-bash-completion
-PLIST_SUB+=	BASH=''
-. else
-CONFIGURE_ARGS+=--disable-bash-completion
-PLIST_SUB+=	BASH='@comment '
-. endif
+BASH_BUILD_DEPENDS=	bash-completion>0:shells/bash-completion
+BASH_CONFIGURE_ENABLE=	bash-completion
 
-. if ${PORT_OPTIONS:MVAPI}
-BUILD_DEPENDS+=	vapigen:lang/vala
-CONFIGURE_ARGS+=--enable-vala=yes
-PLIST_SUB+=	VAPI=''
-. else
-CONFIGURE_ARGS+=--enable-vala=no
-PLIST_SUB+=	VAPI='@comment '
-. endif
+VAPI_BUILD_DEPENDS=	vapigen:lang/vala
+VAPI_CONFIGURE_ENABLE=	vala
 .endif
 
 post-patch:
