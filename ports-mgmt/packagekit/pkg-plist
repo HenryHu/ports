@@ -59,8 +59,8 @@ libdata/pkgconfig/packagekit-glib2.pc
 libexec/packagekit-direct
 libexec/packagekitd
 libexec/pk-command-not-found
-%%MAN%%man/man1/pkcon.1.gz
-%%MAN%%man/man1/pkmon.1.gz
+%%MANPAGES%%man/man1/pkcon.1.gz
+%%MANPAGES%%man/man1/pkmon.1.gz
 %%PORTS%%%%DATADIR%%/helpers/ports/portsBackend.rb
 %%PORTS%%%%DATADIR%%/helpers/ports/ruby_packagekit/backend.rb
 %%PORTS%%%%DATADIR%%/helpers/ports/ruby_packagekit/enums.rb
