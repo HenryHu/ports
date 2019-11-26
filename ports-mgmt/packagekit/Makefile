@@ -94,8 +94,6 @@ post-patch:
 	@${REINPLACE_CMD} -E -e 's/.*WARNINGFLAGS_CPP.*-Werror/#$$&/' \
 		-e 's|-DG_DISABLE_DEPRECATED||g' \
 		-e 's|-Wmissing-include-dirs||g' ${WRKSRC}/configure
-	@${REINPLACE_CMD} -e 's|girepositry|girepository|g' \
-		${WRKSRC}/lib/packagekit-glib2/Makefile.in
 	@${REINPLACE_CMD} -e 's|/usr/bin/pkttyagent|${LOCALBASE}/bin/pkttyagent|' \
 		-e 's/POLLHUP/POLLHUP | POLLIN/' \
 		${WRKSRC}/lib/packagekit-glib2/pk-spawn-polkit-agent.c
