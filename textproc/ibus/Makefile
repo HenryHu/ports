@@ -1,8 +1,9 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD: head/textproc/ibus/Makefile 509067 2019-08-16 08:31:55Z delphij $
+# $FreeBSD: head/textproc/ibus/Makefile 522989 2020-01-14 05:31:49Z yuri $
 
 PORTNAME=	ibus
 PORTVERSION=	1.5.20
+PORTREVISION=	1
 CATEGORIES=	textproc
 
 MAINTAINER=	henry.hu.sh@gmail.com
@@ -14,7 +15,8 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dbus>=0.83.0:devel/py-dbus@${PY_FLAVOR} \
 		${LOCALBASE}/share/unicode/ucd/NamesList.txt:textproc/UCD \
 		${LOCALBASE}/libdata/pkgconfig/iso-codes.pc:misc/iso-codes \
-		gtkdocize:textproc/gtk-doc
+		gtkdocize:textproc/gtk-doc \
+		bash:shells/bash
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dbus>=0.83.0:devel/py-dbus@${PY_FLAVOR} \
 		${PYTHON_SITELIBDIR}/gtk-2.0/pynotify/__init__.py:devel/py-notify@${PY_FLAVOR} \
 		${LOCALBASE}/share/xml/iso-codes/iso_639.xml:misc/iso-codes \
@@ -62,6 +64,7 @@ GTK2_LIB_DEPENDS=	libdbus-1.so:devel/dbus \
 			libfontconfig.so:x11-fonts/fontconfig \
 			libfreetype.so:print/freetype2
 
+GTK3_USES=		xorg
 GTK3_USE=		GNOME=cairo,gtk30 XORG=x11,xi
 GTK3_CONFIGURE_ENABLE=	gtk3 libnotify
 GTK3_LIB_DEPENDS=	libdbus-1.so:devel/dbus \
