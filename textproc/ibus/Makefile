@@ -2,8 +2,7 @@
 # $FreeBSD: head/textproc/ibus/Makefile 524461 2020-01-28 07:24:38Z antoine $
 
 PORTNAME=	ibus
-PORTVERSION=	1.5.20
-PORTREVISION=	2
+PORTVERSION=	1.5.22
 CATEGORIES=	textproc
 
 MAINTAINER=	henry.hu.sh@gmail.com
