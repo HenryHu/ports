@@ -15,6 +15,7 @@ USES=			cmake
 USE_GITHUB=		yes
 GH_ACCOUNT=		TartanLlama
 GH_PROJECT=		expected
+GH_TUPLE=		TartanLlama:tl-cmake:284c6a3:tlcmake/cmake/tl-cmake
 NO_ARCH=		yes
 
 OPTIONS_DEFINE=		TESTS
