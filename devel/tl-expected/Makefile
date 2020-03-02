@@ -17,6 +17,7 @@ GH_ACCOUNT=		TartanLlama
 GH_PROJECT=		expected
 GH_TUPLE=		TartanLlama:tl-cmake:284c6a3:tlcmake/cmake/tl-cmake
 NO_ARCH=		yes
+CMAKE_ARGS=		-DFETCHCONTENT_SOURCE_DIR_TL_CMAKE=${CMAKE_SOURCE_PATH}/cmake/tl-cmake
 
 OPTIONS_DEFINE=		TESTS
 OPTIONS_DEFAULT=
