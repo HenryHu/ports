@@ -26,7 +26,8 @@ LIB_DEPENDS=	libavformat.so:multimedia/ffmpeg \
 		libopus.so:audio/opus \
 		libdbusmenu-qt5.so:devel/libdbusmenu-qt \
 		libhunspell-1.7.so:textproc/hunspell \
-		libxxhash.so:devel/xxhash
+		libxxhash.so:devel/xxhash \
+		libenchant-2.so:textproc/enchant2
 
 USES=		cmake compiler:c++17-lang desktop-file-utils \
 		gnome pkgconfig python:3.7,build qt:5 ssl xorg
