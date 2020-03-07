@@ -1,21 +1,21 @@
-# $FreeBSD$
+# $FreeBSD: head/devel/microsoft-gsl/Makefile 527623 2020-03-02 10:08:48Z 0mp $
 
-PORTNAME=		microsoft-gsl
+PORTNAME=	microsoft-gsl
 DISTVERSIONPREFIX=	v
-DISTVERSION=		2.1.0
-CATEGORIES=		devel
+DISTVERSION=	2.1.0
+CATEGORIES=	devel
 
-MAINTAINER=		henry.hu.sh@gmail.com
-COMMENT=		Guidelines Support Library
+MAINTAINER=	henry.hu.sh@gmail.com
+COMMENT=	Guidelines Support Library
 
-LICENSE=		MIT
-LICENSE_FILE=		${WRKSRC}/LICENSE
+LICENSE=	MIT
+LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=			cmake
-USE_GITHUB=		yes
-GH_ACCOUNT=		microsoft
-GH_PROJECT=		GSL
-NO_ARCH=		yes
-CMAKE_OFF=		GSL_TEST
+USES=		cmake
+USE_GITHUB=	yes
+GH_ACCOUNT=	microsoft
+GH_PROJECT=	GSL
+CMAKE_OFF=	GSL_TEST
+NO_ARCH=	yes
 
 .include <bsd.port.mk>
