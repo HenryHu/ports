@@ -1,5 +1,5 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD: head/chinese/ibus-pinyin/Makefile 507372 2019-07-26 20:46:53Z gerald $
+# $FreeBSD: head/chinese/ibus-pinyin/Makefile 517041 2019-11-08 09:31:13Z tobik $
 
 PORTNAME=	ibus-pinyin
 PORTVERSION=	1.5.0
@@ -17,7 +17,8 @@ LIB_DEPENDS=	libpyzy-1.0.so:chinese/pyzy \
 		libibus-1.0.so:textproc/ibus \
 		libsqlite3.so:databases/sqlite3
 
-USES=		compiler:c++11-lib gmake pkgconfig python autoreconf libtool gettext
+USES=		autoreconf compiler:c++11-lib gettext gmake gnome libtool \
+		pkgconfig python
 USE_GITHUB=	yes
 GH_ACCOUNT=	ibus
 USE_GNOME=	glib20 intltool
