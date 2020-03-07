@@ -51,8 +51,6 @@ CMAKE_ARGS=	-DDESKTOP_APP_SPECIAL_TARGET="" -DTDESKTOP_LAUNCHER_BASENAME="telegr
 		-Ddisable_autoupdate=1
 
 # Telegram asks each custom build to have its own API ID and hash.
-# Use the default ones for now. We may need to switch to the official ones,
-# or create our own.
 TELEGRAM_API_ID=	601761
 TELEGRAM_API_HASH=	20a3432aab43f24bb4460fceac5ba38d
 
@@ -70,7 +68,7 @@ GTK_DESC=	Gtk integration (Use Gtk dialogs, etc.)
 ALSA_LIB_DEPENDS=	libasound.so:audio/alsa-lib
 PULSEAUDIO_LIB_DEPENDS=	libpulse.so:audio/pulseaudio
 
-GTK_CMAKE_OFF=	TDESKTOP_DISABLE_GTK_INTEGRATION
+GTK_CMAKE_BOOL_OFF=	TDESKTOP_DISABLE_GTK_INTEGRATION
 
 .include <bsd.port.options.mk>
 
