@@ -1,7 +1,7 @@
-# $FreeBSD: head/devel/ccls/Makefile 510940 2019-09-03 12:32:35Z tobik $
+# $FreeBSD: head/devel/ccls/Makefile 516977 2019-11-07 14:18:33Z tobik $
 
 PORTNAME=	ccls
-DISTVERSION=	0.20190823.1
+DISTVERSION=	0.20190823.4
 CATEGORIES=	devel
 MASTER_SITES=	LOCAL/tobik
 
@@ -19,7 +19,8 @@ USES=		cmake compiler:c++17-lang localbase
 USE_GITHUB=	yes
 GH_ACCOUNT=	MaskRay
 
-CMAKE_ARGS=	-DClang_DIR:PATH="${LOCALBASE}/llvm${LLVM_DEFAULT}/lib/cmake/clang" \
+CMAKE_ARGS=	-DCCLS_VERSION:STRING="${DISTVERSION}" \
+		-DClang_DIR:PATH="${LOCALBASE}/llvm${LLVM_DEFAULT}/lib/cmake/clang" \
 		-DLLVM_DIR:PATH="${LOCALBASE}/llvm${LLVM_DEFAULT}/lib/cmake/llvm"
 CXXFLAGS+=	-DNDEBUG
 

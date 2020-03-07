@@ -1,9 +1,9 @@
-# $FreeBSD: head/devel/cquery/Makefile 507372 2019-07-26 20:46:53Z gerald $
+# $FreeBSD: head/devel/cquery/Makefile 522998 2020-01-14 09:27:18Z antoine $
 
 PORTNAME=	cquery
 PORTVERSION=	20180718
 DISTVERSIONPREFIX=	v
-PORTREVISION=	5
+PORTREVISION=	6
 CATEGORIES=	devel
 
 MAINTAINER=	henry.hu.sh@gmail.com
@@ -11,12 +11,10 @@ COMMENT=	Highly-scalable, low-latency language server for C/C++/Objective-C
 
 LICENSE=	MIT
 
-BROKEN_powerpc64=	fails to build: Checking for 'clang++' (C++ compiler): not found
-
 BUILD_DEPENDS=	llvm-config${LLVM_DEFAULT}:devel/llvm${LLVM_DEFAULT}
 LIB_DEPENDS=	libclang.so:devel/llvm${LLVM_DEFAULT}
 
-USES=		compiler:c++14-lang waf
+USES=		compiler:c++14-lang python:2.7,build waf
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	cquery-project
