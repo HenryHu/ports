@@ -25,4 +25,7 @@ EXAMPLES_DESC=	Build examples
 TESTS_CMAKE_BOOL=	RANGE_V3_TESTS
 EXAMPLES_CMAKE_BOOL=	RANGE_V3_EXAMPLES
 
+post-install:
+	@${RM} ${STAGEDIR}${PREFIX}/include/module.modulemap
+
 .include <bsd.port.mk>
