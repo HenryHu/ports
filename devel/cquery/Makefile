@@ -24,10 +24,10 @@ GH_TUPLE=	miloyip:rapidjson:daabb88:rapidjson/third_party/rapidjson \
 		emilk:loguru:6bf94c:loguru/third_party/loguru \
 		zeux:pugixml:24a7064:pugixml/third_party/pugixml
 
+PLIST_FILES=	bin/cquery
+
 CMAKE_ON=	SYSTEM_CLANG
 CMAKE_ARGS=	-DCLANG_ROOT=${LOCALBASE}/llvm${LLVM_DEFAULT}
-
-PLIST_FILES=	bin/cquery
 
 post-install:
 	${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/cquery
