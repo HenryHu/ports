@@ -1,4 +1,4 @@
-# $FreeBSD: head/devel/range-v3/Makefile 488341 2018-12-25 20:25:39Z tcberner $
+# $FreeBSD: head/devel/range-v3/Makefile 528005 2020-03-08 08:32:15Z tcberner $
 
 PORTNAME=	range-v3
 DISTVERSION=	0.10.0
@@ -18,8 +18,7 @@ NO_ARCH=	yes
 OPTIONS_DEFINE=	TESTS EXAMPLES
 OPTIONS_DEFAULT=
 
-# See issue 1321, 1441, etc.
-TESTS_DESC=	Build tests (fail with clang 9.0)
+TESTS_DESC=	Build tests
 EXAMPLES_DESC=	Build examples
 
 TESTS_CMAKE_BOOL=	RANGE_V3_TESTS
@@ -27,5 +26,8 @@ EXAMPLES_CMAKE_BOOL=	RANGE_V3_EXAMPLES
 
 post-install:
 	@${RM} ${STAGEDIR}${PREFIX}/include/module.modulemap
+
+test:
+	@${MAKE_CMD} -C ${TEST_WRKSRC} test
 
 .include <bsd.port.mk>
