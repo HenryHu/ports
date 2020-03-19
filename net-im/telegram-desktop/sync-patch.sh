@@ -19,6 +19,4 @@ patch -p1 < $HOME/proj/tdesktop/patch
 (cd cmake && patch -p1 < $HOME/proj/cmake_helpers/patch)
 cd ../..
 make makepatch
-cd files
-cd ..
 make clean
