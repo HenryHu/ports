@@ -17,6 +17,8 @@ LIB_DEPENDS=		libepoll-shim.so:devel/libepoll-shim \
 			libsoup-2.4.so:devel/libsoup \
 			libxml2.so:textproc/libxml2
 
+BUILD_DEPENDS=		sane-backends>0:graphics/sane-backends
+
 USES=			gmake pkgconfig
 USE_GITHUB=		yes
 GH_ACCOUNT=		alexpevzner
