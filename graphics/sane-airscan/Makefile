@@ -19,11 +19,14 @@ LIB_DEPENDS=		libepoll-shim.so:devel/libepoll-shim \
 
 BUILD_DEPENDS=		sane-backends>0:graphics/sane-backends
 
-USES=			gmake pkgconfig
+USES=			gmake pkgconfig gettext-runtime
+USE_GNOME=		glib20
 USE_GITHUB=		yes
 GH_ACCOUNT=		alexpevzner
 
-MAKE_ARGS=		CC=${CC} MANDIR=${STAGEDIR}${PREFIX}/man PKG_CONFIG=${LOCALBASE}/bin/pkg-config LDFLAGS=-lm CFLAGS=-DLOCALBASE='\"${LOCALBASE}\"' LIBDIR=/lib
+MAKE_ARGS=		CC=${CC} MANDIR=${STAGEDIR}${PREFIX}/man LIBDIR=/lib \
+			PKG_CONFIG=${LOCALBASE}/bin/pkg-config \
+			LDFLAGS=-lm CFLAGS=-DLOCALBASE='\"${LOCALBASE}\"'
 
 MANPAGES=		sane-airscan.5
 
