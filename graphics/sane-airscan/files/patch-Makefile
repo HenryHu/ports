@@ -1,0 +1,37 @@
+--- Makefile.orig	2020-03-20 13:47:50 UTC
++++ Makefile
+@@ -53,7 +53,8 @@ airscan_CFLAGS += `pkg-config --cflags --libs avahi-gl
+ airscan_CFLAGS += `pkg-config --cflags --libs libjpeg`
+ airscan_CFLAGS += `pkg-config --cflags --libs libsoup-2.4`
+ airscan_CFLAGS += `pkg-config --cflags --libs libxml-2.0`
+-airscan_CFLAGS += -Wl,--version-script=airscan.sym
++airscan_CFLAGS += `pkg-config --cflags --libs epoll-shim`
++airscan_CFLAGS_LIBONLY = -Wl,--version-script=airscan.sym
+ 
+ # Merge DESTDIR and PREFIX
+ PREFIX := $(abspath $(DESTDIR)/$(PREFIX))
+@@ -79,18 +80,17 @@ airscan_CFLAGS += -Wl,-z,nodelete
+ all:	$(BACKEND) test
+ 
+ $(BACKEND): Makefile $(SRC) airscan.h airscan.sym
+-	-ctags -R .
+-	$(CC) -o $(BACKEND) -shared $(CPPFLAGS) $(SRC) $(airscan_CFLAGS) $(LDFLAGS)
++	$(CC) -o $(BACKEND) -shared $(CPPFLAGS) $(SRC) $(airscan_CFLAGS) $(airscan_CFLAGS_LIBONLY) $(LDFLAGS)
+ 
+ install: all
+ 	mkdir -p $(PREFIX)$(CONFDIR)
+ 	mkdir -p $(PREFIX)$(CONFDIR)/dll.d
+-	cp -n airscan.conf $(PREFIX)$(CONFDIR)
++	cp -n airscan.conf $(PREFIX)$(CONFDIR)/airscan.conf.sample
+ 	cp -n dll.conf $(PREFIX)$(CONFDIR)/dll.d/airscan
+-	install -s -D -t $(PREFIX)$(LIBDIR)/sane $(BACKEND)
+-	mkdir -p $(PREFIX)/$(MANDIR)/man5
+-	install -m 644 -D -t $(PREFIX)$(MANDIR)/man5 $(MANPAGE)
+-	[ "$(COMPRESS)" = "" ] || $(COMPRESS) -f $(PREFIX)$(MANDIR)/man5/$(MANPAGE)
++	mkdir -p ${PREFIX}${LIBDIR}/sane
++	install -s $(BACKEND) $(PREFIX)$(LIBDIR)/sane
++	mkdir -p $(MANDIR)/man5
++	install -m 644 $(MANPAGE) $(MANDIR)/man5
+ 
+ clean:
+ 	rm -f test $(BACKEND) tags
