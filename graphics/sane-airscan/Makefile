@@ -25,7 +25,7 @@ USE_GITHUB=		yes
 GH_ACCOUNT=		alexpevzner
 
 MAKE_ARGS=		CC=${CC} MANDIR=${STAGEDIR}${PREFIX}/man LIBDIR=/lib \
-			PKG_CONFIG=${LOCALBASE}/bin/pkg-config \
+			PKG_CONFIG=pkgconf \
 			LDFLAGS=-lm CFLAGS=-DLOCALBASE='\"${LOCALBASE}\"'
 
 MANPAGES=		sane-airscan.5
