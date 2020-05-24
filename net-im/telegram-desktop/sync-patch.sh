@@ -1,7 +1,7 @@
 #! /bin/sh
 
 TG_VER=`make -VDISTVERSION`
-LIBTGVOIP_VER=522550a1
+LIBTGVOIP_VER=2a05b22
 
 (cd $HOME/proj/tdesktop && git diff v$TG_VER..bsd_$TG_VER > patch)
 (cd $HOME/proj/libtgvoip && git diff $LIBTGVOIP_VER..HEAD > patch)
@@ -17,6 +17,7 @@ patch -p1 < $HOME/proj/tdesktop/patch
 (cd Telegram/lib_ui && patch -p1 < $HOME/proj/lib_ui/patch)
 (cd Telegram/lib_base && patch -p1 < $HOME/proj/lib_base/patch)
 (cd cmake && patch -p1 < $HOME/proj/cmake_helpers/patch)
+rm Telegram/ThirdParty/hunspell/tests/suggestiontest/Makefile.orig
 cd ../..
 make makepatch
 make clean
