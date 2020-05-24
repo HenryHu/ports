@@ -1,7 +1,7 @@
 #! /bin/sh
 
 TG_VER=`make -VDISTVERSION`
-LIBTGVOIP_VER=2a05b22
+LIBTGVOIP_VER=8682c5c
 
 (cd $HOME/proj/tdesktop && git diff v$TG_VER..bsd_$TG_VER > patch)
 (cd $HOME/proj/libtgvoip && git diff $LIBTGVOIP_VER..HEAD > patch)
