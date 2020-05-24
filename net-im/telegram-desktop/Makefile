@@ -1,7 +1,7 @@
 # $FreeBSD: head/net-im/telegram-desktop/Makefile 528738 2020-03-19 18:14:39Z fernape $
 
 PORTNAME=	telegram-desktop
-DISTVERSION=	2.1.0
+DISTVERSION=	2.1.7
 CATEGORIES=	net-im
 MASTER_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/releases/download/v${DISTVERSION}/
 DISTNAME=	tdesktop-${DISTVERSION}-full
