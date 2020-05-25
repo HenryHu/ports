@@ -2,6 +2,7 @@
 
 The workflow of importing a new version is:
 
+0. Sync the current port in git with ports tree
 1. update Makefile's DISTVERSION to new version
 2. check Telegram/ThirdParty and update Makefile
 3. make makesum
