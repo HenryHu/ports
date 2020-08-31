@@ -88,10 +88,12 @@ USE_GNOME+=	gtk30
 .include <bsd.port.pre.mk>
 
 pre-configure:
-	@cd ${WRKSRC}/tg_owt && ${MKDIR} -p out/Release && cd out/Release && \
-	    cmake -G Ninja -DCMAKE_BUILD_TYPE=Release ../..
+	@cd ${WRKSRC}/tg_owt && \
+	    ${MKDIR} -p out/${CMAKE_BUILD_TYPE} && \
+	    cd out/${CMAKE_BUILD_TYPE} && \
+	    ${CMAKE_BIN} ${CMAKE_ARGS} ${WRKSRC}/tg_owt
 
 pre-build:
-	@cd ${WRKSRC}/tg_owt/out/Release && ninja
+	@cd ${WRKSRC}/tg_owt/out/${CMAKE_BUILD_TYPE} && ${DO_MAKE_BUILD}
 
 .include <bsd.port.post.mk>
