@@ -31,7 +31,9 @@ LIB_DEPENDS=	libavformat.so:multimedia/ffmpeg \
 		libhunspell-1.7.so:textproc/hunspell \
 		libxxhash.so:devel/xxhash \
 		libenchant-2.so:textproc/enchant2 \
-		liblz4.so:archivers/liblz4
+		liblz4.so:archivers/liblz4 \
+		libusrsctp.so:net/libusrsctp \
+		libjpeg.so:graphics/jpeg-turbo
 
 USES=		cmake compiler:c++17-lang desktop-file-utils \
 		gnome pkgconfig python:3.7,build qt:5 ssl xorg
