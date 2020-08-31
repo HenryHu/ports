@@ -1,10 +1,11 @@
 # $FreeBSD: head/net-im/telegram-desktop/Makefile 536469 2020-05-25 14:15:57Z fernape $
 
 PORTNAME=	telegram-desktop
-DISTVERSION=	2.1.7
+DISTVERSION=	2.3.2
 CATEGORIES=	net-im
 MASTER_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/releases/download/v${DISTVERSION}/
 DISTNAME=	tdesktop-${DISTVERSION}-full
+DISTFILES=	${DISTNAME}${EXTRACT_SUFX}
 
 MAINTAINER=	henry.hu.sh@gmail.com
 COMMENT=	Telegram Desktop messaging app
@@ -38,8 +39,10 @@ USES=		cmake compiler:c++17-lang desktop-file-utils \
 # see Bugzilla #245452 for details
 NO_CCACHE=	yes
 
+USE_GITHUB=	nodefault
 GH_ACCOUNT=	telegramdesktop
 GH_PROJECT=	tdesktop
+GH_TUPLE=	desktop-app:tg_owt:fc49a0e:tg_owt/tg_owt
 USE_GNOME=	glib20
 USE_QT=		core dbus gui imageformats network widgets buildtools_build \
 		qmake_build
@@ -51,7 +54,8 @@ CMAKE_OFF=	DESKTOP_APP_USE_PACKAGED_RLOTTIE DESKTOP_APP_USE_PACKAGED_VARIANT \
 		DESKTOP_APP_USE_GLIBC_WRAPS TDESKTOP_USE_PACKAGED_TGVOIP
 CMAKE_ARGS=	-DDESKTOP_APP_SPECIAL_TARGET="" -DTDESKTOP_LAUNCHER_BASENAME="telegramdesktop" \
 		-DTDESKTOP_API_ID=${TELEGRAM_API_ID} -DTDESKTOP_API_HASH=${TELEGRAM_API_HASH} \
-		-Ddisable_autoupdate=1
+		-Ddisable_autoupdate=1 \
+		-DDESKTOP_APP_WEBRTC_LOCATION=${WRKSRC}/tg_owt/src
 
 # Telegram asks each custom build to have its own API ID and hash.
 TELEGRAM_API_ID=	601761
@@ -79,4 +83,13 @@ GTK_CMAKE_BOOL_OFF=	TDESKTOP_DISABLE_GTK_INTEGRATION
 USE_GNOME+=	gtk30
 .endif
 
-.include <bsd.port.mk>
+.include <bsd.port.pre.mk>
+
+pre-configure:
+	@cd ${WRKSRC}/tg_owt && ${MKDIR} -p out/Release && cd out/Release && \
+	    cmake -G Ninja -DCMAKE_BUILD_TYPE=Release ../..
+
+pre-build:
+	@cd ${WRKSRC}/tg_owt/out/Release && ninja
+
+.include <bsd.port.post.mk>

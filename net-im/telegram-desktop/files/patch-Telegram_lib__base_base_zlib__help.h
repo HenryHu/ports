@@ -1,4 +1,4 @@
---- Telegram/lib_base/base/zlib_help.h.orig	2020-05-12 13:19:31 UTC
+--- Telegram/lib_base/base/zlib_help.h.orig	2020-08-10 11:25:13 UTC
 +++ Telegram/lib_base/base/zlib_help.h
 @@ -6,8 +6,8 @@
  //

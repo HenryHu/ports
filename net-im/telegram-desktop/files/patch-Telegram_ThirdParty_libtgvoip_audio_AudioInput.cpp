@@ -1,4 +1,4 @@
---- Telegram/ThirdParty/libtgvoip/audio/AudioInput.cpp.orig	2018-12-31 01:05:58 UTC
+--- Telegram/ThirdParty/libtgvoip/audio/AudioInput.cpp.orig	2020-08-18 07:13:47 UTC
 +++ Telegram/ThirdParty/libtgvoip/audio/AudioInput.cpp
 @@ -26,7 +26,7 @@
  #include "../os/windows/AudioInputWave.h"
