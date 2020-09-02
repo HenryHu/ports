@@ -33,7 +33,8 @@ LIB_DEPENDS=	libavformat.so:multimedia/ffmpeg \
 		libenchant-2.so:textproc/enchant2 \
 		liblz4.so:archivers/liblz4 \
 		libusrsctp.so:net/libusrsctp \
-		libjpeg.so:graphics/jpeg-turbo
+		libjpeg.so:graphics/jpeg-turbo \
+		libxkbcommon.so:x11/libxkbcommon
 
 USES=		cmake compiler:c++17-lang desktop-file-utils \
 		gnome pkgconfig python:3.7,build qt:5 ssl xorg
@@ -47,8 +48,9 @@ GH_PROJECT=	tdesktop
 GH_TUPLE=	desktop-app:tg_owt:fc49a0e:tg_owt/tg_owt
 USE_GNOME=	glib20
 USE_QT=		core dbus gui imageformats network widgets buildtools_build \
-		qmake_build
+		qmake_build wayland
 USE_XORG=	x11 xcb
+USE_GL=		gl
 
 CMAKE_ON=	DESKTOP_APP_USE_PACKAGED DESKTOP_APP_DISABLE_CRASH_REPORTS \
 		TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME TDESKTOP_DISABLE_DESKTOP_FILE_GENERATION
