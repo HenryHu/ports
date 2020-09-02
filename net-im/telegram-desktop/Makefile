@@ -22,7 +22,8 @@ BUILD_DEPENDS=	alsa-lib>0:audio/alsa-lib \
 		range-v3>0:devel/range-v3 \
 		microsoft-gsl>0:devel/microsoft-gsl \
 		tl-expected>0:devel/tl-expected \
-		yasm:devel/yasm
+		yasm:devel/yasm \
+		v4l_compat>0:multimedia/v4l_compat
 LIB_DEPENDS=	libavformat.so:multimedia/ffmpeg \
 		libdbus-1.so:devel/dbus \
 		libminizip.so:archivers/minizip \
