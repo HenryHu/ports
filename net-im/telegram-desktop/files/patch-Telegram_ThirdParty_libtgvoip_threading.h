@@ -1,4 +1,4 @@
---- Telegram/ThirdParty/libtgvoip/threading.h.orig	2020-08-18 07:13:47 UTC
+--- Telegram/ThirdParty/libtgvoip/threading.h.orig	2018-11-23 01:03:16 UTC
 +++ Telegram/ThirdParty/libtgvoip/threading.h
 @@ -18,6 +18,9 @@
  #ifdef __APPLE__

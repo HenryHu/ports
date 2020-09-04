@@ -1,4 +1,4 @@
---- Telegram/ThirdParty/libtgvoip/logging.cpp.orig	2020-08-18 07:13:47 UTC
+--- Telegram/ThirdParty/libtgvoip/logging.cpp.orig	2018-12-31 01:05:58 UTC
 +++ Telegram/ThirdParty/libtgvoip/logging.cpp
 @@ -13,7 +13,7 @@
  
