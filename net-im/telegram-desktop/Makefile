@@ -63,6 +63,8 @@ CMAKE_ARGS=	-DDESKTOP_APP_SPECIAL_TARGET="" -DTDESKTOP_LAUNCHER_BASENAME="telegr
 		-Ddisable_autoupdate=1 \
 		-DDESKTOP_APP_WEBRTC_LOCATION=${WRKSRC}/tg_owt/src
 
+BROKEN_i386=	Does not build, webrtc related.
+
 # Telegram asks each custom build to have its own API ID and hash.
 TELEGRAM_API_ID=	601761
 TELEGRAM_API_HASH=	20a3432aab43f24bb4460fceac5ba38d
