@@ -1,6 +1,13 @@
---- data/db/android/create_db.py.orig	2020-10-11 19:58:39 UTC
+--- data/db/android/create_db.py.orig	2020-10-11 20:12:08 UTC
 +++ data/db/android/create_db.py
-@@ -9,7 +9,7 @@ def get_sheng_yun(pinyin):
+@@ -3,27 +3,27 @@ from pydict import *
+ from id import *
+ from valid_hanzi import *
+ import sys
++from functools import cmp_to_key
+ 
+ def get_sheng_yun(pinyin):
+     if pinyin == None:
          return None, None
      if pinyin == "ng":
          return "", "en"
@@ -9,12 +16,12 @@
          t = pinyin[:i]
          if t in SHENGMU_DICT:
              return t, pinyin[len(t):]
-@@ -17,13 +17,13 @@ def get_sheng_yun(pinyin):
+     return "", pinyin
  
  def read_phrases(filename):
-     buf = file(filename).read()
+-    buf = file(filename).read()
 -    buf = unicode(buf, "utf16")
-+    buf = str(buf, "utf16")
++    buf = open(filename, encoding='utf-16').read()
      buf = buf.strip()
 -    for l in buf.split(u'\n'):
 -        hanzi, freq, flag, pinyin = l.split(u' ', 3)
@@ -40,7 +47,7 @@
  
  
      sql = "CREATE TABLE py_phrase_%d (phrase TEXT, freq INTEGER, %s);"
-@@ -44,7 +44,7 @@ def create_db(filename):
+@@ -44,12 +44,12 @@ def create_db(filename):
          for j in range(0, i + 1):
              column.append ("s%d INTEGER" % j)
              column.append ("y%d INTEGER" % j)
@@ -49,6 +56,12 @@
          # con.execute(sql % (i, column))
          # con.commit()
  
+     records = list(read_phrases(filename))
+-    records.sort(lambda a, b: 1 if a[1] > b[1] else -1)
++    records.sort(key=cmp_to_key(lambda a, b: 1 if a[1] > b[1] else -1))
+     records_new = []
+     i = 0
+     max_freq = 0.0
 @@ -60,7 +60,7 @@ def create_db(filename):
          records_new.append((hanzi, i, pinyin))
      records_new.reverse()
@@ -58,8 +71,12 @@
      insert_sql = "INSERT INTO py_phrase_%d VALUES (%s);"
      for hanzi, freq, pinyin in records_new:
          columns = []
-@@ -72,9 +72,9 @@ def create_db(filename):
-         values = "'%s', %d, %s" % (hanzi.encode("utf8"), freq, ",".join(map(str,columns)))
+@@ -69,12 +69,12 @@ def create_db(filename):
+             s, y = pinyin_id[s], pinyin_id[y]
+             columns.append(s)
+             columns.append(y)
+-        values = "'%s', %d, %s" % (hanzi.encode("utf8"), freq, ",".join(map(str,columns)))
++        values = "'%s', %d, %s" % (hanzi, freq, ",".join(map(str,columns)))
              
          sql = insert_sql % (len(hanzi) - 1, values)
 -        print sql
