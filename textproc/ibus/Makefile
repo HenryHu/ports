@@ -1,8 +1,9 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD: head/textproc/ibus/Makefile 524461 2020-01-28 07:24:38Z antoine $
+# $FreeBSD: head/textproc/ibus/Makefile 550038 2020-09-25 14:32:34Z bapt $
 
 PORTNAME=	ibus
 PORTVERSION=	1.5.22
+PORTREVISION=	1
 CATEGORIES=	textproc
 
 MAINTAINER=	henry.hu.sh@gmail.com
