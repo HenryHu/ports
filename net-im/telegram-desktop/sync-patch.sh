@@ -1,9 +1,12 @@
 #! /bin/sh
 
 TG_VER=`make -VDISTVERSION`
+# version of Telegram/ThirdParty/libtgvoip submodule.
 LIBTGVOIP_VER=7563a96
-CMAKE_VER=9b1ed39
-OWT_VER=fc49a0e
+# version of cmake submodule.
+CMAKE_VER=cfc6051
+# latest version of tg_owt
+OWT_VER=c73a471
 
 MY_VER=bsd_$TG_VER
 
