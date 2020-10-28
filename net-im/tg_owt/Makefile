@@ -11,7 +11,8 @@ COMMENT=	Webrtc library used by telegram-desktop
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-LIB_DEPENDS=	libjpeg.so:graphics/jpeg-turbo
+LIB_DEPENDS=	libavformat.so:multimedia/ffmpeg \
+		libjpeg.so:graphics/jpeg-turbo
 
 USES=		cmake pkgconfig
 USE_GITHUB=	yes
