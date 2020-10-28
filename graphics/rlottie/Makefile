@@ -3,7 +3,7 @@
 
 PORTNAME=	desktop-app-rlottie
 PORTVERSION=	0.0.20201025
-CATEGORIES=	devel
+CATEGORIES=	graphics
 
 MAINTAINER=	henry.hu.sh@gmail.com
 COMMENT=	A platform independent standalone library that plays Lottie Animation.
