@@ -16,7 +16,8 @@ BUILD_DEPENDS=	alsa-lib>0:audio/alsa-lib \
 		yasm:devel/yasm
 
 LIB_DEPENDS=	libavformat.so:multimedia/ffmpeg \
-		libjpeg.so:graphics/jpeg-turbo
+		libjpeg.so:graphics/jpeg-turbo \
+		libusrsctp.so:net/libusrsctp
 
 USES=		cmake pkgconfig
 USE_GITHUB=	yes
