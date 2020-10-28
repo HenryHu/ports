@@ -13,6 +13,7 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 
 BUILD_DEPENDS=	alsa-lib>0:audio/alsa-lib \
 		pulseaudio>0:audio/pulseaudio \
+		v4l_compat>0:multimedia/v4l_compat \
 		yasm:devel/yasm
 
 LIB_DEPENDS=	libavformat.so:multimedia/ffmpeg \
