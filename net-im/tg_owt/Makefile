@@ -17,8 +17,9 @@ GH_ACCOUNT=	desktop-app
 GH_PROJECT=	tg_owt
 GH_TAGNAME=	c73a471
 
-
 LIB_DEPENDS=	libjpeg.so:graphics/jpeg-turbo
+
+USES=		pkgconfig
 
 do-install:
 	@${INSTALL_DATA} ${BUILD_WRKSRC}/libtg_owt.a ${STAGEDIR}${PREFIX}/lib
