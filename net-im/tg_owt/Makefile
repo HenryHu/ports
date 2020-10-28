@@ -26,6 +26,9 @@ GH_ACCOUNT=	desktop-app
 GH_PROJECT=	tg_owt
 GH_TAGNAME=	c73a471
 
+# Disable DCHECKs, otherwise video calls will crash.
+CXXFLAGS+=	-DNDEBUG
+
 do-install:
 	@${INSTALL_DATA} ${BUILD_WRKSRC}/libtg_owt.a ${STAGEDIR}${PREFIX}/lib
 	@${MKDIR} ${STAGEDIR}${PREFIX}/lib/cmake/tg_owt
