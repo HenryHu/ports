@@ -11,15 +11,13 @@ COMMENT=	Webrtc library used by telegram-desktop
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-USES=		cmake
+LIB_DEPENDS=	libjpeg.so:graphics/jpeg-turbo
+
+USES=		cmake pkgconfig
 USE_GITHUB=	yes
 GH_ACCOUNT=	desktop-app
 GH_PROJECT=	tg_owt
 GH_TAGNAME=	c73a471
-
-LIB_DEPENDS=	libjpeg.so:graphics/jpeg-turbo
-
-USES=		pkgconfig
 
 do-install:
 	@${INSTALL_DATA} ${BUILD_WRKSRC}/libtg_owt.a ${STAGEDIR}${PREFIX}/lib
