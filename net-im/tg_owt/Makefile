@@ -12,7 +12,8 @@ LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
 BUILD_DEPENDS=	alsa-lib>0:audio/alsa-lib \
-		pulseaudio>0:audio/pulseaudio
+		pulseaudio>0:audio/pulseaudio \
+		yasm:devel/yasm
 
 LIB_DEPENDS=	libavformat.so:multimedia/ffmpeg \
 		libjpeg.so:graphics/jpeg-turbo
