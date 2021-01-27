@@ -16,7 +16,16 @@
          tg_owt::libvpx
          tg_owt::libvpx_mmx
          tg_owt::libvpx_sse2
-@@ -1839,7 +1837,6 @@ TARGETS
+@@ -109,6 +109,8 @@
+     link_dl(tg_owt)
+ endif()
+ 
++target_include_directories(tg_owt BEFORE PRIVATE "src/third_party/abseil-cpp")
++
+ nice_target_sources(tg_owt ${webrtc_loc}
+ PRIVATE
+     rtc_base/async_invoker.cc
+@@ -1839,7 +1839,6 @@ TARGETS
      libpffft
      librnnoise
      libsrtp
