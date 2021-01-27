@@ -1,7 +1,8 @@
-# $FreeBSD: head/net-im/telegram-desktop/Makefile 552150 2020-10-12 21:02:11Z makc $
+# $FreeBSD: head/net-im/telegram-desktop/Makefile 561249 2021-01-11 19:22:21Z yuri $
 
 PORTNAME=	telegram-desktop
 DISTVERSION=	2.4.4
+PORTREVISION=	2
 CATEGORIES=	net-im
 MASTER_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/releases/download/v${DISTVERSION}/
 DISTNAME=	tdesktop-${DISTVERSION}-full
