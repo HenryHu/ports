@@ -1,4 +1,4 @@
---- src/rtc_base/byte_order.h.orig	2020-10-07 14:11:02 UTC
+--- src/rtc_base/byte_order.h.orig	2021-02-03 11:42:41 UTC
 +++ src/rtc_base/byte_order.h
 @@ -89,7 +89,7 @@
  #endif  // defined(WEBRTC_ARCH_LITTLE_ENDIAN)

@@ -1,6 +1,6 @@
---- CMakeLists.txt.orig	2020-10-07 14:11:02 UTC
+--- CMakeLists.txt.orig	2021-02-03 11:42:41 UTC
 +++ CMakeLists.txt
-@@ -38,7 +38,6 @@ include(cmake/libopenh264.cmake)
+@@ -54,7 +54,6 @@ include(cmake/libopenh264.cmake)
  include(cmake/libpffft.cmake)
  include(cmake/librnnoise.cmake)
  include(cmake/libsrtp.cmake)
@@ -8,7 +8,7 @@
  include(cmake/libvpx.cmake)
  include(cmake/libwebrtcbuild.cmake)
  include(cmake/libyuv.cmake)
-@@ -62,7 +61,6 @@ if (is_x86 OR is_x64)
+@@ -88,7 +87,6 @@ if (is_x86 OR is_x64)
          tg_owt::libpffft
          tg_owt::librnnoise
          tg_owt::libsrtp
@@ -16,7 +16,27 @@
          tg_owt::libvpx
          tg_owt::libvpx_mmx
          tg_owt::libvpx_sse2
-@@ -1839,7 +1837,6 @@ TARGETS
+@@ -137,6 +135,7 @@ endif()
+ link_openssl(tg_owt)
+ link_ffmpeg(tg_owt)
+ link_opus(tg_owt)
++link_usrsctp(tg_owt)
+ 
+ if (UNIX AND NOT APPLE)
+     link_libalsa(tg_owt)
+@@ -145,6 +144,11 @@ if (UNIX AND NOT APPLE)
+     link_x11(tg_owt)
+ endif()
+ 
++target_include_directories(tg_owt BEFORE PRIVATE "src/third_party/abseil-cpp")
++target_include_directories(tg_owt BEFORE PRIVATE "src/third_party/libvpx/source/libvpx")
++target_include_directories(tg_owt BEFORE PRIVATE "src/third_party/libyuv/include")
++target_include_directories(tg_owt BEFORE PRIVATE "src")
++
+ function(add_sublibrary postfix)
+     add_library(tg_owt_${postfix} OBJECT)
+     init_feature_target(tg_owt_${postfix} ${postfix})
+@@ -2188,7 +2192,6 @@ set(export_targets
      libpffft
      librnnoise
      libsrtp

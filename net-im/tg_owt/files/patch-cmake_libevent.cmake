@@ -1,4 +1,4 @@
---- cmake/libevent.cmake.orig	2020-10-07 14:11:02 UTC
+--- cmake/libevent.cmake.orig	2021-02-03 11:42:41 UTC
 +++ cmake/libevent.cmake
 @@ -17,14 +17,13 @@ if (APPLE)
  else()
