@@ -1,8 +1,7 @@
 # $FreeBSD: head/net-im/telegram-desktop/Makefile 561249 2021-01-11 19:22:21Z yuri $
 
 PORTNAME=	telegram-desktop
-DISTVERSION=	2.4.4
-PORTREVISION=	2
+DISTVERSION=	2.5.8
 CATEGORIES=	net-im
 MASTER_SITES=	https://github.com/${GH_ACCOUNT}/${GH_PROJECT}/releases/download/v${DISTVERSION}/
 DISTNAME=	tdesktop-${DISTVERSION}-full
@@ -50,7 +49,7 @@ NO_CCACHE=	yes
 USE_GITHUB=	nodefault
 GH_ACCOUNT=	telegramdesktop
 GH_PROJECT=	tdesktop
-GH_TUPLE=	desktop-app:tg_owt:c73a471:tg_owt/tg_owt
+#GH_TUPLE=	desktop-app:tg_owt:a198773:tg_owt/tg_owt
 USE_GNOME=	glib20
 USE_QT=		core dbus gui imageformats network widgets buildtools_build \
 		qmake_build wayland
@@ -64,8 +63,8 @@ CMAKE_OFF=	DESKTOP_APP_USE_PACKAGED_RLOTTIE DESKTOP_APP_USE_PACKAGED_VARIANT \
 		DESKTOP_APP_USE_PACKAGED_FONTS
 CMAKE_ARGS=	-DDESKTOP_APP_SPECIAL_TARGET="" -DTDESKTOP_LAUNCHER_BASENAME="telegramdesktop" \
 		-DTDESKTOP_API_ID=${TELEGRAM_API_ID} -DTDESKTOP_API_HASH=${TELEGRAM_API_HASH} \
-		-Ddisable_autoupdate=1 \
-		-DDESKTOP_APP_WEBRTC_LOCATION=${WRKSRC}/tg_owt/src
+		-Ddisable_autoupdate=1
+#		-DDESKTOP_APP_WEBRTC_LOCATION=${WRKSRC}/tg_owt/src
 
 # Disable DCHECKs, otherwise video calls will crash.
 CXXFLAGS+=	-DNDEBUG
@@ -100,13 +99,13 @@ USE_GNOME+=	gtk30
 
 .include <bsd.port.pre.mk>
 
-pre-configure:
-	@cd ${WRKSRC}/tg_owt && \
-	    ${MKDIR} out/${CMAKE_BUILD_TYPE} && \
-	    cd out/${CMAKE_BUILD_TYPE} && \
-	    ${CMAKE_BIN} ${CMAKE_ARGS} ${WRKSRC}/tg_owt
-
-pre-build:
-	@cd ${WRKSRC}/tg_owt/out/${CMAKE_BUILD_TYPE} && ${DO_MAKE_BUILD}
+#pre-configure:
+#	@cd ${WRKSRC}/tg_owt && \
+#	    ${MKDIR} out/${CMAKE_BUILD_TYPE} && \
+#	    cd out/${CMAKE_BUILD_TYPE} && \
+#	    ${CMAKE_BIN} ${CMAKE_ARGS} ${WRKSRC}/tg_owt
+#
+#pre-build:
+#	@cd ${WRKSRC}/tg_owt/out/${CMAKE_BUILD_TYPE} && ${DO_MAKE_BUILD}
 
 .include <bsd.port.post.mk>

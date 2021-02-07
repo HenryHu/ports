@@ -1,4 +1,4 @@
---- cmake/external/rlottie/CMakeLists.txt.orig	2020-10-23 14:48:52 UTC
+--- cmake/external/rlottie/CMakeLists.txt.orig	2021-01-04 07:30:14 UTC
 +++ cmake/external/rlottie/CMakeLists.txt
 @@ -7,7 +7,7 @@
  add_library(external_rlottie INTERFACE IMPORTED GLOBAL)

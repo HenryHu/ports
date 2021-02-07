@@ -1,4 +1,4 @@
---- Telegram/ThirdParty/libtgvoip/webrtc_dsp/rtc_base/platform_thread_types.cc.orig	2018-11-23 01:03:16 UTC
+--- Telegram/ThirdParty/libtgvoip/webrtc_dsp/rtc_base/platform_thread_types.cc.orig	2021-01-01 14:29:15 UTC
 +++ Telegram/ThirdParty/libtgvoip/webrtc_dsp/rtc_base/platform_thread_types.cc
 @@ -11,9 +11,13 @@
  #include "rtc_base/platform_thread_types.h"

@@ -1,4 +1,4 @@
---- Telegram/ThirdParty/libtgvoip/os/posix/NetworkSocketPosix.cpp.orig	2019-04-03 18:20:00 UTC
+--- Telegram/ThirdParty/libtgvoip/os/posix/NetworkSocketPosix.cpp.orig	2021-01-01 14:29:15 UTC
 +++ Telegram/ThirdParty/libtgvoip/os/posix/NetworkSocketPosix.cpp
 @@ -64,6 +64,7 @@ void NetworkSocketPosix::SetMaxPriority(){
  	if(res<0){
