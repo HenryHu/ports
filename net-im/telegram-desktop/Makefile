@@ -25,7 +25,7 @@ BUILD_DEPENDS=	alsa-lib>0:audio/alsa-lib \
 		tl-expected>0:devel/tl-expected \
 		v4l_compat>0:multimedia/v4l_compat \
 		yasm:devel/yasm \
-		libtg_owt.a:net-im/tg_owt
+		${LOCALBASE}/lib/libtg_owt.a:net-im/tg_owt
 LIB_DEPENDS=	libavformat.so:multimedia/ffmpeg \
 		libdbus-1.so:devel/dbus \
 		libdbusmenu-qt5.so:devel/libdbusmenu-qt \
