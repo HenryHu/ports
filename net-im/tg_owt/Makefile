@@ -50,10 +50,4 @@ post-extract:
 		${EXTRACT_CMD} ${EXTRACT_BEFORE_ARGS} \
 		${_DISTDIR}${LIBVPX_TAGNAME}.tar.gz ${EXTRACT_AFTER_ARGS})
 
-do-install:
-	${INSTALL_DATA} ${BUILD_WRKSRC}/libtg_owt.a ${STAGEDIR}${PREFIX}/lib
-	${MKDIR} ${STAGEDIR}${PREFIX}/lib/cmake/tg_owt
-	${INSTALL_DATA} ${BUILD_WRKSRC}/tg_owtConfig.cmake ${STAGEDIR}${PREFIX}/lib/cmake/tg_owt
-	${INSTALL_DATA} ${BUILD_WRKSRC}/tg_owtTargets.cmake ${STAGEDIR}${PREFIX}/lib/cmake/tg_owt
-
 .include <bsd.port.mk>
