@@ -28,9 +28,9 @@
      link_x11(tg_owt)
  endif()
  
-+target_include_directories(tg_owt BEFORE PRIVATE "src/third_party/abseil-cpp")
-+target_include_directories(tg_owt BEFORE PRIVATE "src/third_party/libvpx/source/libvpx")
-+target_include_directories(tg_owt BEFORE PRIVATE "src/third_party/libyuv/include")
++target_include_directories(tg_owt BEFORE PRIVATE $<TARGET_PROPERTY:tg_owt::libabsl,INTERFACE_INCLUDE_DIRECTORIES>)
++target_include_directories(tg_owt BEFORE PRIVATE $<TARGET_PROPERTY:tg_owt::libvpx,INTERFACE_INCLUDE_DIRECTORIES>)
++target_include_directories(tg_owt BEFORE PRIVATE $<TARGET_PROPERTY:tg_owt::libyuv,INTERFACE_INCLUDE_DIRECTORIES>)
 +target_include_directories(tg_owt BEFORE PRIVATE "src")
 +
  function(add_sublibrary postfix)

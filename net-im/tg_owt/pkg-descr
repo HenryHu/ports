@@ -1,4 +1,3 @@
-rlottie is a platform independent standalone c++ library for rendering vector
-based animations and art in realtime.
+WebRTC library used by telegram-desktop.
 
-WWW: https://github.com/desktop-app/rlottie
+WWW: https://github.com/desktop-app/tg_owt
