@@ -2,3 +2,5 @@
 etc/sane.d/dll.d/airscan
 lib/sane/libsane-airscan.so.1
 share/man/man5/sane-airscan.5.gz
+share/man/man1/airscan-discover.1.gz
+bin/airscan-discover
