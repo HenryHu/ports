@@ -1,11 +1,11 @@
-#!/usr/bin/env python2.7
+#!/usr/bin/env python3
 
 import subprocess
 import os
 import glob
 
 def git_get_modified_files():
-    output = subprocess.check_output("git status -s", shell=True)
+    output = subprocess.check_output("git status -s", shell=True).decode('utf-8')
     for line in output.split('\n'):
         line = line.strip()
         if not line.startswith('M'):
@@ -14,7 +14,7 @@ def git_get_modified_files():
 
 
 def git_diff_content(filename):
-    output = subprocess.check_output("git diff %s" % filename, shell=True)
+    output = subprocess.check_output("git diff %s" % filename, shell=True).decode('utf-8')
     return output.split('\n')
 
 
@@ -41,20 +41,24 @@ def ports_get_modified_files():
         oldfilename = os.path.basename(oldfilepath)
         newfilepath = os.path.join("files", oldfilename)
         if not os.path.exists(newfilepath):
+            print("Skip deleted file:", newfilepath)
             continue
         oldcontent = open(oldfilepath).read()
         newcontent = open(newfilepath).read()
         if oldcontent != newcontent:
+            print("Modified:", newfilepath)
             yield newfilepath
+        else:
+            print("Same:", newfilepath)
 
 
 def ports_diff_content(filename):
     try:
         output = subprocess.check_output("diff -ruN %s %s" %
                                          (os.path.join("/usr/ports/net-im/telegram-desktop",
-                                                       filename), filename), shell=True)
+                                                       filename), filename), shell=True).decode('utf-8')
     except subprocess.CalledProcessError as e:
-        output = e.output
+        output = e.output.decode('utf-8')
     return output.split('\n')
 
 
@@ -66,6 +70,7 @@ def ports_revert(filename):
 
 def check_git_diff():
     for filename in git_get_modified_files():
+        print("Checking git diff", filenmae)
         diff_content = git_diff_content(filename)
         if diff_only_in_time(diff_content):
             git_revert(filename)
@@ -73,6 +78,7 @@ def check_git_diff():
 
 def check_ports_diff():
     for filename in ports_get_modified_files():
+        print("Checking:", filename)
         diff_content = ports_diff_content(filename)
         if diff_content == []:
             print("no diff: %s" % filename)
