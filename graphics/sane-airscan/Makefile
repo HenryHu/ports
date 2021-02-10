@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=		sane-airscan
-DISTVERSION=		0.99.23
+DISTVERSION=		0.99.24
 CATEGORIES=		graphics
 
 MAINTAINER=		henry.hu.sh@gmail.com
