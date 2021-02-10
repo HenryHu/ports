@@ -4,11 +4,6 @@
 PORTNAME=	tg_owt
 PORTVERSION=	0.0.20210207
 CATEGORIES=	net-im
-MASTER_SITES=	https://chromium.googlesource.com/webm/libvpx.git/+archive/:libvpx \
-		https://chromium.googlesource.com/libyuv/libyuv.git/+archive/:libyuv
-DISTFILES=	${LIBYUV_TAGNAME}.tar.gz:libvpx \
-		${LIBVPX_TAGNAME}.tar.gz:libyuv
-EXTRACT_ONLY=	${DISTFILE_DEFAULT}
 
 MAINTAINER=	henry.hu.sh@gmail.com
 COMMENT=	Webrtc library used by telegram-desktop
@@ -30,24 +25,13 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	desktop-app
 GH_PROJECT=	tg_owt
 GH_TAGNAME=	a198773
-
-# libvpx version in src/third_party/libvpx/source/libvpx
-# libyuv verison in src/third_party/libyuv
-LIBYUV_TAGNAME=	ad89006
-LIBVPX_TAGNAME=	5b63f0f
+# libyuv cloned from https://chromium.googlesource.com/libyuv/libyuv
+GH_TUPLE=	webmproject:libvpx:5b63f0f:libvpx/src/third_party/libvpx/source/libvpx \
+		HenryHu:libyuv:ad89006:libyuv/src/third_party/libyuv
 
 # Disable DCHECKs, otherwise video calls will crash.
 CXXFLAGS+=	-DNDEBUG
 
 CMAKE_OFF=	BUILD_SHARED_LIBS
-
-post-extract:
-	# Extract Git submodules
-	(cd ${WRKSRC}/src/third_party/libyuv && \
-		${EXTRACT_CMD} ${EXTRACT_BEFORE_ARGS} \
-		${_DISTDIR}${LIBYUV_TAGNAME}.tar.gz ${EXTRACT_AFTER_ARGS})
-	(cd ${WRKSRC}/src/third_party/libvpx/source/libvpx && \
-		${EXTRACT_CMD} ${EXTRACT_BEFORE_ARGS} \
-		${_DISTDIR}${LIBVPX_TAGNAME}.tar.gz ${EXTRACT_AFTER_ARGS})
 
 .include <bsd.port.mk>
