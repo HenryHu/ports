@@ -1,9 +1,9 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD: head/textproc/ibus/Makefile 550038 2020-09-25 14:32:34Z bapt $
+# $FreeBSD: head/textproc/ibus/Makefile 564238 2021-02-06 19:10:39Z bapt $
 
 PORTNAME=	ibus
-PORTVERSION=	1.5.22
-PORTREVISION=	1
+PORTVERSION=	1.5.23
+PORTREVISION=	2
 CATEGORIES=	textproc
 
 MAINTAINER=	henry.hu.sh@gmail.com
@@ -25,6 +25,8 @@ USES=		autoreconf compiler cpe gmake gnome libtool localbase pathfix pkgconfig p
 USE_GNOME=	glib20 intltool librsvg2 pygobject3
 USE_LDCONFIG=	yes
 USE_PYTHON=	py3kplist
+
+MAKE_JOBS_UNSAFE=yes
 
 SHEBANG_GLOB=	*.sh
 
@@ -83,7 +85,7 @@ GCONF_USE=		GNOME=gconf2
 GCONF_CONFIGURE_ENABLE=	gconf
 GCONF_VARS=		GCONF_SCHEMAS=ibus.schemas
 
-DCONF_USE=		GNOME=dconf,gconf2
+DCONF_USE=		GNOME=dconf
 DCONF_CONFIGURE_ENABLE=	dconf
 DCONF_VARS=		GLIB_SCHEMAS=org.freedesktop.ibus.gschema.xml
 
