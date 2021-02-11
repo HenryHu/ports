@@ -13,16 +13,13 @@ LICENSE_FILE=		${WRKSRC}/LICENSE
 LIB_DEPENDS=		libepoll-shim.so:devel/libepoll-shim \
 			libavahi-client.so:net/avahi-app \
 			libavahi-glib.so:net/avahi-app \
-			libjpeg.so:graphics/jpeg-turbo \
 			libsoup-2.4.so:devel/libsoup \
-			libxml2.so:textproc/libxml2 \
 			libpng16.so:graphics/png \
 			libgnutls.so:security/gnutls
-
 BUILD_DEPENDS=		sane-backends>0:graphics/sane-backends
 
-USES=			gmake pkgconfig gettext-runtime
-USE_GNOME=		glib20
+USES=			gettext-runtime gmake jpeg pkgconfig
+USE_GNOME=		glib20 libxml2
 USE_GITHUB=		yes
 GH_ACCOUNT=		alexpevzner
 
