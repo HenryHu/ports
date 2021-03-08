@@ -1,4 +1,4 @@
-# $FreeBSD: head/net-im/telegram-desktop/Makefile 561249 2021-01-11 19:22:21Z yuri $
+# $FreeBSD: head/net-im/telegram-desktop/Makefile 564939 2021-02-11 12:32:32Z lwhsu $
 
 PORTNAME=	telegram-desktop
 DISTVERSION=	2.5.8
