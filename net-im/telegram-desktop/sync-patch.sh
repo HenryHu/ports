@@ -7,13 +7,14 @@ LIBTGVOIP_VER=13a5fcb
 CMAKE_VER=695fabd
 # latest version of tg_owt
 # OWT_VER=`cat Makefile | grep desktop-app:tg_owt | cut -d : -f 3-3 `
+LIBBASE_VER=03679eb
 
 MY_VER=bsd_$TG_VER
 
 (cd $HOME/proj/tdesktop && git diff v$TG_VER..$MY_VER > patch)
 (cd $HOME/proj/libtgvoip && git diff $LIBTGVOIP_VER..HEAD > patch)
 (cd $HOME/proj/lib_ui && git diff upstream/master master > patch)
-(cd $HOME/proj/lib_base && git diff upstream/master master > patch)
+(cd $HOME/proj/lib_base && git diff $LIBBASE_VER $TG_VER > patch)
 (cd $HOME/proj/cmake_helpers && git diff $CMAKE_VER $MY_VER > patch)
 #(cd $HOME/proj/tg_owt && git diff $OWT_VER $MY_VER > patch)
 rm -f files/patch-*
