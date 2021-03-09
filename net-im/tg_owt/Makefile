@@ -34,6 +34,8 @@ CXXFLAGS+=	-DNDEBUG
 
 CMAKE_OFF=	BUILD_SHARED_LIBS
 
+.include <bsd.port.options.mk>
+
 .if ${SSL_DEFAULT} == base && ${OPSYS} == FreeBSD && ${OSVERSION} < 1200085
 BROKEN=		This port requires OpenSSL 1.1.0. The version in FreeBSD 11 base is too old.
 .endif
