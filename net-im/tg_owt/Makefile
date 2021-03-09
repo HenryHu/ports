@@ -1,5 +1,5 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD$
+# $FreeBSD: head/net-im/tg_owt/Makefile 564937 2021-02-11 12:30:56Z lwhsu $
 
 PORTNAME=	tg_owt
 PORTVERSION=	0.0.20210207
@@ -36,7 +36,7 @@ CMAKE_OFF=	BUILD_SHARED_LIBS
 
 .include <bsd.port.options.mk>
 
-.if ${SSL_DEFAULT} == "base" && ${OPSYS} == FreeBSD && ${OSVERSION} < 1200000
+.if ${SSL_DEFAULT} == "base" && ${OPSYS} == FreeBSD && ${OSVERSION} < 1200085
 BROKEN=		This port requires OpenSSL 1.1.0. Try DEFAULT_VERSIONS+=ssl=[openssl|libressl*]
 .endif
 
