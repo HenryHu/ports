@@ -20,7 +20,7 @@ LIB_DEPENDS=	libavformat.so:multimedia/ffmpeg \
 		libusrsctp.so:net/libusrsctp \
 		libopus.so:audio/opus
 
-USES=		cmake pkgconfig
+USES=		cmake pkgconfig ssl
 USE_GITHUB=	yes
 GH_ACCOUNT=	desktop-app
 GH_PROJECT=	tg_owt
@@ -33,5 +33,9 @@ GH_TUPLE=	webmproject:libvpx:5b63f0f:libvpx/src/third_party/libvpx/source/libvpx
 CXXFLAGS+=	-DNDEBUG
 
 CMAKE_OFF=	BUILD_SHARED_LIBS
+
+.if ${SSL_DEFAULT} == base && ${OPSYS} == FreeBSD && ${OSVERSION} < 1200085
+BROKEN=		This port requires OpenSSL 1.1.0. The version in FreeBSD 11 base is too old.
+.endif
 
 .include <bsd.port.mk>
