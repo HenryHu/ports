@@ -2,7 +2,7 @@
 # $FreeBSD: head/net-im/tg_owt/Makefile 564937 2021-02-11 12:30:56Z lwhsu $
 
 PORTNAME=	tg_owt
-PORTVERSION=	0.0.20210207
+PORTVERSION=	0.0.20210422
 CATEGORIES=	net-im
 
 MAINTAINER=	henry.hu.sh@gmail.com
@@ -24,7 +24,7 @@ USES=		cmake pkgconfig ssl
 USE_GITHUB=	yes
 GH_ACCOUNT=	desktop-app
 GH_PROJECT=	tg_owt
-GH_TAGNAME=	a198773
+GH_TAGNAME=	18cb4cd
 # libyuv cloned from https://chromium.googlesource.com/libyuv/libyuv
 GH_TUPLE=	webmproject:libvpx:5b63f0f:libvpx/src/third_party/libvpx/source/libvpx \
 		HenryHu:libyuv:ad89006:libyuv/src/third_party/libyuv
