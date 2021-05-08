@@ -1,14 +1,14 @@
 # Created by: Tobias Roth <ports@fsck.ch>
-# $FreeBSD: head/x11/slim/Makefile 526589 2020-02-20 21:15:44Z zeising $
+# $FreeBSD: head/x11/slim/Makefile 564705 2021-02-08 14:12:52Z bapt $
 
 PORTNAME=	slim
 PORTVERSION=	1.3.6
-PORTREVISION=	19
+PORTREVISION=	22
 CATEGORIES=	x11
 MASTER_SITES=	ftp://ftp.berlios.de/pub/slim/ \
 		SF/slim.berlios
 
-MAINTAINER=	henry.hu.sh@gmail.com
+MAINTAINER= 	jsm@FreeBSD.org	
 COMMENT=	Graphical login manager for X11, derived from Login.app
 
 LICENSE=	GPLv2
