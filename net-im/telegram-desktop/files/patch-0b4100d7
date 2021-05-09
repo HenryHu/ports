@@ -1,0 +1,38 @@
+From 0b4100d7cecc4e748c51f3f51ebfd1392ec3978a Mon Sep 17 00:00:00 2001
+From: John Preston <johnprestonmail@gmail.com>
+Date: Thu, 29 Apr 2021 10:53:08 +0400
+Subject: [PATCH] Set correct version in QLibrary::load.
+
+---
+ webview/platform/linux/webview_linux_webkit_gtk.cpp | 2 +-
+ webview/platform/linux/webview_linux_webkit_gtk.h   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git webview/platform/linux/webview_linux_webkit_gtk.cpp webview/platform/linux/webview_linux_webkit_gtk.cpp
+index 3b8ca3f..c3c8d37 100644
+--- Telegram/lib_webview/webview/platform/linux/webview_linux_webkit_gtk.cpp
++++ Telegram/lib_webview/webview/platform/linux/webview_linux_webkit_gtk.cpp
+@@ -38,7 +38,7 @@ bool Resolve() {
+ 		&& LOAD_GTK_SYMBOL(gtk, gtk_window_get_type)
+ 		&& LOAD_GTK_SYMBOL(gtk, gtk_window_set_decorated)
+ 		&& LOAD_GTK_SYMBOL(gtk, gdk_x11_window_get_xid)
+-		&& base::Platform::Gtk::LoadLibrary(webkit2gtk, "libwebkit2gtk-4.0.so.37", 0)
++		&& base::Platform::Gtk::LoadLibrary(webkit2gtk, "libwebkit2gtk-4.0.so.37", 37)
+ 		&& LOAD_GTK_SYMBOL(webkit2gtk, webkit_web_view_new)
+ 		&& LOAD_GTK_SYMBOL(webkit2gtk, webkit_web_view_get_type)
+ 		&& LOAD_GTK_SYMBOL(webkit2gtk, webkit_web_view_get_user_content_manager)
+diff --git webview/platform/linux/webview_linux_webkit_gtk.h webview/platform/linux/webview_linux_webkit_gtk.h
+index a7f0f97..6d2979a 100644
+--- Telegram/lib_webview/webview/platform/linux/webview_linux_webkit_gtk.h
++++ Telegram/lib_webview/webview/platform/linux/webview_linux_webkit_gtk.h
+@@ -11,9 +11,9 @@
+ extern "C" {
+ #undef signals
+ #include <JavaScriptCore/JavaScript.h>
++#include <gdk/gdkx.h>
+ #include <gtk/gtk.h>
+ #include <webkit2/webkit2.h>
+-#include <X11/Xlib.h>
+ #define signals public
+ } // extern "C"
+ 
