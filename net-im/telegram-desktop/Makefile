@@ -81,16 +81,12 @@ GTK_DESC=	Gtk integration (Use Gtk dialogs, etc.)
 
 ALSA_LIB_DEPENDS=	libasound.so:audio/alsa-lib
 GTK_CMAKE_BOOL_OFF=	DESKTOP_APP_DISABLE_GTK_INTEGRATION
+GTK_LIB_DEPENDS=       libwebkit2gtk-4.0.so:www/webkit2-gtk3
+GTK_USE=       GNOME=gtk30
 PULSEAUDIO_LIB_DEPENDS=	libpulse.so:audio/pulseaudio
 
 # Telegram asks each custom build to have its own API ID and hash.
 TELEGRAM_API_HASH=	20a3432aab43f24bb4460fceac5ba38d
 TELEGRAM_API_ID=	601761
-
-.include <bsd.port.options.mk>
-
-.if ${PORT_OPTIONS:MGTK}
-USE_GNOME+=	gtk30
-.endif
 
 .include <bsd.port.mk>
