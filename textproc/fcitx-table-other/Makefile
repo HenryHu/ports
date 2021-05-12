@@ -1,5 +1,3 @@
-# $FreeBSD: head/textproc/fcitx-table-other/Makefile 488341 2018-12-25 20:25:39Z tcberner $
-
 PORTNAME=	fcitx-table-other
 DISTVERSION=	0.2.3
 CATEGORIES=	textproc

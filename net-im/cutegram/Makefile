@@ -1,5 +1,4 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD: head/net-im/cutegram/Makefile 517063 2019-11-08 13:34:26Z tobik $
 
 PORTNAME=	cutegram
 PORTVERSION=	2.7.1

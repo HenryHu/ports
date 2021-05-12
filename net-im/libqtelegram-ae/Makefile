@@ -1,5 +1,4 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD: head/net-im/libqtelegram-ae/Makefile 507372 2019-07-26 20:46:53Z gerald $
 
 PORTNAME=	libqtelegram-ae
 PORTVERSION=	6.1
