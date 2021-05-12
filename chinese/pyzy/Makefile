@@ -1,5 +1,4 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD: head/chinese/pyzy/Makefile 559827 2021-01-01 13:27:52Z rene $
 
 PORTNAME=	pyzy
 PORTVERSION=	0.1.0

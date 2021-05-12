@@ -1,5 +1,4 @@
 # Created by: Zhihao Yuan <lichray@gmail.com>
-# $FreeBSD: head/chinese/libpinyin/Makefile 509067 2019-08-16 08:31:55Z delphij $
 
 PORTNAME=	libpinyin
 PORTVERSION=	2.3.0

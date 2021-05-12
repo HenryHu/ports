@@ -1,5 +1,4 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD: head/chinese/ibus-libpinyin/Makefile 509067 2019-08-16 08:31:55Z delphij $
 
 PORTNAME=	ibus-libpinyin
 PORTVERSION=	1.11.1
