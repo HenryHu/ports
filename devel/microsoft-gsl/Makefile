@@ -1,5 +1,3 @@
-# $FreeBSD: head/devel/microsoft-gsl/Makefile 527623 2020-03-02 10:08:48Z 0mp $
-
 PORTNAME=	microsoft-gsl
 DISTVERSIONPREFIX=	v
 DISTVERSION=	3.1.0

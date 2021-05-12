@@ -1,5 +1,4 @@
 # Created by: Wes Peters <wes@FreeBSD.org>
-# $FreeBSD: head/devel/poco/Makefile 507372 2019-07-26 20:46:53Z gerald $
 
 PORTNAME=	poco
 DISTVERSION=	1.10.1
@@ -16,7 +15,7 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 LIB_DEPENDS=	libpcre.so:devel/pcre \
 		libexpat.so:textproc/expat2
 
-USES=		cmake compiler:c++14-lang localbase pkgconfig
+USES=		cmake compiler:c++14-lang localbase pkgconfig tar:bz2
 USE_LDCONFIG=	yes
 
 CONFLICTS=	poco-ssl-[0-9]*
@@ -45,7 +44,8 @@ UNIXODBC_LIB_DEPENDS=	libodbc.so:databases/unixODBC
 UNIXODBC_CMAKE_ON=	-DODBC_INCLUDE_DIRECTORIES:PATH=${LOCALBASE}/include \
 			-DODBC_LIBRARIES:FILEPATH=${LOCALBASE}/lib/libodbc.so
 TEST_CMAKE_ON=		-DENABLE_TESTS:BOOL=ON
-TEST_IMPLIES=		SQLITE
+TEST_IMPLIES=		SQLITE SSL
+TEST_TEST_TARGET=	test
 REDIS_CMAKE_OFF=	-DENABLE_REDIS:BOOL=OFF
 
 .include <bsd.port.options.mk>
@@ -67,7 +67,7 @@ post-patch:
 	@${REINPLACE_CMD} -e \
 		's|-D_XOPEN_SOURCE=500 || ; \
 		 s|_EPOLL|_POLL| ; \
-		 s|CMAKE_DEBUG_POSTFIX "d"| CMAKE_DEBUG_POSTFIX ""| ; \
+		 s|CMAKE_DEBUG_POSTFIX "d"|CMAKE_DEBUG_POSTFIX ""| ; \
 		 s|dl rt|rt|' ${WRKSRC}/cmake/DefinePlatformSpecifc.cmake
 
 .include <bsd.port.mk>

@@ -1,5 +1,3 @@
-# $FreeBSD: head/devel/tl-expected/Makefile 527952 2020-03-07 14:40:37Z tcberner $
-
 PORTNAME=		tl-expected
 DISTVERSIONPREFIX=	v
 DISTVERSION=		1.0.0

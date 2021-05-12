@@ -1,5 +1,3 @@
-# $FreeBSD: head/devel/cquery/Makefile 528058 2020-03-08 17:01:46Z antoine $
-
 PORTNAME=	cquery
 PORTVERSION=	20180718
 DISTVERSIONPREFIX=	v
