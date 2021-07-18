@@ -1,5 +1,4 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
-# $FreeBSD: head/net-im/tg_owt/Makefile 564937 2021-02-11 12:30:56Z lwhsu $
 
 PORTNAME=	tg_owt
 PORTVERSION=	0.0.20210422
@@ -17,10 +16,10 @@ BUILD_DEPENDS=	alsa-lib>0:audio/alsa-lib \
 		yasm:devel/yasm
 LIB_DEPENDS=	libavformat.so:multimedia/ffmpeg \
 		libjpeg.so:graphics/jpeg-turbo \
-		libusrsctp.so:net/libusrsctp \
-		libopus.so:audio/opus
+		libopus.so:audio/opus \
+		libusrsctp.so:net/libusrsctp
 
-USES=		cmake pkgconfig ssl
+USES=		cmake pkgconfig
 USE_GITHUB=	yes
 GH_ACCOUNT=	desktop-app
 GH_PROJECT=	tg_owt
@@ -29,10 +28,10 @@ GH_TAGNAME=	18cb4cd
 GH_TUPLE=	webmproject:libvpx:5b63f0f:libvpx/src/third_party/libvpx/source/libvpx \
 		HenryHu:libyuv:ad89006:libyuv/src/third_party/libyuv
 
+CMAKE_OFF=	BUILD_SHARED_LIBS
+
 # Disable DCHECKs, otherwise video calls will crash.
 CXXFLAGS+=	-DNDEBUG
-
-CMAKE_OFF=	BUILD_SHARED_LIBS
 
 .include <bsd.port.options.mk>
 
