@@ -20,6 +20,7 @@ LIB_DEPENDS=	libavformat.so:multimedia/ffmpeg \
 		libusrsctp.so:net/libusrsctp
 
 USES=		cmake pkgconfig
+USE_XORG=	x11 xcomposite xdamage xrender xrandr
 USE_GITHUB=	yes
 GH_ACCOUNT=	desktop-app
 GH_PROJECT=	tg_owt
