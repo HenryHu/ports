@@ -20,7 +20,7 @@ LIB_DEPENDS=	libavformat.so:multimedia/ffmpeg \
 		libpipewire-0.3.so:multimedia/pipewire \
 		libusrsctp.so:net/libusrsctp
 
-USES=		cmake pkgconfig
+USES=		cmake pkgconfig xorg
 USE_XORG=	x11 xcomposite xdamage xrender xrandr
 USE_GITHUB=	yes
 GH_ACCOUNT=	desktop-app
