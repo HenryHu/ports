@@ -17,6 +17,7 @@ BUILD_DEPENDS=	alsa-lib>0:audio/alsa-lib \
 LIB_DEPENDS=	libavformat.so:multimedia/ffmpeg \
 		libjpeg.so:graphics/jpeg-turbo \
 		libopus.so:audio/opus \
+		libpipewire-0.3.so:multimedia/pipewire \
 		libusrsctp.so:net/libusrsctp
 
 USES=		cmake pkgconfig
