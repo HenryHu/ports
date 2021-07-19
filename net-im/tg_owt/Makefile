@@ -1,7 +1,7 @@
 # Created by: Henry Hu <henry.hu.sh@gmail.com>
 
 PORTNAME=	tg_owt
-PORTVERSION=	0.0.20210422
+PORTVERSION=	0.0.20210718
 CATEGORIES=	net-im
 
 MAINTAINER=	henry.hu.sh@gmail.com
@@ -23,7 +23,7 @@ USES=		cmake pkgconfig
 USE_GITHUB=	yes
 GH_ACCOUNT=	desktop-app
 GH_PROJECT=	tg_owt
-GH_TAGNAME=	18cb4cd
+GH_TAGNAME=	91d836d
 # libyuv cloned from https://chromium.googlesource.com/libyuv/libyuv
 GH_TUPLE=	webmproject:libvpx:5b63f0f:libvpx/src/third_party/libvpx/source/libvpx \
 		HenryHu:libyuv:ad89006:libyuv/src/third_party/libyuv
