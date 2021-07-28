@@ -2,6 +2,7 @@
 
 PORTNAME=	tg_owt
 PORTVERSION=	0.0.20210718
+PORTREVISION=	1
 CATEGORIES=	net-im
 
 MAINTAINER=	henry.hu.sh@gmail.com
@@ -20,7 +21,7 @@ LIB_DEPENDS=	libavformat.so:multimedia/ffmpeg \
 		libopus.so:audio/opus \
 		libpipewire-0.3.so:multimedia/pipewire \
 		libusrsctp.so:net/libusrsctp \
-		libvpx.so:multimedia/libvpx \
+		libvpx.so:multimedia/libvpx
 
 USES=		cmake pkgconfig xorg
 USE_XORG=	x11 xcomposite xdamage xrender xrandr
