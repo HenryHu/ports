@@ -1,25 +1,20 @@
-# $FreeBSD$
-
 PORTNAME=		sane-airscan
-DISTVERSION=		0.99.24
+DISTVERSION=		0.99.26
 CATEGORIES=		graphics
 
 MAINTAINER=		henry.hu.sh@gmail.com
-COMMENT=		Scanner Access Now Easy - Apple AirScan (eSCL) driver
+COMMENT=		SANE backend for AirScan (eSCL) and WSD document scanners
 
 LICENSE=		GPLv2
 LICENSE_FILE=		${WRKSRC}/LICENSE
 
-LIB_DEPENDS=		libepoll-shim.so:devel/libepoll-shim \
-			libavahi-client.so:net/avahi-app \
-			libavahi-glib.so:net/avahi-app \
-			libsoup-2.4.so:devel/libsoup \
-			libpng16.so:graphics/png \
+LIB_DEPENDS=		libavahi-client.so:net/avahi-app \
+			libpng.so:graphics/png \
 			libgnutls.so:security/gnutls
 BUILD_DEPENDS=		sane-backends>0:graphics/sane-backends
 
-USES=			gettext-runtime gmake jpeg pkgconfig
-USE_GNOME=		glib20 libxml2
+USES=			gmake gnome jpeg pkgconfig
+USE_GNOME=		libxml2
 USE_GITHUB=		yes
 GH_ACCOUNT=		alexpevzner
 
@@ -29,6 +24,8 @@ MANPAGES=		sane-airscan.5 airscan-discover.1
 
 post-install:
 	@${MV} ${STAGEDIR}${PREFIX}/etc/sane.d/airscan.conf \
-	       ${STAGEDIR}${PREFIX}/etc/sane.d/airscan.conf.sample
+		${STAGEDIR}${PREFIX}/etc/sane.d/airscan.conf.sample
+	${RLN} ${STAGEDIR}${PREFIX}/lib/sane/libsane-airscan.so.1 \
+		${STAGEDIR}${PREFIX}/lib/sane/libsane-airscan.so
 
 .include <bsd.port.mk>
