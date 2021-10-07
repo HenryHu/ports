@@ -54,7 +54,7 @@ USE_GL=		gl
 USE_GNOME=	glib20 glibmm
 INSTALLS_ICONS=	yes
 USE_QT=		core dbus gui imageformats network widgets buildtools_build \
-		qmake_build wayland
+		qmake_build wayland svg
 USE_XORG=	x11 xcb xcomposite xdamage xext xfixes xrender xrandr xtst
 
 CMAKE_ARGS=	-DDESKTOP_APP_SPECIAL_TARGET="" -DTDESKTOP_LAUNCHER_BASENAME="telegramdesktop" \
