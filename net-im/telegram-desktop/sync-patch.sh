@@ -2,12 +2,12 @@
 
 TG_VER=`make -VDISTVERSION`
 # version of Telegram/ThirdParty/libtgvoip submodule.
-LIBTGVOIP_VER=f321e7c
+LIBTGVOIP_VER=373e416
 # version of cmake submodule.
-CMAKE_VER=a797982
+CMAKE_VER=dbc1e4f
 # latest version of tg_owt
 # OWT_VER=`cat Makefile | grep desktop-app:tg_owt | cut -d : -f 3-3 `
-LIBBASE_VER=f9ca7dc
+LIBBASE_VER=1db6935
 
 MY_VER=bsd_$TG_VER
 
