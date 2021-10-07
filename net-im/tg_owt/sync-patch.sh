@@ -1,6 +1,6 @@
 #! /bin/sh
 
-TG_VER=2.8.11
+TG_VER=3.1.1
 # latest version of tg_owt
 OWT_VER=`make -V GH_TAGNAME`
 
