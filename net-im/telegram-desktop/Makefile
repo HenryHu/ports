@@ -94,4 +94,11 @@ PULSEAUDIO_LIB_DEPENDS=	libpulse.so:audio/pulseaudio
 TELEGRAM_API_HASH=	20a3432aab43f24bb4460fceac5ba38d
 TELEGRAM_API_ID=	601761
 
-.include <bsd.port.mk>
+.include <bsd.port.pre.mk>
+
+.if ${CHOSEN_COMPILER_TYPE} == clang && ${COMPILER_VERSION} <= 100
+post-patch:
+	@${REINPLACE_CMD} -e '/-fstack-clash-protection/d' ${WRKSRC}/cmake/options_linux.cmake
+.endif
+
+.include <bsd.port.post.mk>
