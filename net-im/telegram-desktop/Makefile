@@ -11,7 +11,7 @@ COMMENT=	Telegram Desktop messaging app
 LICENSE=	GPLv3
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BROKEN_i386=	Does not build, webrtc related.
+BROKEN_i386=	does not build, webrtc related
 NOT_FOR_ARCHS=		powerpc powerpc64 powerpcspe
 NOT_FOR_ARCHS_REASON=	Only little endian is supported
 
