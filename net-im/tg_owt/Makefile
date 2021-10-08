@@ -26,7 +26,6 @@ USES=		cmake pkgconfig xorg
 USE_XORG=	x11 xcomposite xdamage xrender xrandr
 USE_GITHUB=	yes
 GH_ACCOUNT=	desktop-app
-GH_PROJECT=	tg_owt
 GH_TAGNAME=	575fb17
 # libyuv cloned from https://chromium.googlesource.com/libyuv/libyuv
 GH_TUPLE=	webmproject:libvpx:5b63f0f:libvpx/src/third_party/libvpx/source/libvpx \
