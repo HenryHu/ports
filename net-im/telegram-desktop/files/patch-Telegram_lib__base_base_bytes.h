@@ -1,4 +1,4 @@
---- Telegram/lib_base/base/bytes.h.orig	2021-09-19 09:28:23 UTC
+--- Telegram/lib_base/base/bytes.h.orig	2021-10-06 07:02:39 UTC
 +++ Telegram/lib_base/base/bytes.h
 @@ -145,7 +145,7 @@ template <
  vector concatenate(Args &&...args) {
