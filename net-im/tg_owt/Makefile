@@ -14,7 +14,8 @@ BUILD_DEPENDS=	alsa-lib>0:audio/alsa-lib \
 		pulseaudio>0:audio/pulseaudio \
 		v4l_compat>0:multimedia/v4l_compat \
 		yasm:devel/yasm
-LIB_DEPENDS=	libavformat.so:multimedia/ffmpeg \
+LIB_DEPENDS=	libabsl_strings.so:devel/abseil \
+	        libavformat.so:multimedia/ffmpeg \
 		libevent.so:devel/libevent \
 		libjpeg.so:graphics/jpeg-turbo \
 		libopus.so:audio/opus \
