@@ -39,6 +39,7 @@ LIB_DEPENDS=	libabsl_strings.so:devel/abseil \
 		libopus.so:audio/opus \
 		libpipewire-0.3.so:multimedia/pipewire \
 		libqrcodegencpp.so:graphics/qr-code-generator \
+		librlottie.so:graphics/rlottie \
 		libusrsctp.so:net/libusrsctp \
 		libwebkit2gtk-4.0.so:www/webkit2-gtk3 \
 		libxcb-keysyms.so:x11/xcb-util-keysyms \
@@ -63,11 +64,8 @@ CMAKE_ARGS=	-DDESKTOP_APP_SPECIAL_TARGET="" -DTDESKTOP_LAUNCHER_BASENAME="telegr
 		-DTDESKTOP_API_ID=${TELEGRAM_API_ID} -DTDESKTOP_API_HASH=${TELEGRAM_API_HASH} \
 		-Ddisable_autoupdate=1
 CMAKE_ON=	DESKTOP_APP_USE_PACKAGED DESKTOP_APP_DISABLE_CRASH_REPORTS \
-		TDESKTOP_DISABLE_REGISTER_CUSTOM_SCHEME TDESKTOP_DISABLE_DESKTOP_FILE_GENERATION \
 		DESKTOP_APP_DISABLE_WAYLAND_INTEGRATION
-CMAKE_OFF=	DESKTOP_APP_USE_PACKAGED_RLOTTIE DESKTOP_APP_USE_PACKAGED_VARIANT \
-		DESKTOP_APP_USE_GLIBC_WRAPS TDESKTOP_USE_PACKAGED_TGVOIP \
-		DESKTOP_APP_USE_PACKAGED_FONTS
+CMAKE_OFF=	DESKTOP_APP_USE_PACKAGED_FONTS
 
 # Disable DCHECKs, otherwise video calls will crash.
 CXXFLAGS+=	-DNDEBUG
