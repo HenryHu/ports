@@ -40,6 +40,7 @@ LIB_DEPENDS=	libabsl_strings.so:devel/abseil \
 		libpipewire-0.3.so:multimedia/pipewire \
 		libqrcodegencpp.so:graphics/qr-code-generator \
 		libusrsctp.so:net/libusrsctp \
+		libwebkit2gtk-4.0.so:www/webkit2-gtk3 \
 		libxcb-keysyms.so:x11/xcb-util-keysyms \
 		libxkbcommon.so:x11/libxkbcommon \
 		libxxhash.so:devel/xxhash \
@@ -52,7 +53,7 @@ USE_GITHUB=	nodefault
 GH_ACCOUNT=	telegramdesktop
 GH_PROJECT=	tdesktop
 USE_GL=		gl
-USE_GNOME=	glib20 glibmm
+USE_GNOME=	glib20 glibmm gtk30
 INSTALLS_ICONS=	yes
 USE_QT=		core dbus gui imageformats network widgets buildtools_build \
 		qmake_build wayland svg
@@ -77,18 +78,13 @@ NO_CCACHE=	yes
 # Telegram uses OpenAL for its audio, but libtgvoip (for voice calls) can use PulseAudio or ALSA.
 # It dynamically loads PulseAudio, and if this fails, it loads ALSA.
 # If both of them are not installed, then voice calls do not work, but other functionalities still work.
-OPTIONS_DEFINE=		GTK
 OPTIONS_DEFAULT=	ALSA
 OPTIONS_MULTI=		AUDIO
 OPTIONS_MULTI_AUDIO=	ALSA PULSEAUDIO
 
 AUDIO_DESC=	Audio backend for voice calls
-GTK_DESC=	Gtk integration (Use Gtk dialogs, etc.)
 
 ALSA_LIB_DEPENDS=	libasound.so:audio/alsa-lib
-GTK_CMAKE_BOOL_OFF=	DESKTOP_APP_DISABLE_GTK_INTEGRATION
-GTK_LIB_DEPENDS=	libwebkit2gtk-4.0.so:www/webkit2-gtk3
-GTK_USE=	GNOME=gtk30
 PULSEAUDIO_LIB_DEPENDS=	libpulse.so:audio/pulseaudio
 
 # Telegram asks each custom build to have its own API ID and hash.
