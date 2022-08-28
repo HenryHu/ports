@@ -1,6 +1,5 @@
 PORTNAME=	ibus
-PORTVERSION=	1.5.24
-PORTREVISION=	1
+PORTVERSION=	1.5.27
 CATEGORIES=	textproc
 
 MAINTAINER=	henry.hu.sh@gmail.com
@@ -30,7 +29,7 @@ GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-html-dir=${PREFIX}/share/doc	\
 		--with-ucd-dir=${LOCALBASE}/share/unicode/ucd \
 		--disable-python2 --disable-python-library \
-		--disable-gtk4
+		--disable-gtk4 --disable-systemd --disable-systemd-services
 
 MAKE_JOBS_UNSAFE=yes
 INSTALL_TARGET=	install-strip
