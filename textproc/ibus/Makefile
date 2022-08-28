@@ -73,7 +73,7 @@ GTK2_CONFIGURE_ENABLE=	gtk2
 GTK3_LIB_DEPENDS=	libdbus-1.so:devel/dbus \
 			libnotify.so:devel/libnotify
 GTK3_USES=		xorg
-GTK3_USE=		GNOME=cairo,gtk30 XORG=x11,xi
+GTK3_USE=		GNOME+=cairo,gtk30,pango XORG=x11,xi
 GTK3_CONFIGURE_ENABLE=	gtk3 libnotify
 GTK3_LIBS=		-lX11
 NLS_USES=		gettext
@@ -87,6 +87,7 @@ WAYLAND_LIB_DEPENDS=	libwayland-client.so:graphics/wayland \
 			libxkbcommon.so:x11/libxkbcommon
 WAYLAND_CONFIGURE_ENABLE=	wayland
 XIM_CONFIGURE_ENABLE=	xim
+XIM_USE=		XORG+=x11,xfixes
 
 EMOJIONE_TAG=		ba845a7e24aac26cf3cf22abc19bea215d94fbf3 # 2.2.7
 
