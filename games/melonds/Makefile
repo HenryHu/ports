@@ -15,8 +15,8 @@ LIB_DEPENDS=	libslirp.so:net/libslirp \
 FLAVORS=	qt5 qt6
 FLAVOR?=	qt5
 
-USES=		cmake compiler:c++14-lang desktop-file-utils gettext-runtime \
-		gnome iconv libarchive pkgconfig qt:${FLAVOR:S/qt//} sdl
+USES=		cmake compiler:c++14-lang desktop-file-utils gnome \
+		iconv libarchive pkgconfig qt:${FLAVOR:S/qt//} sdl
 USE_GNOME=	glib20
 USE_SDL=	sdl2
 

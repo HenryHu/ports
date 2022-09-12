@@ -1,4 +1,5 @@
-melonDS aims at providing fast and accurate Nintendo DS emulation. While it is still a work in progress, it has a pretty solid set of features:
+melonDS aims at providing fast and accurate Nintendo DS emulation. While it is
+still a work in progress, it has a pretty solid set of features:
 
  * Nearly complete core (CPU, video, audio, ...)
  * JIT recompiler for fast emulation
