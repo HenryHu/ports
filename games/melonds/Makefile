@@ -16,7 +16,7 @@ FLAVORS=	qt5 qt6
 FLAVOR?=	qt5
 
 USES=		cmake compiler:c++14-lang desktop-file-utils gettext-runtime \
-		gnome libarchive qt:${FLAVOR:S/qt//}
+		gnome libarchive pkgconfig qt:${FLAVOR:S/qt//}
 USE_GNOME=	glib20
 USE_SDL=	sdl
 
