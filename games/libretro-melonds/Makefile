@@ -16,8 +16,6 @@ GH_TAGNAME=	490a66a
 
 PLIST_FILES=	lib/libretro/melonds_libretro.so
 
-.include <bsd.port.options.mk>
-
 do-install:
 	${MKDIR} ${STAGEDIR}/${PREFIX}/lib/libretro;
 	${INSTALL_LIB} ${WRKSRC}/melonds_libretro.so ${STAGEDIR}/${PREFIX}/lib/libretro;
