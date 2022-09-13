@@ -7,7 +7,7 @@ COMMENT=	Port of melonDS to libretro
 
 LICENSE=	GPLv3
 
-USES=		compiler:c++11-lib gmake
+USES=		compiler:c++17-lang gmake
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	libretro
