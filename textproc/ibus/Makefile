@@ -37,11 +37,12 @@ INSTALL_TARGET=	install-strip
 TEST_TARGET=	check
 TEST_WRKSRC=	${WRKSRC}/src/tests
 
-OPTIONS_DEFINE=	ENGINE VALA GTK2 GTK3 GINTRO DCONF XIM EMOJI DOCS NLS WAYLAND
-OPTIONS_DEFAULT=	GTK2 GTK3 VALA GINTRO DCONF XIM ENGINE EMOJI
+OPTIONS_DEFINE=	APPINDICATOR ENGINE VALA GTK2 GTK3 GINTRO DCONF XIM EMOJI DOCS NLS WAYLAND
+OPTIONS_DEFAULT=	GTK2 GTK3 VALA GINTRO DCONF XIM ENGINE EMOJI APPINDICATOR
 NO_OPTIONS_SORT=	yes
 OPTIONS_SUB=	yes
 
+APPINDICATOR_DESC=	Enable appindicator support
 DCONF_DESC=	Use dconf for configuration
 EMOJI_DESC=	Install emoji dictionary
 ENGINE_DESC=	Install ibus simple engine
@@ -52,6 +53,8 @@ VALA_DESC=	Install vala binding
 WAYLAND_DESC=	Enable Wayland support
 XIM_DESC=	Install XIM server
 
+APPINDICATOR_CONFIGURE_ENABLE=	appindicator
+APPINDICATOR_LIB_DEPENDS=	libdbusmenu-glib.so:devel/libdbusmenu
 DCONF_USE=		GNOME=dconf
 DCONF_CONFIGURE_ENABLE=	dconf
 DCONF_VARS=		GLIB_SCHEMAS=org.freedesktop.ibus.gschema.xml
@@ -72,7 +75,6 @@ GTK2_LIB_DEPENDS=	libdbus-1.so:devel/dbus \
 GTK2_USE=		GNOME=cairo,gtk20
 GTK2_CONFIGURE_ENABLE=	gtk2
 GTK3_LIB_DEPENDS=	libdbus-1.so:devel/dbus \
-			libdbusmenu-glib.so:devel/libdbusmenu \
 			libnotify.so:devel/libnotify
 GTK3_USES=		xorg
 GTK3_USE=		GNOME=cairo,gtk30,pango XORG=x11,xi
