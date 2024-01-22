@@ -1,5 +1,5 @@
 PORTNAME=	ibus
-PORTVERSION=	1.5.27
+PORTVERSION=	1.5.29
 CATEGORIES=	textproc
 
 MAINTAINER=	henry.hu.sh@gmail.com
@@ -22,7 +22,7 @@ USES=		autoreconf compiler cpe gmake gnome libtool localbase \
 		pathfix pkgconfig python:3.5+ shebangfix
 CPE_VENDOR=	ibus_project
 USE_GITHUB=	yes
-USE_GNOME=	glib20 intltool librsvg2 pygobject3
+USE_GNOME=	glib20 intltool pygobject3
 USE_LDCONFIG=	yes
 USE_PYTHON=	py3kplist
 SHEBANG_GLOB=	*.sh
@@ -72,6 +72,7 @@ GTK2_LIB_DEPENDS=	libdbus-1.so:devel/dbus \
 GTK2_USE=		GNOME=cairo,gtk20
 GTK2_CONFIGURE_ENABLE=	gtk2
 GTK3_LIB_DEPENDS=	libdbus-1.so:devel/dbus \
+			libdbusmenu-glib.so:devel/libdbusmenu \
 			libnotify.so:devel/libnotify
 GTK3_USES=		xorg
 GTK3_USE=		GNOME=cairo,gtk30,pango XORG=x11,xi
