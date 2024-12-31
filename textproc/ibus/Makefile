@@ -1,5 +1,6 @@
 PORTNAME=	ibus
 PORTVERSION=	1.5.29
+PORTREVISION=	2
 CATEGORIES=	textproc
 
 MAINTAINER=	henry.hu.sh@gmail.com
@@ -27,6 +28,7 @@ USE_LDCONFIG=	yes
 USE_PYTHON=	py3kplist
 SHEBANG_GLOB=	*.sh
 GNU_CONFIGURE=	yes
+GNU_CONFIGURE_MANPREFIX=${PREFIX}/share
 CONFIGURE_ARGS=	--with-html-dir=${PREFIX}/share/doc	\
 		--with-ucd-dir=${LOCALBASE}/share/unicode/ucd \
 		--disable-python2 --disable-python-library \
@@ -95,10 +97,6 @@ XIM_USE=		XORG=x11,xfixes
 EMOJIONE_TAG=		ba845a7e24aac26cf3cf22abc19bea215d94fbf3 # 2.2.7
 
 .include <bsd.port.pre.mk>
-
-.if ${COMPILER_TYPE} == gcc && ${COMPILER_VERSION} < 46
-USE_GCC=	yes
-.endif
 
 .if ${PORT_OPTIONS:MENGINE} || ${PORT_OPTIONS:MGTK3} || ${PORT_OPTIONS:MDCONF}
 PLIST_SUB+=	COMPDIR=""
