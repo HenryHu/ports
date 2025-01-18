@@ -1,0 +1,6 @@
+bsdsensors is a utility to fetch system sensors and control fan speed.  It
+focuses on fetching sensors (such as temperature, fan speed, and voltage) from
+the embedded controller on the motherboard, and controlling fan speed through
+it.
+
+WWW: https://github.com/henryhu/bsdsensors
