@@ -1,5 +1,6 @@
 PORTNAME=	ibus
 DISTVERSION=	1.5.31
+PORTREVISION=	1
 CATEGORIES=	textproc
 MASTER_SITES=	https://github.com/${PORTNAME}/${PORTNAME}/releases/download/${DISTVERSION}/
 
@@ -34,7 +35,6 @@ CONFIGURE_ARGS=	--with-html-dir=${PREFIX}/share/doc	\
 		--disable-systemd --disable-systemd-services \
 		--disable-install-tests
 
-MAKE_JOBS_UNSAFE=yes
 INSTALL_TARGET=	install-strip
 TEST_TARGET=	check
 TEST_WRKSRC=	${WRKSRC}/src/tests
