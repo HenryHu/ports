@@ -1,6 +1,5 @@
 PORTNAME=	ibus
-DISTVERSION=	1.5.31
-PORTREVISION=	1
+DISTVERSION=	1.5.32
 CATEGORIES=	textproc
 MASTER_SITES=	https://github.com/${PORTNAME}/${PORTNAME}/releases/download/${DISTVERSION}/
 
@@ -31,8 +30,8 @@ USE_XORG=	x11 xi xfixes xtst
 GNU_CONFIGURE=	yes
 CONFIGURE_ARGS=	--with-html-dir=${PREFIX}/share/doc	\
 		--with-ucd-dir=${LOCALBASE}/share/unicode/ucd \
-		--disable-python2 --disable-python-library \
-		--disable-systemd --disable-systemd-services \
+		--disable-python2 \
+		--disable-systemd-services \
 		--disable-install-tests
 
 INSTALL_TARGET=	install-strip
