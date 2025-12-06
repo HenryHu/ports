@@ -15,6 +15,7 @@ BUILD_DEPENDS=	${LOCALBASE}/share/unicode/ucd/NamesList.txt:textproc/UCD \
 		bash:shells/bash \
 		iso-codes>0:misc/iso-codes \
 		evdev-proto>0:devel/evdev-proto
+LIB_DEPENDS=	libdbus-1.so:devel/dbus
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dbus>0:devel/py-dbus@${PY_FLAVOR} \
 		iso-codes>0:misc/iso-codes \
 		setxkbmap:x11/setxkbmap
