@@ -15,7 +15,6 @@ BUILD_DEPENDS=	${LOCALBASE}/share/unicode/ucd/NamesList.txt:textproc/UCD \
 		bash:shells/bash \
 		iso-codes>0:misc/iso-codes \
 		evdev-proto>0:devel/evdev-proto
-LIB_DEPENDS=	libdbus-1.so:devel/dbus
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dbus>0:devel/py-dbus@${PY_FLAVOR} \
 		iso-codes>0:misc/iso-codes \
 		setxkbmap:x11/setxkbmap
@@ -77,8 +76,7 @@ GINTRO_CONFIGURE_ENABLE=	introspection
 GTK2_USE=			GNOME=cairo,gtk20
 GTK2_CONFIGURE_ENABLE=		gtk2
 GTK3_IMPLIES=			WAYLAND
-GTK3_LIB_DEPENDS=		libdbus-1.so:devel/dbus \
-				libnotify.so:devel/libnotify
+GTK3_LIB_DEPENDS=		libnotify.so:devel/libnotify
 GTK3_USES=			vala:build
 GTK3_USE=			GNOME=cairo,gtk30,pango
 GTK3_CONFIGURE_ENABLE=		gtk3 libnotify
