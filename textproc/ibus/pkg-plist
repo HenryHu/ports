@@ -8,6 +8,7 @@ etc/xdg/Xwayland-session.d/10-ibus-x11
 %%DCONF%%@postunexec rm -f %D/etc/dconf/db/ibus
 %%DCONF%%@postexec dconf update
 %%DCONF%%etc/dconf/profile/ibus
+include/ibus-1.0/ibus-visibility.h
 include/ibus-1.0/ibus.h
 include/ibus-1.0/ibusaccelgroup.h
 include/ibus-1.0/ibusattribute.h
@@ -31,6 +32,7 @@ include/ibus-1.0/ibuskeys.h
 include/ibus-1.0/ibuskeysyms-compat.h
 include/ibus-1.0/ibuskeysyms.h
 include/ibus-1.0/ibuslookuptable.h
+include/ibus-1.0/ibusmessage.h
 include/ibus-1.0/ibusobject.h
 include/ibus-1.0/ibusobservedpath.h
 include/ibus-1.0/ibuspanelservice.h
@@ -59,7 +61,7 @@ include/ibus-1.0/ibusxml.h
 %%GTK4%%lib/gtk-4.0/4.0.0/immodules/libim-ibus.so
 lib/libibus-1.0.so
 lib/libibus-1.0.so.5
-lib/libibus-1.0.so.5.0.532
+lib/libibus-1.0.so.5.0.533
 libdata/pkgconfig/ibus-1.0.pc
 %%GTK3%%libexec/ibus-extension-gtk3
 %%GTK3%%libexec/ibus-ui-gtk3

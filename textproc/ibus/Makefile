@@ -1,5 +1,5 @@
 PORTNAME=	ibus
-DISTVERSION=	1.5.32
+DISTVERSION=	1.5.33
 CATEGORIES=	textproc
 MASTER_SITES=	https://github.com/${PORTNAME}/${PORTNAME}/releases/download/${DISTVERSION}/
 
@@ -13,7 +13,8 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 BUILD_DEPENDS=	${LOCALBASE}/share/unicode/ucd/NamesList.txt:textproc/UCD \
 		${PYTHON_PKGNAMEPREFIX}dbus>0:devel/py-dbus@${PY_FLAVOR} \
 		bash:shells/bash \
-		iso-codes>0:misc/iso-codes
+		iso-codes>0:misc/iso-codes \
+		evdev-proto>0:devel/evdev-proto
 LIB_DEPENDS=	libdbus-1.so:devel/dbus
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dbus>0:devel/py-dbus@${PY_FLAVOR} \
 		iso-codes>0:misc/iso-codes \
