@@ -20,7 +20,7 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dbus>0:devel/py-dbus@${PY_FLAVOR} \
 		setxkbmap:x11/setxkbmap
 
 USES=		compiler cpe gmake gnome libtool localbase pathfix pkgconfig \
-		python shebangfix xorg
+		python shebangfix xorg vala:build
 CPE_VENDOR=	ibus_project
 USE_GNOME=	glib20 pygobject3
 USE_LDCONFIG=	yes
@@ -79,7 +79,6 @@ GTK2_CONFIGURE_ENABLE=		gtk2
 GTK3_IMPLIES=			GINTRO
 GTK3_LIB_DEPENDS=		libdbus-1.so:devel/dbus \
 				libnotify.so:devel/libnotify
-GTK3_USES=			vala:build
 GTK3_USE=			GNOME=cairo,gtk30,pango
 GTK3_CONFIGURE_ENABLE=		gtk3 libnotify
 GTK4_IMPLIES=			GINTRO
@@ -94,7 +93,6 @@ NLS_CONFIGURE_ENABLE=		nls
 TESTS_CONFIGURE_ENABLE=		tests
 TESTS_IMPLIES=			XIM GTK3 GTK4
 VAPI_IMPLIES=			GINTRO
-VAPI_USES=			vala:build
 VAPI_CONFIGURE_ENABLE=		vala
 WAYLAND_BUILD_DEPENDS=		wayland>1.14:graphics/wayland \
 				wayland-protocols>0:graphics/wayland-protocols
