@@ -76,6 +76,7 @@ GINTRO_USE=			GNOME=introspection
 GINTRO_CONFIGURE_ENABLE=	introspection
 GTK2_USE=			GNOME=cairo,gtk20
 GTK2_CONFIGURE_ENABLE=		gtk2
+GTK2_LIB_DEPENDS=		libdbus-1.so:devel/dbus
 GTK3_IMPLIES=			GINTRO
 GTK3_LIB_DEPENDS=		libdbus-1.so:devel/dbus \
 				libnotify.so:devel/libnotify
