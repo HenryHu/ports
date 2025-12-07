@@ -86,7 +86,7 @@ GTK4_IMPLIES=			GINTRO
 GTK4_LIB_DEPENDS=		libdbus-1.so:devel/dbus \
 				libgraphene-1.0.so:graphics/graphene \
 				libvulkan.so:graphics/vulkan-loader
-GTK4_USE=			GNOME=cairo,gtk40
+GTK4_USE=			GNOME=cairo,gtk40,gdkpixbuf
 GTK4_CONFIGURE_ENABLE=		gtk4
 NLS_USES=			gettext
 NLS_USES_OFF=			gettext-tools
@@ -103,7 +103,6 @@ WAYLAND_LIB_DEPENDS=		libwayland-client.so:graphics/wayland \
 WAYLAND_CONFIGURE_ENABLE=	wayland
 XIM_IMPLIES=			GTK3
 XIM_CONFIGURE_ENABLE=		xim
-GTK4_LIB_DEPENDS=		libdbus-1.so:devel/dbus
 
 .include <bsd.port.pre.mk>
 
