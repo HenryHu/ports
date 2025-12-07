@@ -15,7 +15,6 @@ BUILD_DEPENDS=	${LOCALBASE}/share/unicode/ucd/NamesList.txt:textproc/UCD \
 		bash:shells/bash \
 		iso-codes>0:misc/iso-codes \
 		evdev-proto>0:devel/evdev-proto
-LIB_DEPENDS=	libdbus-1.so:devel/dbus
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dbus>0:devel/py-dbus@${PY_FLAVOR} \
 		iso-codes>0:misc/iso-codes \
 		setxkbmap:x11/setxkbmap
@@ -40,7 +39,7 @@ TEST_TARGET=	check
 TEST_WRKSRC=	${WRKSRC}/src/tests
 
 OPTIONS_DEFINE=		APPINDICATOR DCONF DOCS EMOJI ENGINE GINTRO GTK2 GTK3 \
-			GTK4 NLS VAPI WAYLAND XIM
+			GTK4 NLS TESTS VAPI WAYLAND XIM
 OPTIONS_DEFAULT=	APPINDICATOR DCONF EMOJI ENGINE GINTRO GTK3 GTK4 VAPI \
 			WAYLAND XIM
 NO_OPTIONS_SORT=	yes
@@ -54,6 +53,7 @@ GINTRO_DESC=		Install GObject Introspection data
 GTK2_DESC=		Install GTK2 input method client
 GTK3_DESC=		Install GTK3 input method client
 GTK4_DESC=		Install GTK4 input method client
+TESTS_DESC=		Build tests
 WAYLAND_DESC=		Enable Wayland support
 XIM_DESC=		Install XIM server
 
@@ -76,29 +76,34 @@ GINTRO_USE=			GNOME=introspection
 GINTRO_CONFIGURE_ENABLE=	introspection
 GTK2_USE=			GNOME=cairo,gtk20
 GTK2_CONFIGURE_ENABLE=		gtk2
-GTK3_IMPLIES=			WAYLAND
-GTK3_LIB_DEPENDS=		libnotify.so:devel/libnotify
+GTK3_IMPLIES=			GINTRO
+GTK3_LIB_DEPENDS=		libdbus-1.so:devel/dbus \
+				libnotify.so:devel/libnotify
 GTK3_USES=			vala:build
 GTK3_USE=			GNOME=cairo,gtk30,pango
 GTK3_CONFIGURE_ENABLE=		gtk3 libnotify
-GTK3_LIBS=			-lX11
-GTK4_IMPLIES=			WAYLAND
-GTK4_LIB_DEPENDS=		libgraphene-1.0.so:graphics/graphene \
+GTK4_IMPLIES=			GINTRO
+GTK4_LIB_DEPENDS=		libdbus-1.so:devel/dbus \
+				libgraphene-1.0.so:graphics/graphene \
 				libvulkan.so:graphics/vulkan-loader
 GTK4_USE=			GNOME=cairo,gtk40
 GTK4_CONFIGURE_ENABLE=		gtk4
 NLS_USES=			gettext
 NLS_USES_OFF=			gettext-tools
 NLS_CONFIGURE_ENABLE=		nls
+TESTS_CONFIGURE_ENABLE=		tests
+TESTS_IMPLIES=			XIM GTK3 GTK4
 VAPI_IMPLIES=			GINTRO
 VAPI_USES=			vala:build
 VAPI_CONFIGURE_ENABLE=		vala
-WAYLAND_BUILD_DEPENDS=		wayland>1.14:graphics/wayland
+WAYLAND_BUILD_DEPENDS=		wayland>1.14:graphics/wayland \
+				wayland-protocols>0:graphics/wayland-protocols
 WAYLAND_LIB_DEPENDS=		libwayland-client.so:graphics/wayland \
 				libxkbcommon.so:x11/libxkbcommon
 WAYLAND_CONFIGURE_ENABLE=	wayland
 XIM_IMPLIES=			GTK3
 XIM_CONFIGURE_ENABLE=		xim
+GTK4_LIB_DEPENDS=		libdbus-1.so:devel/dbus
 
 .include <bsd.port.pre.mk>
 
@@ -111,6 +116,7 @@ PLIST_SUB+=	COMPDIR="@comment "
 post-configure:
 	# Clean pre-generated source code, which may not match the options selected.
 	${MAKE} -C ${WRKSRC}/ui/gtk3 maintainer-clean-generic
+	${RM} -f ${WRKSRC}/tools/main.c
 
 post-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/etc/xdg/autostart

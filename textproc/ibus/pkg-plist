@@ -2,7 +2,7 @@ bin/ibus
 bin/ibus-daemon
 bin/ibus-setup
 etc/xdg/autostart/ibus.desktop
-etc/xdg/Xwayland-session.d/10-ibus-x11
+%%XIM%%etc/xdg/Xwayland-session.d/10-ibus-x11
 %%DCONF%%etc/dconf/db/ibus.d/00-upstream-settings
 %%DCONF%%share/man/man5/00-upstream-settings.5.gz
 %%DCONF%%@postunexec rm -f %D/etc/dconf/db/ibus
@@ -63,7 +63,7 @@ lib/libibus-1.0.so
 lib/libibus-1.0.so.5
 lib/libibus-1.0.so.5.0.533
 libdata/pkgconfig/ibus-1.0.pc
-%%GTK3%%libexec/ibus-extension-gtk3
+%%GTK3%%%%EMOJI%%libexec/ibus-extension-gtk3
 %%GTK3%%libexec/ibus-ui-gtk3
 %%XIM%%libexec/ibus-x11
 %%DCONF%%libexec/ibus-dconf
@@ -78,8 +78,8 @@ share/man/man1/ibus.1.gz
 %%EMOJI%%share/man/man7/ibus-emoji.7.gz
 share/applications/org.freedesktop.IBus.Setup.desktop
 %%EMOJI%%share/applications/org.freedesktop.IBus.Panel.Emojier.desktop
-%%GTK3%%share/applications/org.freedesktop.IBus.Panel.Extension.Gtk3.desktop
-%%GTK3%%share/applications/org.freedesktop.IBus.Panel.Wayland.Gtk3.desktop
+%%GTK3%%%%EMOJI%%share/applications/org.freedesktop.IBus.Panel.Extension.Gtk3.desktop
+%%GTK3%%%%WAYLAND%%share/applications/org.freedesktop.IBus.Panel.Wayland.Gtk3.desktop
 share/dbus-1/services/org.freedesktop.IBus.service
 share/dbus-1/services/org.freedesktop.portal.IBus.service
 %%PORTDOCS%%%%DOCSDIR%%/IBusAttrList.html
@@ -134,7 +134,7 @@ share/dbus-1/services/org.freedesktop.portal.IBus.service
 %%PORTDOCS%%%%DOCSDIR%%/style.css
 %%PORTDOCS%%%%DOCSDIR%%/up-insensitive.png
 %%PORTDOCS%%%%DOCSDIR%%/up.png
-%%GTK3%%%%DATADIR%%/component/gtkextension.xml
+%%GTK3%%%%EMOJI%%%%DATADIR%%/component/gtkextension.xml
 %%GTK3%%%%DATADIR%%/component/gtkpanel.xml
 %%DCONF%%%%DATADIR%%/component/dconf.xml
 %%ENGINE%%%%DATADIR%%/component/simple.xml
