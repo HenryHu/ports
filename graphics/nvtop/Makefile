@@ -15,7 +15,8 @@ USE_GITHUB=	yes
 GH_ACCOUNT=	Syllo
 GH_PROJECT=	nvtop
 
-BUILD_DEPENDS=	libdrm>0:graphics/libdrm
+BUILD_DEPENDS=	libdrm>0:graphics/libdrm \
+		libsysinfo>0:devel/libsysinfo
 LIB_DEPENDS=	libudev.so:devel/libudev-devd
 
 .include <bsd.port.mk>
