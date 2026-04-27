@@ -10,7 +10,7 @@ WWW=		https://github.com/Syllo/nvtop
 
 LICENSE=	GPLv3
 
-USES=		cmake ncurses
+USES=		cmake ncurses pkgconfig
 USE_GITHUB=	yes
 GH_ACCOUNT=	Syllo
 GH_PROJECT=	nvtop
