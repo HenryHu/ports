@@ -1,5 +1,6 @@
 PORTNAME=	ibus
 DISTVERSION=	1.5.33
+PORTREVISION=	2
 CATEGORIES=	textproc
 MASTER_SITES=	https://github.com/${PORTNAME}/${PORTNAME}/releases/download/${DISTVERSION}/
 
@@ -20,7 +21,7 @@ RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}dbus>0:devel/py-dbus@${PY_FLAVOR} \
 		setxkbmap:x11/setxkbmap
 
 USES=		compiler cpe gmake gnome libtool localbase pathfix pkgconfig \
-		python shebangfix xorg vala:build
+		python shebangfix vala:build xorg
 CPE_VENDOR=	ibus_project
 USE_GNOME=	glib20 pygobject3
 USE_LDCONFIG=	yes
@@ -65,18 +66,18 @@ DCONF_CONFIGURE_ENABLE=		dconf
 DCONF_VARS=			GLIB_SCHEMAS=org.freedesktop.ibus.gschema.xml
 DOCS_BUILD_DEPENDS=		gtkdocize:textproc/gtk-doc
 DOCS_CONFIGURE_ENABLE=		gtk-doc-html
-EMOJI_BUILD_DEPENDS=		cldr-emoji-annotation>0:misc/cldr-emoji-annotation \
+EMOJI_BUILD_DEPENDS=		CLDR>0:textproc/CLDR \
 				json-glib>=0:devel/json-glib \
 				unicode-emoji>0:misc/unicode-emoji
 EMOJI_CONFIGURE_ON=		--with-emoji-annotation-dir=${LOCALBASE}/share/unicode/cldr/common/annotations \
 				--with-unicode-emoji-dir=${LOCALBASE}/share/unicode/emoji
 EMOJI_CONFIGURE_ENABLE=		emoji-dict
 ENGINE_CONFIGURE_ENABLE=	engine
-GINTRO_USE=			GNOME=introspection
+GINTRO_USE=			GNOME=introspection:build
 GINTRO_CONFIGURE_ENABLE=	introspection
+GTK2_LIB_DEPENDS=		libdbus-1.so:devel/dbus
 GTK2_USE=			GNOME=cairo,gtk20
 GTK2_CONFIGURE_ENABLE=		gtk2
-GTK2_LIB_DEPENDS=		libdbus-1.so:devel/dbus
 GTK3_IMPLIES=			GINTRO
 GTK3_LIB_DEPENDS=		libdbus-1.so:devel/dbus \
 				libnotify.so:devel/libnotify
@@ -91,8 +92,8 @@ GTK4_CONFIGURE_ENABLE=		gtk4
 NLS_USES=			gettext
 NLS_USES_OFF=			gettext-tools
 NLS_CONFIGURE_ENABLE=		nls
+TESTS_IMPLIES=			GTK3 GTK4 XIM
 TESTS_CONFIGURE_ENABLE=		tests
-TESTS_IMPLIES=			XIM GTK3 GTK4
 VAPI_IMPLIES=			GINTRO
 VAPI_CONFIGURE_ENABLE=		vala
 WAYLAND_BUILD_DEPENDS=		wayland>1.14:graphics/wayland \
@@ -114,7 +115,7 @@ PLIST_SUB+=	COMPDIR="@comment "
 post-configure:
 	# Clean pre-generated source code, which may not match the options selected.
 	${MAKE} -C ${WRKSRC}/ui/gtk3 maintainer-clean-generic
-	${RM} -f ${WRKSRC}/tools/main.c
+	${RM} ${WRKSRC}/tools/main.c
 
 post-install:
 	${MKDIR} ${STAGEDIR}${PREFIX}/etc/xdg/autostart
