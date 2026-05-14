@@ -1,6 +1,6 @@
-%%ACTIVERECORD%%bin/poco-arc
 %%PAGECOMPILER%%bin/cpspc
 %%PAGECOMPILER%%bin/f2cpsp
+%%ACTIVERECORD%%bin/poco-arc
 include/Poco/ASCIIEncoding.h
 include/Poco/AbstractCache.h
 include/Poco/AbstractDelegate.h
